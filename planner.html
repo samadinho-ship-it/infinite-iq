@@ -1,0 +1,896 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080a12">
+<title>INFINITE IQ | Website Planner</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:#080a12;
+  --panel:#111522;
+  --panel2:#171c2d;
+  --purple:#a58aff;
+  --cyan:#67e6e0;
+  --text:#f5f5fa;
+  --muted:#a2a7ba;
+  --border:#292f45;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.6;
+}
+
+header {
+  padding:20px 7%;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(8,10,18,.94);
+  backdrop-filter:blur(15px);
+}
+
+.logo {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.logo span { color:var(--purple); }
+
+header a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+}
+
+header a:hover { color:var(--cyan); }
+
+main {
+  max-width:1000px;
+  margin:65px auto;
+  padding:20px;
+}
+
+.tag {
+  color:var(--purple);
+  font-size:12px;
+  letter-spacing:3px;
+  font-weight:800;
+}
+
+h1 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(38px,7vw,65px);
+  line-height:1.1;
+  margin:18px 0;
+}
+
+h1 span {
+  background:linear-gradient(100deg,var(--purple),var(--cyan));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.intro {
+  color:var(--muted);
+  max-width:680px;
+  margin-bottom:35px;
+}
+
+.progress-area {
+  margin-bottom:25px;
+}
+
+.progress-label {
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:9px;
+}
+
+.progress-track {
+  height:6px;
+  background:#20263a;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill {
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--purple),var(--cyan));
+  transition:width .3s;
+}
+
+.panel {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+}
+
+.section {
+  padding-bottom:27px;
+  margin-bottom:27px;
+  border-bottom:1px solid var(--border);
+}
+
+.section:last-of-type {
+  border:0;
+  margin-bottom:0;
+}
+
+.section-heading {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:8px;
+}
+
+.number {
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  background:#292143;
+  color:var(--purple);
+  border-radius:10px;
+  font-weight:800;
+  font-size:13px;
+}
+
+.section h2 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:20px;
+}
+
+.section-description {
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+label {
+  display:block;
+  margin:17px 0 8px;
+  font-size:14px;
+  font-weight:700;
+}
+
+input,textarea,select {
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #343b53;
+  background:#090d19;
+  color:white;
+  font-family:inherit;
+  font-size:14px;
+  outline:none;
+  transition:border .2s;
+}
+
+input:focus,textarea:focus,select:focus {
+  border-color:var(--purple);
+}
+
+input::placeholder,textarea::placeholder {
+  color:#72798d;
+}
+
+textarea {
+  min-height:105px;
+  resize:vertical;
+}
+
+select option {
+  background:#111522;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 18px;
+}
+
+.choice-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
+  margin-top:12px;
+}
+
+.choice {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#0b101e;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:13px;
+  cursor:pointer;
+  font-size:13px;
+  transition:.2s;
+}
+
+.choice:hover {
+  border-color:var(--purple);
+}
+
+.choice:has(input:checked) {
+  border-color:var(--purple);
+  background:#201a35;
+}
+
+.choice input {
+  width:16px;
+  height:16px;
+  accent-color:#a58aff;
+  flex-shrink:0;
+}
+
+.hint {
+  color:#858ba0;
+  font-size:12px;
+  margin-top:8px;
+}
+
+button {
+  padding:15px 20px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(100deg,#9270ff,#7560d9);
+  color:white;
+  font-family:inherit;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform .2s,filter .2s;
+}
+
+button:hover {
+  filter:brightness(1.12);
+  transform:translateY(-2px);
+}
+
+.generate {
+  width:100%;
+  margin-top:28px;
+  padding:18px;
+  font-size:15px;
+}
+
+#result {
+  display:none;
+  margin-top:35px;
+}
+
+.report {
+  background:#fff;
+  color:#202033;
+  border-radius:16px;
+  padding:38px;
+  line-height:1.75;
+}
+
+.report-header {
+  border-bottom:2px solid #eee;
+  padding-bottom:22px;
+  margin-bottom:25px;
+}
+
+.report-header small {
+  color:#7956d9;
+  letter-spacing:2px;
+  font-weight:800;
+}
+
+.report h2 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:28px;
+  margin:8px 0;
+  overflow-wrap:anywhere;
+}
+
+.report h3 {
+  color:#7653d2;
+  margin:24px 0 7px;
+  font-size:17px;
+}
+
+.report p { color:#555; }
+
+.report ul {
+  padding-left:22px;
+  color:#555;
+}
+
+.report li { margin:4px 0; }
+
+.report-footer {
+  margin-top:30px;
+  border-top:1px solid #eee;
+  padding-top:15px;
+  color:#888;
+  font-size:12px;
+}
+
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+.actions button {
+  flex:1;
+  min-width:140px;
+}
+
+.copy { background:#343b53; }
+.print { background:#147c85; }
+.restart { background:#22283b; }
+
+.success {
+  color:var(--cyan);
+  margin-top:14px;
+  font-size:13px;
+}
+
+footer {
+  text-align:center;
+  padding:35px 20px;
+  color:#777;
+  font-size:13px;
+  border-top:1px solid var(--border);
+}
+
+@media(max-width:650px) {
+  header { padding:18px 20px; }
+  main { margin:35px auto; }
+  .panel { padding:20px; }
+  .grid,.choice-grid { grid-template-columns:1fr; }
+  .report { padding:23px; }
+  .actions { flex-direction:column; }
+  .actions button { width:100%; }
+}
+
+@media print {
+  body { background:white; }
+  header,main > .tag,main > h1,main > .intro,
+  .progress-area,.panel,#result .actions,
+  #result .success,footer {
+    display:none !important;
+  }
+  main {
+    margin:0;
+    padding:0;
+    max-width:none;
+  }
+  #result {
+    display:block !important;
+    margin:0;
+  }
+  .report {
+    border-radius:0;
+    padding:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">INFINITE <span>IQ.</span></div>
+  <a href="index.html">← Main website</a>
+</header>
+
+<main>
+
+<div class="tag">INFINITE IQ DIGITAL TOOLS</div>
+
+<h1>Plan your next <span>big idea.</span></h1>
+
+<p class="intro">
+Tell us about your business, your customers and your vision.
+Our Website Planner will turn your answers into a structured website project plan.
+</p>
+
+<div class="progress-area">
+  <div class="progress-label">
+    <span>Planning progress</span>
+    <span id="progressText">0% completed</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<section class="panel">
+
+<form id="plannerForm">
+
+<div class="section">
+  <div class="section-heading">
+    <div class="number">01</div>
+    <h2>Business information</h2>
+  </div>
+  <p class="section-description">Let's understand the business behind your idea.</p>
+
+  <div class="grid">
+    <div>
+      <label for="business">Business name *</label>
+      <input id="business" placeholder="e.g. Infinite Store" required>
+    </div>
+    <div>
+      <label for="type">Business category *</label>
+      <select id="type" required>
+        <option value="">Choose category</option>
+        <option>Clothing and fashion</option>
+        <option>Restaurant and food</option>
+        <option>Technology</option>
+        <option>Beauty and skincare</option>
+        <option>Education</option>
+        <option>Photography</option>
+        <option>Health and wellness</option>
+        <option>Travel and tourism</option>
+        <option>Professional services</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+
+  <label for="services">What do you sell or offer? *</label>
+  <textarea id="services" placeholder="Describe your products, services or business idea..." required></textarea>
+
+  <label for="customers">Who are your ideal customers? *</label>
+  <input id="customers" placeholder="e.g. Students, businesses, families..." required>
+
+  <label for="location">Where does your business operate?</label>
+  <input id="location" placeholder="e.g. Nairobi, Kenya or Worldwide">
+</div>
+
+<div class="section">
+  <div class="section-heading">
+    <div class="number">02</div>
+    <h2>Website goals</h2>
+  </div>
+  <p class="section-description">What should your website help your business achieve?</p>
+
+  <label for="goal">Main website goal *</label>
+  <select id="goal" required>
+    <option value="">Choose your main goal</option>
+    <option>Promote my business and brand</option>
+    <option>Sell products online</option>
+    <option>Receive customer enquiries</option>
+    <option>Display my portfolio</option>
+    <option>Book appointments</option>
+    <option>Share information and content</option>
+    <option>Build an online community</option>
+  </select>
+
+  <label>Which pages would you like?</label>
+  <div class="choice-grid">
+    <label class="choice"><input type="checkbox" name="pages" value="Home"> Home</label>
+    <label class="choice"><input type="checkbox" name="pages" value="About Us"> About Us</label>
+    <label class="choice"><input type="checkbox" name="pages" value="Products"> Products</label>
+    <label class="choice"><input type="checkbox" name="pages" value="Services"> Services</label>
+    <label class="choice"><input type="checkbox" name="pages" value="Portfolio"> Portfolio</label>
+    <label class="choice"><input type="checkbox" name="pages" value="Testimonials"> Testimonials</label>
+    <label class="choice"><input type="checkbox" name="pages" value="Blog"> Blog</label>
+    <label class="choice"><input type="checkbox" name="pages" value="Contact"> Contact</label>
+    <label class="choice"><input type="checkbox" name="pages" value="FAQ"> FAQ</label>
+    <label class="choice"><input type="checkbox" name="pages" value="Booking"> Booking</label>
+  </div>
+  <p class="hint">Select all the pages you think your website needs.</p>
+</div>
+
+<div class="section">
+  <div class="section-heading">
+    <div class="number">03</div>
+    <h2>Website features</h2>
+  </div>
+  <p class="section-description">Choose the functionality you want visitors to use.</p>
+
+  <div class="choice-grid">
+    <label class="choice"><input type="checkbox" name="features" value="Contact form"> Contact form</label>
+    <label class="choice"><input type="checkbox" name="features" value="WhatsApp contact button"> WhatsApp contact</label>
+    <label class="choice"><input type="checkbox" name="features" value="Online payments"> Online payments</label>
+    <label class="choice"><input type="checkbox" name="features" value="Product catalogue"> Product catalogue</label>
+    <label class="choice"><input type="checkbox" name="features" value="Appointment booking"> Appointment booking</label>
+    <label class="choice"><input type="checkbox" name="features" value="Customer accounts"> Customer accounts</label>
+    <label class="choice"><input type="checkbox" name="features" value="Search functionality"> Search function</label>
+    <label class="choice"><input type="checkbox" name="features" value="Image gallery"> Image gallery</label>
+    <label class="choice"><input type="checkbox" name="features" value="Newsletter signup"> Newsletter signup</label>
+    <label class="choice"><input type="checkbox" name="features" value="Social media links"> Social media links</label>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-heading">
+    <div class="number">04</div>
+    <h2>Design direction</h2>
+  </div>
+  <p class="section-description">Give your website the visual identity you have in mind.</p>
+
+  <div class="grid">
+    <div>
+      <label for="style">Preferred design style</label>
+      <select id="style">
+        <option>Modern and professional</option>
+        <option>Minimal and elegant</option>
+        <option>Bold and colourful</option>
+        <option>Luxury and premium</option>
+        <option>Creative and futuristic</option>
+        <option>Friendly and welcoming</option>
+      </select>
+    </div>
+    <div>
+      <label for="colour">Preferred colours</label>
+      <input id="colour" placeholder="e.g. Black, gold and white">
+    </div>
+  </div>
+
+  <label for="inspiration">Any websites or designs you admire?</label>
+  <input id="inspiration" placeholder="Optional: paste a website name or describe the look">
+</div>
+
+<div class="section">
+  <div class="section-heading">
+    <div class="number">05</div>
+    <h2>Budget and timeline</h2>
+  </div>
+  <p class="section-description">Help establish a realistic starting point for your project.</p>
+
+  <div class="grid">
+    <div>
+      <label for="budget">Estimated budget</label>
+      <select id="budget">
+        <option>Not decided yet</option>
+        <option>Under $100</option>
+        <option>$100 – $300</option>
+        <option>$300 – $500</option>
+        <option>$500 – $1,000</option>
+        <option>Above $1,000</option>
+      </select>
+    </div>
+    <div>
+      <label for="timeline">Expected timeline</label>
+      <select id="timeline">
+        <option>Flexible</option>
+        <option>Within one week</option>
+        <option>Within two weeks</option>
+        <option>Within one month</option>
+        <option>Within two to three months</option>
+      </select>
+    </div>
+  </div>
+
+  <label for="extra">Additional requirements</label>
+  <textarea id="extra" placeholder="Anything else we should know about your website?"></textarea>
+</div>
+
+<button class="generate" type="submit">
+  Generate My Website Plan →
+</button>
+
+</form>
+
+<div id="result">
+
+<div class="report" id="report">
+
+  <div class="report-header">
+    <small>INFINITE IQ • BUSINESS PLANNER</small>
+    <h2 id="reportTitle">Your Website Plan</h2>
+    <p>Your personalised website project blueprint.</p>
+  </div>
+
+  <div id="output"></div>
+
+  <div class="report-footer">
+    Created with INFINITE IQ — Ideas Without Limits.
+  </div>
+
+</div>
+
+<div class="actions">
+  <button id="downloadButton" type="button">↓ Download Plan</button>
+  <button class="copy" id="copyButton" type="button">Copy Plan</button>
+  <button class="print" id="printButton" type="button">Print / Save PDF</button>
+  <button class="restart" id="restartButton" type="button">↻ Start Again</button>
+</div>
+
+<p class="success" id="status" aria-live="polite"></p>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+© 2026 INFINITE IQ. Ideas Without Limits.
+</footer>
+
+<script>
+const form = document.getElementById("plannerForm");
+const result = document.getElementById("result");
+const output = document.getElementById("output");
+const status = document.getElementById("status");
+const progressFill = document.getElementById("progressFill");
+const progressText = document.getElementById("progressText");
+
+let currentPlan = "";
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[character]);
+}
+
+function getValue(id) {
+  return document.getElementById(id).value.trim();
+}
+
+function getSelected(name) {
+  return [...document.querySelectorAll(`input[name="${name}"]:checked`)]
+    .map(item => item.value);
+}
+
+function safeList(items, fallback) {
+  return items.length ? items : [fallback];
+}
+
+function updateProgress() {
+  const required = [...form.querySelectorAll("[required]")];
+  const completed = required.filter(field => field.value.trim()).length;
+  const percentage = Math.round((completed / required.length) * 100);
+
+  progressFill.style.width = percentage + "%";
+  progressText.textContent = percentage + "% completed";
+}
+
+form.addEventListener("input", updateProgress);
+form.addEventListener("change", updateProgress);
+
+function makeList(items) {
+  return items.map(item => `<li>${escapeHTML(item)}</li>`).join("");
+}
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const data = {
+    business:getValue("business"),
+    type:getValue("type"),
+    services:getValue("services"),
+    customers:getValue("customers"),
+    location:getValue("location") || "Not specified",
+    goal:getValue("goal"),
+    pages:safeList(getSelected("pages"), "Home, About Us and Contact"),
+    features:getSelected("features"),
+    style:getValue("style"),
+    colour:getValue("colour") || "Open to recommendations",
+    inspiration:getValue("inspiration") || "No specific reference supplied",
+    budget:getValue("budget"),
+    timeline:getValue("timeline"),
+    extra:getValue("extra") || "No additional requirements supplied"
+  };
+
+  const recommendedPages = data.pages;
+  const recommendedFeatures = data.features.length
+    ? data.features
+    : ["Mobile-friendly layout", "Clear navigation", "Contact information"];
+
+  const reportHTML = `
+    <h3>01. Business Overview</h3>
+    <p><strong>${escapeHTML(data.business)}</strong> operates in the ${escapeHTML(data.type)} industry.</p>
+    <p><strong>Location:</strong> ${escapeHTML(data.location)}</p>
+    <p><strong>Offering:</strong> ${escapeHTML(data.services)}</p>
+
+    <h3>02. Project Objective</h3>
+    <p>The main goal is to ${escapeHTML(data.goal.toLowerCase())}.</p>
+    <p>The website should communicate the business's value clearly and make it easy for visitors to take the next step.</p>
+
+    <h3>03. Target Audience</h3>
+    <p>The website should appeal to ${escapeHTML(data.customers)}. Its content, layout and messaging should reflect their needs and interests.</p>
+
+    <h3>04. Recommended Website Pages</h3>
+    <ul>${makeList(recommendedPages)}</ul>
+
+    <h3>05. Website Functionality</h3>
+    <ul>${makeList(recommendedFeatures)}</ul>
+
+    <h3>06. Design Direction</h3>
+    <p><strong>Style:</strong> ${escapeHTML(data.style)}</p>
+    <p><strong>Colours:</strong> ${escapeHTML(data.colour)}</p>
+    <p><strong>Design inspiration:</strong> ${escapeHTML(data.inspiration)}</p>
+
+    <h3>07. Suggested Homepage Message</h3>
+    <p>Welcome to ${escapeHTML(data.business)} — your destination for ${escapeHTML(data.services)}. Discover what makes us different and find the right solution for your needs.</p>
+
+    <h3>08. Suggested Call to Action</h3>
+    <p>"Discover ${escapeHTML(data.business)} today and take the next step."</p>
+
+    <h3>09. Budget and Timeline</h3>
+    <p><strong>Estimated budget:</strong> ${escapeHTML(data.budget)}</p>
+    <p><strong>Expected timeline:</strong> ${escapeHTML(data.timeline)}</p>
+
+    <h3>10. Recommended Project Roadmap</h3>
+    <ul>
+      <li><strong>Planning:</strong> Confirm the website goals, audience and page structure.</li>
+      <li><strong>Design:</strong> Establish the visual identity and page layouts.</li>
+      <li><strong>Development:</strong> Build the website and implement the selected features.</li>
+      <li><strong>Testing:</strong> Check navigation, forms, mobile layouts and functionality.</li>
+      <li><strong>Launch:</strong> Publish the finished website and review its performance.</li>
+    </ul>
+
+    <h3>11. Additional Requirements</h3>
+    <p>${escapeHTML(data.extra)}</p>
+
+    <h3>12. Business Growth Recommendations</h3>
+    <ul>
+      <li>Use clear and professional product or service photography.</li>
+      <li>Make important information easy to find.</li>
+      <li>Ensure the website works smoothly on mobile devices.</li>
+      <li>Use clear calls to action throughout the website.</li>
+      <li>Keep business information and contact details updated.</li>
+      <li>Review visitor feedback and improve the experience over time.</li>
+    </ul>
+  `;
+
+  output.innerHTML = reportHTML;
+
+  document.getElementById("reportTitle").textContent =
+    data.business + " — Website Plan";
+
+  currentPlan = `${data.business.toUpperCase()} — WEBSITE PROJECT PLAN
+
+01. BUSINESS OVERVIEW
+Business: ${data.business}
+Category: ${data.type}
+Location: ${data.location}
+Products and services: ${data.services}
+
+02. PROJECT OBJECTIVE
+${data.goal}
+
+03. TARGET AUDIENCE
+${data.customers}
+
+04. WEBSITE PAGES
+${recommendedPages.join("\n")}
+
+05. WEBSITE FEATURES
+${recommendedFeatures.join("\n")}
+
+06. DESIGN DIRECTION
+Style: ${data.style}
+Colours: ${data.colour}
+Inspiration: ${data.inspiration}
+
+07. HOMEPAGE MESSAGE
+Welcome to ${data.business} — your destination for ${data.services}.
+
+08. CALL TO ACTION
+Discover ${data.business} today and take the next step.
+
+09. BUDGET AND TIMELINE
+Budget: ${data.budget}
+Timeline: ${data.timeline}
+
+10. PROJECT ROADMAP
+Planning
+Design
+Development
+Testing
+Launch
+
+11. ADDITIONAL REQUIREMENTS
+${data.extra}
+
+12. GROWTH RECOMMENDATIONS
+Use professional images.
+Make the website mobile-friendly.
+Use clear calls to action.
+Keep contact details updated.
+Review feedback and improve the website.
+
+Created with INFINITE IQ — Ideas Without Limits.`;
+
+  result.style.display = "block";
+  status.textContent = "Your personalised website plan is ready!";
+  result.scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+document.getElementById("copyButton").addEventListener("click", async function() {
+  if (!currentPlan) return;
+
+  try {
+    await navigator.clipboard.writeText(currentPlan);
+    status.textContent = "Your plan has been copied successfully!";
+  } catch (error) {
+    const temporary = document.createElement("textarea");
+    temporary.value = currentPlan;
+    document.body.appendChild(temporary);
+    temporary.select();
+
+    const copied = document.execCommand("copy");
+    temporary.remove();
+
+    status.textContent = copied
+      ? "Your plan has been copied!"
+      : "Copy unavailable. Try the download option.";
+  }
+});
+
+document.getElementById("downloadButton").addEventListener("click", function() {
+  if (!currentPlan) return;
+
+  const file = new Blob([currentPlan], {
+    type:"text/plain;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(file);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "infinite-iq-website-plan.txt";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  status.textContent = "Your website plan has been downloaded!";
+});
+
+document.getElementById("printButton").addEventListener("click", function() {
+  if (!currentPlan) return;
+  window.print();
+});
+
+document.getElementById("restartButton").addEventListener("click", function() {
+  form.reset();
+  result.style.display = "none";
+  currentPlan = "";
+  status.textContent = "";
+  updateProgress();
+
+  form.scrollIntoView({behavior:"smooth"});
+});
+
+updateProgress();
+</script>
+
+</body>
+</html>
