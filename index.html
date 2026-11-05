@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,1057 +7,206 @@
 <meta name="theme-color" content="#080812">
 <meta name="description" content="INFINITE IQ creates modern websites and practical digital solutions for ambitious businesses and individuals.">
 <title>INFINITE IQ | Ideas Without Limits</title>
-
 <style>
 :root{
-  --bg:#080812;
-  --bg-soft:#0d0d1b;
-  --panel:#121222;
-  --panel-2:#17172a;
-  --purple:#a477ff;
-  --cyan:#5cddff;
-  --white:#f8f7ff;
-  --muted:#aaa9c1;
-  --border:rgba(255,255,255,.10);
-  --glow:rgba(164,119,255,.22);
+  --bg:#080812;--bg-soft:#0d0d1b;--panel:#121222;--panel-2:#17172a;
+  --purple:#a477ff;--cyan:#5cddff;--white:#f8f7ff;--muted:#aaa9c1;
+  --border:rgba(255,255,255,.10);--glow:rgba(164,119,255,.22);
   --gradient:linear-gradient(105deg,var(--purple),var(--cyan));
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
-
-html{
-  scroll-behavior:smooth;
-  scroll-padding-top:90px;
-}
-
-body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--white);
-  line-height:1.7;
-  overflow-x:hidden;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  background:
-    radial-gradient(circle at 85% 10%,rgba(123,82,255,.09),transparent 28%),
-    radial-gradient(circle at 5% 55%,rgba(55,188,255,.06),transparent 28%);
-}
-
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--white);line-height:1.7;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 85% 10%,rgba(123,82,255,.09),transparent 28%),radial-gradient(circle at 5% 55%,rgba(55,188,255,.06),transparent 28%)}
 a{text-decoration:none;color:inherit}
 button{font:inherit}
 .container{width:min(1140px,90%);margin:auto}
-
-.gradient{
-  background:var(--gradient);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-/* NAVIGATION */
-
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  background:rgba(8,8,18,.86);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-}
-
-.nav-inner{
-  height:78px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  font-size:23px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
+.gradient{background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(8,8,18,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav-inner{height:78px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:900;letter-spacing:1px}
 .logo span{color:var(--purple)}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:23px;
-}
-
-.nav-links a{
-  font-size:13px;
-  color:var(--muted);
-  transition:.25s;
-}
-
+.nav-links{display:flex;align-items:center;gap:23px}
+.nav-links a{font-size:13px;color:var(--muted);transition:.25s}
 .nav-links a:hover{color:var(--cyan)}
-
-.nav-links .nav-cta{
-  padding:10px 17px;
-  border-radius:25px;
-  background:var(--gradient);
-  color:#080812;
-  font-weight:800;
-}
-
-.menu-btn{
-  display:none;
-  border:1px solid var(--border);
-  background:var(--panel);
-  color:white;
-  font-size:22px;
-  padding:5px 12px;
-  border-radius:9px;
-  cursor:pointer;
-}
-
-/* GENERAL SECTIONS */
-
-section{
-  padding:105px 0;
-  scroll-margin-top:75px;
-}
-
-.section-heading{
-  text-align:center;
-  max-width:730px;
-  margin:0 auto 52px;
-}
-
-.section-heading h2{
-  font-size:clamp(31px,5vw,48px);
-  line-height:1.17;
-  letter-spacing:-1.5px;
-  margin-bottom:15px;
-}
-
+.nav-links .nav-cta{padding:10px 17px;border-radius:25px;background:var(--gradient);color:#080812;font-weight:800}
+.menu-btn{display:none;border:1px solid var(--border);background:var(--panel);color:white;font-size:22px;padding:5px 12px;border-radius:9px;cursor:pointer}
+section{padding:105px 0;scroll-margin-top:75px}
+.hero{min-height:100vh;display:flex;align-items:center;padding:145px 0 95px;position:relative;overflow:hidden}
+.hero::after{content:"∞";position:absolute;right:3%;top:17%;font-size:clamp(220px,35vw,480px);line-height:1;color:rgba(164,119,255,.045);font-weight:900;pointer-events:none}
+.hero-content{max-width:790px;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border:1px solid rgba(164,119,255,.38);border-radius:30px;color:var(--cyan);font-size:11px;letter-spacing:2px;margin-bottom:25px;background:rgba(164,119,255,.06)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(47px,8vw,88px);line-height:1.04;letter-spacing:-3.8px;margin-bottom:25px}
+.hero p{color:var(--muted);font-size:18px;max-width:650px;margin-bottom:34px}
+.buttons{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 23px;border-radius:30px;font-weight:800;font-size:14px;transition:.25s;cursor:pointer;border:1px solid var(--border);text-align:center}
+.btn-primary{background:var(--gradient);color:#080812;border:none}
+.btn-secondary{color:white;background:rgba(255,255,255,.045)}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 34px var(--glow)}
+.hero-note{margin-top:30px;color:#85849e;font-size:12px}
+.trust-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.018);padding:22px 0}
+.trust-inner{display:flex;justify-content:center;gap:clamp(20px,5vw,65px);flex-wrap:wrap;color:#c6c4d7;font-size:12px;letter-spacing:1px}
+.trust-inner span{display:flex;align-items:center;gap:9px}
+.trust-inner b{color:var(--cyan);font-size:16px}
+.section-heading{text-align:center;max-width:730px;margin:0 auto 52px}
+.section-heading h2{font-size:clamp(31px,5vw,48px);line-height:1.17;letter-spacing:-1.5px;margin-bottom:15px}
 .section-heading p{color:var(--muted)}
-
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:7px 14px;
-  border:1px solid rgba(164,119,255,.38);
-  border-radius:30px;
-  color:var(--cyan);
-  font-size:11px;
-  letter-spacing:2px;
-  margin-bottom:25px;
-  background:rgba(164,119,255,.06);
-}
-
-.eyebrow::before{
-  content:"";
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--cyan);
-  box-shadow:0 0 12px var(--cyan);
-}
-
-/* BUTTONS */
-
-.buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  padding:14px 23px;
-  border-radius:30px;
-  font-weight:800;
-  font-size:14px;
-  transition:.25s;
-  cursor:pointer;
-  border:1px solid var(--border);
-  text-align:center;
-}
-
-.btn-primary{
-  background:var(--gradient);
-  color:#080812;
-  border:none;
-}
-
-.btn-secondary{
-  color:white;
-  background:rgba(255,255,255,.045);
-}
-
-.btn:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 34px var(--glow);
-}
-
-/* HERO */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding:145px 0 95px;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero::after{
-  content:"∞";
-  position:absolute;
-  right:3%;
-  top:17%;
-  font-size:clamp(220px,35vw,480px);
-  line-height:1;
-  color:rgba(164,119,255,.045);
-  font-weight:900;
-  pointer-events:none;
-}
-
-.hero-content{
-  max-width:790px;
-  position:relative;
-  z-index:1;
-}
-
-h1{
-  font-size:clamp(47px,8vw,88px);
-  line-height:1.04;
-  letter-spacing:-3.8px;
-  margin-bottom:25px;
-}
-
-.hero p{
-  color:var(--muted);
-  font-size:18px;
-  max-width:650px;
-  margin-bottom:34px;
-}
-
-.hero-note{
-  margin-top:30px;
-  color:#85849e;
-  font-size:12px;
-}
-
-/* TRUST STRIP */
-
-.trust-strip{
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:rgba(255,255,255,.018);
-  padding:22px 0;
-}
-
-.trust-inner{
-  display:flex;
-  justify-content:center;
-  gap:clamp(20px,5vw,65px);
-  flex-wrap:wrap;
-  color:#c6c4d7;
-  font-size:12px;
-  letter-spacing:1px;
-}
-
-.trust-inner span{
-  display:flex;
-  align-items:center;
-  gap:9px;
-}
-
-.trust-inner b{
-  color:var(--cyan);
-  font-size:16px;
-}
-
-/* ABOUT */
-
-.about-grid,.contact-grid{
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:35px;
-  align-items:stretch;
-}
-
-.panel{
-  background:linear-gradient(145deg,var(--panel),#10101d);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:32px;
-}
-
-.panel h3{
-  font-size:23px;
-  margin-bottom:13px;
-}
-
+.about-grid,.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:35px;align-items:stretch}
+.panel{background:linear-gradient(145deg,var(--panel),#10101d);border:1px solid var(--border);border-radius:22px;padding:32px}
+.panel h3{font-size:23px;margin-bottom:13px}
 .panel p{color:var(--muted)}
-
-.about-highlight{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:100%;
-}
-
-.about-highlight .big-mark{
-  font-size:44px;
-  color:var(--cyan);
-  line-height:1;
-  margin-bottom:18px;
-}
-
+.about-highlight{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.about-highlight .big-mark{font-size:44px;color:var(--cyan);line-height:1;margin-bottom:18px}
 .feature-list{display:grid;gap:18px}
-
-.feature{
-  display:flex;
-  gap:15px;
-  align-items:flex-start;
-}
-
-.feature-icon{
-  flex:0 0 39px;
-  width:39px;
-  height:39px;
-  display:grid;
-  place-items:center;
-  border-radius:12px;
-  background:rgba(92,221,255,.09);
-  color:var(--cyan);
-  font-size:19px;
-}
-
+.feature{display:flex;gap:15px;align-items:flex-start}
+.feature-icon{flex:0 0 39px;width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:rgba(92,221,255,.09);color:var(--cyan);font-size:19px}
 .feature h3{font-size:16px;margin-bottom:3px}
 .feature p{font-size:13px;color:var(--muted)}
-
-/* SERVICES AND PACKAGES */
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.card{
-  background:linear-gradient(145deg,var(--panel),#10101d);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:29px;
-  transition:.28s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(164,119,255,.58);
-  box-shadow:0 18px 45px rgba(0,0,0,.18);
-}
-
-.card-icon{
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  border-radius:15px;
-  background:rgba(164,119,255,.12);
-  font-size:23px;
-  margin-bottom:20px;
-}
-
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:linear-gradient(145deg,var(--panel),#10101d);border:1px solid var(--border);border-radius:20px;padding:29px;transition:.28s}
+.card:hover{transform:translateY(-6px);border-color:rgba(164,119,255,.58);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.card-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:rgba(164,119,255,.12);font-size:23px;margin-bottom:20px}
 .card h3{font-size:19px;margin-bottom:10px}
 .card p{color:var(--muted);font-size:14px}
-
-.soft-section{
-  background:linear-gradient(180deg,rgba(15,15,30,.7),rgba(10,10,20,.8));
-  border-top:1px solid rgba(255,255,255,.04);
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
-
-.packages .card{
-  display:flex;
-  flex-direction:column;
-}
-
-.package .price{
-  font-size:24px;
-  font-weight:900;
-  margin:18px 0 10px;
-}
-
-.package ul{
-  list-style:none;
-  color:var(--muted);
-  font-size:13px;
-  margin:10px 0 25px;
-  flex:1;
-}
-
+.soft-section{background:linear-gradient(180deg,rgba(15,15,30,.7),rgba(10,10,20,.8));border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+.packages .card{display:flex;flex-direction:column}
+.package .price{font-size:24px;font-weight:900;margin:18px 0 10px}
+.package ul{list-style:none;color:var(--muted);font-size:13px;margin:10px 0 25px;flex:1}
 .package li{margin:11px 0}
-
-.package li::before{
-  content:"✓";
-  color:var(--cyan);
-  margin-right:10px;
-  font-weight:900;
-}
-
-.featured{
-  border-color:rgba(164,119,255,.7);
-  background:linear-gradient(150deg,rgba(164,119,255,.15),var(--panel));
-}
-
-.popular{
-  display:inline-block;
-  color:var(--cyan);
-  font-size:10px;
-  letter-spacing:1.5px;
-  margin-bottom:12px;
-}
-
-.package-note{
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  margin-top:28px;
-}
-
-.package-intro{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:8px;
-}
-
-.package-includes{
-  font-size:11px;
-  color:var(--cyan);
-  font-weight:800;
-  letter-spacing:1px;
-  margin-top:14px;
-}
-
-/* PORTFOLIO UPGRADE */
-
-.portfolio-section{
-  position:relative;
-  overflow:hidden;
-}
-
-.portfolio-section::before{
-  content:"";
-  position:absolute;
-  width:420px;
-  height:420px;
-  top:10%;
-  left:-260px;
-  border-radius:50%;
-  background:rgba(164,119,255,.07);
-  filter:blur(90px);
-  pointer-events:none;
-}
-
-.portfolio-heading{
-  position:relative;
-  z-index:1;
-}
-
-.portfolio-intro{
-  max-width:680px;
-  margin:auto;
-}
-
-.portfolio-label{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  color:var(--cyan);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:2px;
-  margin-bottom:15px;
-}
-
-.portfolio-label::before{
-  content:"";
-  width:25px;
-  height:1px;
-  background:var(--cyan);
-}
-
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:25px;
-  position:relative;
-  z-index:1;
-}
-
-.project-card{
-  padding:0;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  border-radius:22px;
-  background:linear-gradient(145deg,#151528,#0e0e1b);
-  transition:transform .35s,border-color .35s,box-shadow .35s;
-}
-
-.project-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(92,221,255,.48);
-  box-shadow:0 25px 60px rgba(0,0,0,.3);
-}
-
-.project-preview{
-  min-height:245px;
-  padding:28px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-  border-bottom:1px solid var(--border);
-  background:
-    radial-gradient(circle at 75% 20%,rgba(92,221,255,.2),transparent 35%),
-    linear-gradient(135deg,#17152e,#0c1424);
-}
-
-.project-preview::after{
-  content:"";
-  position:absolute;
-  width:240px;
-  height:240px;
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:50%;
-  right:-120px;
-  bottom:-160px;
-}
-
-.project-preview.brief{
-  background:
-    radial-gradient(circle at 80% 15%,rgba(92,221,255,.2),transparent 40%),
-    linear-gradient(135deg,#101a2b,#111020);
-}
-
-.project-preview.dashboard{
-  background:
-    radial-gradient(circle at 20% 80%,rgba(164,119,255,.23),transparent 40%),
-    linear-gradient(135deg,#17152e,#0b1421);
-}
-
-.project-preview.portal{
-  background:
-    radial-gradient(circle at 75% 75%,rgba(92,221,255,.2),transparent 40%),
-    linear-gradient(135deg,#101a2b,#111020);
-}
-
-.preview-window{
-  position:relative;
-  z-index:1;
-  width:min(100%,390px);
-  padding:16px;
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:15px;
-  background:rgba(8,8,18,.84);
-  box-shadow:0 22px 55px rgba(0,0,0,.38);
-  transition:transform .35s;
-}
-
-.project-card:hover .preview-window{
-  transform:scale(1.035);
-}
-
-.preview-top{
-  display:flex;
-  gap:6px;
-  margin-bottom:16px;
-}
-
-.preview-top i{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--purple);
-}
-
-.preview-line{
-  height:7px;
-  border-radius:8px;
-  background:rgba(255,255,255,.13);
-  margin:9px 0;
-}
-
-.preview-line.short{width:48%}
-.preview-line.medium{width:72%}
-
-.preview-chip{
-  display:inline-block;
-  width:78px;
-  height:20px;
-  border-radius:20px;
-  background:var(--gradient);
-  margin-top:8px;
-}
-
-.preview-dashboard-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
-}
-
-.preview-stat{
-  height:65px;
-  border-radius:9px;
-  background:rgba(164,119,255,.18);
-  border:1px solid rgba(164,119,255,.15);
-}
-
-.preview-stat:nth-child(2){
-  background:rgba(92,221,255,.12);
-}
-
-.preview-stat:nth-child(3){
-  background:rgba(255,255,255,.07);
-}
-
-.preview-progress{
-  height:9px;
-  border-radius:10px;
-  background:rgba(255,255,255,.1);
-  overflow:hidden;
-  margin:14px 0;
-}
-
-.preview-progress span{
-  display:block;
-  height:100%;
-  width:68%;
-  background:var(--gradient);
-}
-
-.project-content{
-  padding:27px;
-  display:flex;
-  flex-direction:column;
-  flex:1;
-}
-
-.project-topline{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:15px;
-}
-
-.project-type{
-  color:var(--cyan);
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:1.5px;
-}
-
-.project-number{
-  color:#74738d;
-  font-size:11px;
-  letter-spacing:1px;
-}
-
-.project-content h3{
-  font-size:22px;
-  letter-spacing:-.5px;
-  margin-bottom:10px;
-}
-
-.project-content p{
-  color:var(--muted);
-  font-size:14px;
-  margin-bottom:22px;
-  flex:1;
-}
-
-.project-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:23px;
-}
-
-.project-tags span{
-  padding:5px 10px;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:20px;
-  background:rgba(255,255,255,.035);
-  color:#c4c2d6;
-  font-size:10px;
-}
-
-.project-link{
-  display:inline-flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding-top:17px;
-  border-top:1px solid var(--border);
-  color:var(--cyan);
-  font-size:13px;
-  font-weight:800;
-  transition:.25s;
-}
-
-.project-link span{
-  transition:transform .25s;
-}
-
-.project-link:hover span{
-  transform:translateX(5px);
-}
-
-.portfolio-bottom{
-  margin-top:38px;
-  padding:30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:25px;
-  border:1px solid rgba(164,119,255,.28);
-  border-radius:20px;
-  background:linear-gradient(110deg,rgba(164,119,255,.09),rgba(92,221,255,.045));
-}
-
-.portfolio-bottom h3{
-  font-size:19px;
-  margin-bottom:5px;
-}
-
-.portfolio-bottom p{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.portfolio-note{
-  text-align:center;
-  color:#85849e;
-  font-size:12px;
-  margin-top:24px;
-}
-
-/* PROCESS */
-
-.process-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  counter-reset:steps;
-}
-
-.process-card{
-  padding:25px 21px;
-  border:1px solid var(--border);
-  border-radius:18px;
-  background:rgba(255,255,255,.025);
-  counter-increment:steps;
-}
-
-.process-card::before{
-  content:"0" counter(steps);
-  display:block;
-  color:var(--cyan);
-  font-weight:900;
-  font-size:13px;
-  letter-spacing:2px;
-  margin-bottom:22px;
-}
-
+.package li::before{content:"✓";color:var(--cyan);margin-right:10px;font-weight:900}
+.featured{border-color:rgba(164,119,255,.7);background:linear-gradient(150deg,rgba(164,119,255,.15),var(--panel))}
+.popular{display:inline-block;color:var(--cyan);font-size:10px;letter-spacing:1.5px;margin-bottom:12px}
+.package-note{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:steps}
+.process-card{padding:25px 21px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.025);counter-increment:steps}
+.process-card::before{content:"0" counter(steps);display:block;color:var(--cyan);font-weight:900;font-size:13px;letter-spacing:2px;margin-bottom:22px}
 .process-card h3{font-size:17px;margin-bottom:8px}
 .process-card p{font-size:13px;color:var(--muted)}
-
-/* WHY US */
-
-.why-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:17px;
-}
-
-.why-item{
-  display:flex;
-  gap:15px;
-  padding:23px;
-  border:1px solid var(--border);
-  border-radius:17px;
-  background:rgba(255,255,255,.025);
-}
-
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.why-item{display:flex;gap:15px;padding:23px;border:1px solid var(--border);border-radius:17px;background:rgba(255,255,255,.025)}
 .why-item .feature-icon{flex-shrink:0}
 .why-item h3{font-size:16px;margin-bottom:5px}
 .why-item p{font-size:13px;color:var(--muted)}
-
-/* TRUST */
-
-.trust-section{
-  background:linear-gradient(180deg,rgba(14,14,28,.55),rgba(8,8,18,.2));
-  border-top:1px solid rgba(255,255,255,.04);
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
-
-.trust-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.trust-card{
-  padding:30px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:linear-gradient(145deg,var(--panel),#10101d);
-  transition:.25s;
-}
-
-.trust-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(92,221,255,.45);
-}
-
-.trust-number{
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:2px;
-  color:var(--cyan);
-  margin-bottom:23px;
-}
-
+.planner-box{text-align:center;padding:58px 25px;border-radius:26px;border:1px solid rgba(164,119,255,.38);background:radial-gradient(circle at top,rgba(130,85,255,.2),var(--panel) 68%)}
+.planner-box h2{font-size:clamp(29px,5vw,44px);line-height:1.2;margin-bottom:15px}
+.planner-box p{color:var(--muted);max-width:620px;margin:0 auto 27px}
+.faq-list{max-width:850px;margin:auto;display:grid;gap:12px}
+.faq-item{border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.025);overflow:hidden}
+.faq-item summary{cursor:pointer;list-style:none;padding:19px 22px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:15px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:var(--cyan);font-size:21px;line-height:1}
+.faq-item[open] summary::after{content:"−"}
+.faq-answer{padding:0 22px 20px;color:var(--muted);font-size:14px}
+.contact-info{margin-top:20px;color:var(--muted);font-size:14px}
+.contact-info p{margin:7px 0}
+.contact-card{display:flex;flex-direction:column;align-items:flex-start}
+.contact-card .btn{margin-top:20px}
+footer{border-top:1px solid var(--border);padding:32px 0;color:var(--muted);font-size:13px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+footer strong{color:var(--white)}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a:hover{color:var(--cyan)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.trust-section{background:linear-gradient(180deg,rgba(14,14,28,.55),rgba(8,8,18,.2));border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.trust-card{padding:30px;border:1px solid var(--border);border-radius:20px;background:linear-gradient(145deg,var(--panel),#10101d);transition:.25s}
+.trust-card:hover{transform:translateY(-5px);border-color:rgba(92,221,255,.45)}
+.trust-number{font-size:12px;font-weight:900;letter-spacing:2px;color:var(--cyan);margin-bottom:23px}
 .trust-card h3{font-size:19px;margin-bottom:10px}
 .trust-card p{font-size:14px;color:var(--muted)}
-
-.trust-footnote{
-  margin:25px auto 0;
-  text-align:center;
-  max-width:760px;
-  color:#85849e;
-  font-size:12px;
-}
-
-/* PLANNER */
-
-.planner-box{
-  text-align:center;
-  padding:58px 25px;
-  border-radius:26px;
-  border:1px solid rgba(164,119,255,.38);
-  background:radial-gradient(circle at top,rgba(130,85,255,.2),var(--panel) 68%);
-}
-
-.planner-box h2{
-  font-size:clamp(29px,5vw,44px);
-  line-height:1.2;
-  margin-bottom:15px;
-}
-
-.planner-box p{
-  color:var(--muted);
-  max-width:620px;
-  margin:0 auto 27px;
-}
-
-/* FAQ */
-
-.faq-list{
-  max-width:850px;
-  margin:auto;
-  display:grid;
-  gap:12px;
-}
-
-.faq-item{
-  border:1px solid var(--border);
-  border-radius:15px;
-  background:rgba(255,255,255,.025);
-  overflow:hidden;
-}
-
-.faq-item summary{
-  cursor:pointer;
-  list-style:none;
-  padding:19px 22px;
-  font-weight:700;
-  font-size:15px;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.faq-item summary::-webkit-details-marker{display:none}
-
-.faq-item summary::after{
-  content:"+";
-  color:var(--cyan);
-  font-size:21px;
-  line-height:1;
-}
-
-.faq-item[open] summary::after{content:"−"}
-
-.faq-answer{
-  padding:0 22px 20px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* CONTACT */
-
-.contact-info{
-  margin-top:20px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-.contact-info p{margin:7px 0}
-
-.contact-card{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-}
-
-.contact-card .btn{margin-top:20px}
-
-/* FOOTER */
-
-footer{
-  border-top:1px solid var(--border);
-  padding:32px 0;
-  color:var(--muted);
-  font-size:13px;
-}
-
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-footer strong{color:var(--white)}
-
-.footer-links{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.footer-links a:hover{color:var(--cyan)}
-
-/* ANIMATIONS */
-
-.reveal{
-  opacity:0;
-  transform:translateY(22px);
-  transition:opacity .7s ease,transform .7s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* RESPONSIVE */
-
-@media(max-width:1050px){
-  .nav-links{gap:14px}
-  .nav-links a{font-size:12px}
-}
-
+.trust-footnote{margin:25px auto 0;text-align:center;max-width:760px;color:#85849e;font-size:12px}
 @media(max-width:900px){
   .menu-btn{display:block}
-
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:78px;
-    left:0;
-    width:100%;
-    padding:22px 5% 27px;
-    background:#10101e;
-    border-bottom:1px solid var(--border);
-    flex-direction:column;
-    align-items:flex-start;
-    gap:18px;
-  }
-
+  .nav-links{display:none;position:absolute;top:78px;left:0;width:100%;padding:22px 5% 27px;background:#10101e;border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;gap:18px}
   .nav-links.active{display:flex}
   .cards{grid-template-columns:repeat(2,1fr)}
   .process-grid{grid-template-columns:repeat(2,1fr)}
 }
-
 @media(max-width:650px){
   section{padding:78px 0}
   .hero{min-height:90vh;padding-top:125px}
   h1{letter-spacing:-2.4px}
   .hero p{font-size:15px}
-
-  .cards,.about-grid,.contact-grid,.why-grid,.trust-grid{
-    grid-template-columns:1fr;
-  }
-
+  .cards,.about-grid,.contact-grid,.why-grid,.trust-grid{grid-template-columns:1fr}
   .process-grid{grid-template-columns:1fr 1fr}
   .panel{padding:25px}
   .planner-box{padding:43px 20px}
   .footer-inner{flex-direction:column;align-items:flex-start}
-
-  .portfolio-grid{grid-template-columns:1fr}
-  .project-preview{min-height:210px}
-  .portfolio-bottom{
-    flex-direction:column;
-    align-items:flex-start;
-  }
 }
-
 @media(max-width:420px){
   .process-grid{grid-template-columns:1fr}
   .btn{width:100%}
   .buttons{width:100%}
-  .project-content{padding:22px}
 }
-
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    transition-duration:.01ms!important;
-  }
-
-  .reveal{
-    opacity:1;
-    transform:none;
-  }
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
 }
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.project-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.project-preview{min-height:190px;padding:24px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,rgba(92,221,255,.2),transparent 35%),linear-gradient(135deg,#17152e,#0c1424)}
+.preview-window{position:relative;width:min(100%,390px);padding:13px;border:1px solid rgba(255,255,255,.2);border-radius:13px;background:rgba(8,8,18,.78);box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.preview-top{display:flex;gap:5px;margin-bottom:13px}
+.preview-top i{width:6px;height:6px;border-radius:50%;background:var(--purple)}
+.preview-line{height:7px;border-radius:8px;background:rgba(255,255,255,.13);margin:8px 0}
+.preview-line.short{width:48%}.preview-line.medium{width:72%}
+.preview-chip{display:inline-block;width:75px;height:19px;border-radius:20px;background:linear-gradient(90deg,var(--purple),var(--cyan));margin-top:7px}
+.project-preview.brief{background:radial-gradient(circle at 80% 15%,rgba(92,221,255,.2),transparent 40%),linear-gradient(135deg,#101a2b,#111020)}
+.project-preview.dashboard{background:radial-gradient(circle at 20% 80%,rgba(164,119,255,.23),transparent 40%),linear-gradient(135deg,#17152e,#0b1421)}
+.project-preview.portal{background:radial-gradient(circle at 75% 75%,rgba(92,221,255,.2),transparent 40%),linear-gradient(135deg,#101a2b,#111020)}
+.project-content{padding:25px;display:flex;flex-direction:column;flex:1}
+.project-type{color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:1.6px;margin-bottom:9px}
+.project-content h3{font-size:20px;margin-bottom:8px}
+.project-content p{color:var(--muted);font-size:14px;margin-bottom:20px}
+.project-link{display:inline-flex;align-items:center;gap:8px;margin-top:auto;color:var(--cyan);font-size:13px;font-weight:800}
+.project-link:hover{gap:13px}
+.portfolio-note{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}
+@media(max-width:650px){.portfolio-grid{grid-template-columns:1fr}.project-preview{min-height:175px}}
+
+/* IQ ASSISTANT */
+.iq-chat-launch{position:fixed;right:24px;bottom:24px;z-index:1500;display:flex;align-items:center;gap:11px;padding:13px 18px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:linear-gradient(110deg,#a477ff,#5cddff);color:#090914;font-weight:900;box-shadow:0 12px 38px rgba(92,120,255,.28);cursor:pointer;transition:.25s}
+.iq-chat-launch:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(92,120,255,.38)}
+.iq-chat-launch .iq-orb{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:rgba(8,8,18,.15);font-size:17px}
+.iq-chat-panel{position:fixed;right:24px;bottom:92px;width:min(390px,calc(100vw - 28px));height:min(590px,calc(100dvh - 125px));z-index:1501;display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(164,119,255,.35);border-radius:22px;background:#0d0d1b;box-shadow:0 24px 90px rgba(0,0,0,.55),0 0 45px rgba(164,119,255,.12)}
+.iq-chat-panel.open{display:flex;animation:iqChatIn .22s ease-out}
+@keyframes iqChatIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.iq-chat-head{display:flex;align-items:center;gap:12px;padding:17px 18px;background:linear-gradient(110deg,rgba(164,119,255,.18),rgba(92,221,255,.08));border-bottom:1px solid var(--border)}
+.iq-chat-avatar{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:14px;background:var(--gradient);color:#080812;font-weight:1000;font-size:18px}
+.iq-chat-head-copy{flex:1;min-width:0}
+.iq-chat-head-copy strong{display:block;font-size:14px;letter-spacing:.3px}
+.iq-chat-head-copy span{display:block;color:#aaa9c1;font-size:11px}
+.iq-chat-close{width:34px;height:34px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.05);color:white;font-size:19px;cursor:pointer}
+.iq-chat-messages{flex:1;overflow-y:auto;padding:17px 14px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.iq-message{max-width:88%;padding:11px 13px;border:1px solid var(--border);border-radius:15px;font-size:13px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.iq-message.bot{align-self:flex-start;background:#17172a;color:#e9e7f4;border-top-left-radius:5px}
+.iq-message.user{align-self:flex-end;background:linear-gradient(115deg,rgba(164,119,255,.22),rgba(92,221,255,.13));border-color:rgba(164,119,255,.3);color:#fff;border-top-right-radius:5px}
+.iq-message a{color:var(--cyan);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.iq-quick-replies{display:flex;flex-wrap:wrap;gap:7px;padding:0 14px 12px}
+.iq-quick-replies button{border:1px solid rgba(164,119,255,.35);border-radius:999px;padding:7px 10px;background:rgba(164,119,255,.07);color:#dcd5ff;font-size:11px;cursor:pointer}
+.iq-quick-replies button:hover{background:rgba(164,119,255,.18)}
+.iq-chat-compose{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border);background:#10101e}
+.iq-chat-compose input{min-width:0;flex:1;border:1px solid var(--border);border-radius:13px;padding:12px 13px;background:#080812;color:white;font:inherit;font-size:13px;outline:none}
+.iq-chat-compose input:focus{border-color:rgba(164,119,255,.7)}
+.iq-chat-compose button{width:45px;border:0;border-radius:13px;background:var(--gradient);color:#080812;font-size:19px;font-weight:900;cursor:pointer}
+.iq-chat-disclaimer{text-align:center;color:#77768e;font-size:10px;padding:0 12px 10px;background:#10101e}
+@media(max-width:520px){
+  .iq-chat-launch{right:15px;bottom:15px;padding:11px 14px}
+  .iq-chat-panel{right:10px;bottom:77px;width:calc(100vw - 20px);height:min(610px,calc(100dvh - 100px))}
+}
+@media(prefers-reduced-motion:reduce){.iq-chat-panel.open{animation:none}.iq-chat-launch{transition:none}}
 </style>
 </head>
 
 <body>
-
 <header class="navbar">
   <div class="container nav-inner">
     <a href="#home" class="logo" aria-label="INFINITE IQ home">INFINITE<span> IQ</span></a>
-
     <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
-
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -1073,30 +223,16 @@ footer strong{color:var(--white)}
 </header>
 
 <main>
-
-<!-- HERO -->
-
 <section class="hero" id="home">
   <div class="container hero-content reveal">
     <span class="eyebrow">INNOVATION · TECHNOLOGY · CREATIVITY</span>
-
-    <h1>
-      Ideas deserve<br>
-      <span class="gradient">infinite possibilities.</span>
-    </h1>
-
-    <p>
-      We help businesses and ambitious individuals turn ideas into modern digital experiences — from professional websites to practical online tools.
-    </p>
-
+    <h1>Ideas deserve<br><span class="gradient">infinite possibilities.</span></h1>
+    <p>We help businesses and ambitious individuals turn ideas into modern digital experiences — from professional websites to practical online tools.</p>
     <div class="buttons">
       <a href="#packages" class="btn btn-primary">Explore our services <span>↗</span></a>
       <a href="planner.html" class="btn btn-secondary">Try the free website planner</a>
     </div>
-
-    <div class="hero-note">
-      Thoughtful design. Useful technology. A clearer way forward.
-    </div>
+    <div class="hero-note">Thoughtful design. Useful technology. A clearer way forward.</div>
   </div>
 </section>
 
@@ -1108,213 +244,122 @@ footer strong{color:var(--white)}
   </div>
 </div>
 
-<!-- ABOUT -->
-
 <section id="about">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">GET TO KNOW US</span>
       <h2>Technology with <span class="gradient">purpose.</span></h2>
       <p>Good digital experiences should look thoughtful, feel simple and help people move towards their goals.</p>
     </div>
-
     <div class="about-grid">
-
       <div class="panel about-highlight reveal">
         <div class="big-mark">∞</div>
         <h3>Welcome to INFINITE IQ</h3>
-        <p>
-          INFINITE IQ is a digital solutions brand focused on creating accessible, modern experiences for businesses and individuals. We bring creativity and practical thinking together to help turn ideas into something people can use.
-        </p>
+        <p>INFINITE IQ is a digital solutions brand focused on creating accessible, modern experiences for businesses and individuals. We bring creativity and practical thinking together to help turn ideas into something people can use.</p>
       </div>
-
       <div class="panel reveal">
         <div class="feature-list">
-
-          <div class="feature">
-            <div class="feature-icon">✦</div>
-            <div>
-              <h3>Creative thinking</h3>
-              <p>We look for clear, thoughtful ways to present your idea online.</p>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">⌘</div>
-            <div>
-              <h3>Useful technology</h3>
-              <p>We focus on digital experiences that are practical and easy to navigate.</p>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">↗</div>
-            <div>
-              <h3>Built around your goals</h3>
-              <p>Your needs guide the direction, features and scope of each project.</p>
-            </div>
-          </div>
-
+          <div class="feature"><div class="feature-icon">✦</div><div><h3>Creative thinking</h3><p>We look for clear, thoughtful ways to present your idea online.</p></div></div>
+          <div class="feature"><div class="feature-icon">⌘</div><div><h3>Useful technology</h3><p>We focus on digital experiences that are practical and easy to navigate.</p></div></div>
+          <div class="feature"><div class="feature-icon">↗</div><div><h3>Built around your goals</h3><p>Your needs guide the direction, features and scope of each project.</p></div></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-
 <section class="soft-section" id="services">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">WHAT WE DO</span>
       <h2>Digital solutions for <span class="gradient">what's next.</span></h2>
       <p>Explore the ways INFINITE IQ can help bring your next digital idea to life.</p>
     </div>
-
     <div class="cards">
-
       <article class="card reveal">
         <div class="card-icon">🌐</div>
         <h3>Website development</h3>
         <p>Modern, responsive websites for small businesses, creators and personal brands — designed to introduce your work and make it easy to get in touch.</p>
       </article>
-
       <article class="card reveal">
         <div class="card-icon">⚡</div>
         <h3>Digital tools</h3>
         <p>Simple, focused online tools that help people organise information, plan projects and solve everyday problems.</p>
       </article>
-
       <article class="card reveal">
         <div class="card-icon">✧</div>
         <h3>Digital products</h3>
         <p>Useful digital resources such as planners, templates and guides that make everyday tasks easier to approach.</p>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- PACKAGES -->
-
 <section class="packages" id="packages">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">WORK WITH INFINITE IQ</span>
       <h2>Choose your <span class="gradient">starting point.</span></h2>
-      <p>Choose the package that best matches your business goals. Every project is discussed and agreed before development begins.</p>
+      <p>Choose the level that best matches your idea. We'll discuss your requirements and agree on the scope before work begins.</p>
     </div>
-
     <div class="cards">
-
       <article class="card package reveal">
         <div class="card-icon">🚀</div>
         <h3>Starter Website</h3>
-        <p>For individuals and small businesses that need a professional first step online.</p>
-
+        <p>For individuals and small businesses taking their first step online.</p>
         <div class="price">Custom quote</div>
-
-        <p class="package-intro">A focused one-page website that introduces your business and helps visitors contact you.</p>
-
-        <div class="package-includes">WHAT'S INCLUDED</div>
-
         <ul>
           <li>One-page website</li>
-          <li>Home, About, Services and Contact sections</li>
-          <li>Custom colours and visual styling</li>
           <li>Mobile-friendly design</li>
-          <li>WhatsApp contact button</li>
-          <li>Basic search-friendly page structure</li>
-          <li>One round of revisions</li>
+          <li>About and services sections</li>
+          <li>Contact information section</li>
+          <li>Basic search-friendly structure</li>
         </ul>
-
         <a href="enquiry.html?package=starter" class="btn btn-secondary">Discuss Starter ↗</a>
       </article>
-
       <article class="card package featured reveal">
         <span class="popular">A GREAT PLACE TO START</span>
         <div class="card-icon">💎</div>
         <h3>Professional Website</h3>
-        <p>For growing businesses that need more room to present their products and services.</p>
-
+        <p>For growing businesses ready for a stronger online presence.</p>
         <div class="price">Custom quote</div>
-
-        <p class="package-intro">A multi-page website with a more detailed presentation of your business.</p>
-
-        <div class="package-includes">WHAT'S INCLUDED</div>
-
         <ul>
-          <li>Up to 5 website pages</li>
-          <li>Custom visual design and branding</li>
+          <li>Multi-section website</li>
+          <li>Custom visual design</li>
           <li>Mobile-friendly layout</li>
-          <li>Services or product showcase</li>
-          <li>Contact or enquiry form</li>
-          <li>WhatsApp contact integration</li>
-          <li>Basic search-friendly page structure</li>
-          <li>Two rounds of revisions</li>
+          <li>Projects or product showcase</li>
+          <li>Contact and call-to-action sections</li>
         </ul>
-
         <a href="enquiry.html?package=professional" class="btn btn-primary">Discuss Professional ↗</a>
       </article>
-
       <article class="card package reveal">
         <div class="card-icon">👑</div>
         <h3>Premium Website</h3>
-        <p>For businesses that need a more complete and customised online experience.</p>
-
+        <p>For brands looking for a more customised digital experience.</p>
         <div class="price">Custom quote</div>
-
-        <p class="package-intro">A larger website with additional presentation and interactive features based on your requirements.</p>
-
-        <div class="package-includes">WHAT'S INCLUDED</div>
-
         <ul>
-          <li>Up to 8 website pages</li>
-          <li>Advanced custom visual design</li>
-          <li>Mobile-friendly layout</li>
-          <li>Portfolio or product catalogue</li>
-          <li>Contact or enquiry form</li>
-          <li>Custom interactive website features</li>
-          <li>Enhanced search-friendly structure</li>
-          <li>Three rounds of revisions</li>
-          <li>Priority project communication</li>
+          <li>Custom multi-page experience</li>
+          <li>Advanced visual features</li>
+          <li>Custom interactive elements</li>
+          <li>Expanded brand presentation</li>
+          <li>Project-specific features</li>
         </ul>
-
         <a href="enquiry.html?package=premium" class="btn btn-secondary">Discuss Premium ↗</a>
       </article>
-
     </div>
-
-    <p class="package-note">
-      All packages are quoted according to the agreed project scope. Extra pages, advanced integrations and custom systems may require a separate quote. Domain names, hosting and third-party services are not automatically included. The project timeline and final deliverables are agreed before work begins.
-    </p>
-
+    <p class="package-note">Every project is different. Final pricing depends on the pages, features and requirements. Domains, hosting and third-party services may have separate costs.</p>
   </div>
 </section>
 
-<!-- UPGRADED PORTFOLIO -->
-
-<section class="portfolio-section soft-section" id="portfolio">
+<section class="soft-section" id="portfolio">
   <div class="container">
-
-    <div class="section-heading portfolio-heading reveal">
+    <div class="section-heading reveal">
       <span class="eyebrow">EXPLORE OUR WORK</span>
       <h2>Ideas turned into <span class="gradient">digital experiences.</span></h2>
-      <p class="portfolio-intro">
-        Discover the tools, interactive demonstrations and digital experiences being developed under the INFINITE IQ brand.
-      </p>
+      <p>Explore a few of the practical tools and experiences created as part of the INFINITE IQ project.</p>
     </div>
-
     <div class="portfolio-grid">
-
-      <!-- PROJECT 01 -->
-
       <article class="card project-card reveal">
-
         <div class="project-preview planner" aria-hidden="true">
           <div class="preview-window">
             <div class="preview-top"><i></i><i></i><i></i></div>
@@ -1325,36 +370,15 @@ footer strong{color:var(--white)}
             <span class="preview-chip"></span>
           </div>
         </div>
-
         <div class="project-content">
-          <div class="project-topline">
-            <span class="project-type">FREE BUSINESS TOOL</span>
-            <span class="project-number">01 / 04</span>
-          </div>
-
+          <span class="project-type">FREE BUSINESS TOOL</span>
           <h3>Business Website Planner</h3>
-
-          <p>
-            A guided planning experience that helps business owners organise website goals, identify important pages and prepare their project requirements.
-          </p>
-
-          <div class="project-tags">
-            <span>Business planning</span>
-            <span>Guided experience</span>
-            <span>Free tool</span>
-          </div>
-
-          <a class="project-link" href="planner.html">
-            Explore the planner <span>↗</span>
-          </a>
+          <p>A guided planner that helps business owners organise website goals, pages and key requirements before starting a project.</p>
+          <a class="project-link" href="planner.html" target="_blank" rel="noopener noreferrer">Explore the planner ↗</a>
         </div>
-
       </article>
 
-      <!-- PROJECT 02 -->
-
       <article class="card project-card reveal">
-
         <div class="project-preview brief" aria-hidden="true">
           <div class="preview-window">
             <div class="preview-top"><i></i><i></i><i></i></div>
@@ -1365,425 +389,278 @@ footer strong{color:var(--white)}
             <span class="preview-chip"></span>
           </div>
         </div>
-
         <div class="project-content">
-          <div class="project-topline">
-            <span class="project-type">PROJECT ORGANISATION</span>
-            <span class="project-number">02 / 04</span>
-          </div>
-
+          <span class="project-type">PROJECT ORGANISATION</span>
           <h3>Project Brief Builder</h3>
-
-          <p>
-            A structured tool for turning an early idea into a clearer project brief, helping users organise their requirements before making an enquiry.
-          </p>
-
-          <div class="project-tags">
-            <span>Project planning</span>
-            <span>Organisation</span>
-            <span>Digital tool</span>
-          </div>
-
-          <a class="project-link" href="brief.html">
-            Open the brief builder <span>↗</span>
-          </a>
+          <p>A structured space for turning an early idea into a clearer project brief, ready to use when making an enquiry.</p>
+          <a class="project-link" href="brief.html" target="_blank" rel="noopener noreferrer">Open the brief builder ↗</a>
         </div>
-
       </article>
 
-      <!-- PROJECT 03 -->
-
       <article class="card project-card reveal">
-
         <div class="project-preview dashboard" aria-hidden="true">
           <div class="preview-window">
             <div class="preview-top"><i></i><i></i><i></i></div>
-
-            <div class="preview-dashboard-grid">
-              <div class="preview-stat"></div>
-              <div class="preview-stat"></div>
-              <div class="preview-stat"></div>
+            <div style="display:flex;gap:8px">
+              <div style="height:62px;flex:1;border-radius:7px;background:rgba(164,119,255,.2)"></div>
+              <div style="height:62px;flex:1;border-radius:7px;background:rgba(92,221,255,.15)"></div>
+              <div style="height:62px;flex:1;border-radius:7px;background:rgba(255,255,255,.08)"></div>
             </div>
-
             <div class="preview-line medium"></div>
             <div class="preview-line"></div>
           </div>
         </div>
-
         <div class="project-content">
-          <div class="project-topline">
-            <span class="project-type">INTERACTIVE DEMO</span>
-            <span class="project-number">03 / 04</span>
-          </div>
-
+          <span class="project-type">INTERACTIVE DEMO</span>
           <h3>Project Dashboard</h3>
-
-          <p>
-            A browser-based demonstration for organising projects, tracking tasks and viewing progress through a simple dashboard interface.
-          </p>
-
-          <div class="project-tags">
-            <span>Dashboard UI</span>
-            <span>Task tracking</span>
-            <span>Interactive demo</span>
-          </div>
-
-          <a class="project-link" href="dashboard.html">
-            View dashboard demo <span>↗</span>
-          </a>
+          <p>A browser-based demo for organising projects, tracking tasks and viewing progress. Demo information stays in the visitor's browser.</p>
+          <a class="project-link" href="dashboard.html" target="_blank" rel="noopener noreferrer">View dashboard demo ↗</a>
         </div>
-
       </article>
 
-      <!-- PROJECT 04 -->
-
       <article class="card project-card reveal">
-
         <div class="project-preview portal" aria-hidden="true">
           <div class="preview-window">
             <div class="preview-top"><i></i><i></i><i></i></div>
-
             <div class="preview-line medium"></div>
-
-            <div class="preview-progress">
-              <span></span>
+            <div style="height:9px;border-radius:8px;background:rgba(255,255,255,.1);overflow:hidden;margin:12px 0">
+              <div style="height:100%;width:68%;background:linear-gradient(90deg,var(--purple),var(--cyan))"></div>
             </div>
-
             <div class="preview-line short"></div>
             <div class="preview-line medium"></div>
           </div>
         </div>
-
         <div class="project-content">
-          <div class="project-topline">
-            <span class="project-type">INTERACTIVE DEMO</span>
-            <span class="project-number">04 / 04</span>
-          </div>
-
+          <span class="project-type">INTERACTIVE DEMO</span>
           <h3>Client Portal</h3>
-
-          <p>
-            A sample project space demonstrating how project stages, tasks and notes can be presented in one organised interface.
-          </p>
-
-          <div class="project-tags">
-            <span>Client experience</span>
-            <span>Project updates</span>
-            <span>Interactive demo</span>
-          </div>
-
-          <a class="project-link" href="portal.html">
-            Explore portal demo <span>↗</span>
-          </a>
+          <p>A sample project space showing project stages, tasks and notes. This is a browser-based demonstration, not a live client account.</p>
+          <a class="project-link" href="portal.html" target="_blank" rel="noopener noreferrer">Explore portal demo ↗</a>
         </div>
-
       </article>
-
     </div>
-
-    <div class="portfolio-bottom reveal">
-      <div>
-        <h3>Have an idea of your own?</h3>
-        <p>Let's turn your requirements into a digital experience.</p>
-      </div>
-
-      <a href="enquiry.html" class="btn btn-primary">
-        Start a project enquiry ↗
-      </a>
-    </div>
-
-    <p class="portfolio-note">
-      These are INFINITE IQ tools and demonstrations. We present verified work and do not use invented client testimonials. Interactive demos are clearly identified as demonstrations.
-    </p>
-
+    <p class="portfolio-note">These are INFINITE IQ tools and demonstrations. We only present verified work and do not use invented client testimonials.</p>
   </div>
 </section>
 
-<!-- PROCESS -->
-
 <section id="process">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">HOW IT WORKS</span>
       <h2>A clear path from idea <span class="gradient">to website.</span></h2>
       <p>We keep the process straightforward, with the project scope discussed before development starts.</p>
     </div>
-
     <div class="process-grid">
-
       <article class="process-card reveal">
         <h3>Tell us your idea</h3>
         <p>Share what your business does, who your website is for and what you want it to achieve.</p>
       </article>
-
       <article class="process-card reveal">
         <h3>Plan the project</h3>
         <p>We discuss the pages, features, design direction, timeline and project quote.</p>
       </article>
-
       <article class="process-card reveal">
         <h3>Build and review</h3>
         <p>The website is developed and you get a chance to review the agreed work.</p>
       </article>
-
       <article class="process-card reveal">
         <h3>Prepare to launch</h3>
         <p>We check the finished website and discuss publishing, domain and hosting arrangements.</p>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
-
 <section class="soft-section" id="why-us">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">THE INFINITE IQ APPROACH</span>
       <h2>Built around <span class="gradient">what matters.</span></h2>
       <p>A good website is more than decoration. It should make your message clear and help visitors know what to do next.</p>
     </div>
-
     <div class="why-grid">
-
       <article class="why-item reveal">
         <div class="feature-icon">📱</div>
-        <div>
-          <h3>Designed for different screens</h3>
-          <p>Layouts are planned to work across phones, tablets and desktop screens.</p>
-        </div>
+        <div><h3>Designed for different screens</h3><p>Layouts are planned to work across phones, tablets and desktop screens.</p></div>
       </article>
-
       <article class="why-item reveal">
         <div class="feature-icon">✦</div>
-        <div>
-          <h3>Clear visual direction</h3>
-          <p>Design choices support your brand and make information easier to follow.</p>
-        </div>
+        <div><h3>Clear visual direction</h3><p>Design choices support your brand and make information easier to follow.</p></div>
       </article>
-
       <article class="why-item reveal">
         <div class="feature-icon">⚙</div>
-        <div>
-          <h3>Useful functionality</h3>
-          <p>We focus on features that serve a real purpose for your visitors.</p>
-        </div>
+        <div><h3>Useful functionality</h3><p>We focus on features that serve a real purpose for your visitors.</p></div>
       </article>
-
       <article class="why-item reveal">
         <div class="feature-icon">🤝</div>
-        <div>
-          <h3>Clear communication</h3>
-          <p>Project requirements and costs are discussed before work begins.</p>
-        </div>
+        <div><h3>Clear communication</h3><p>Project requirements and costs are discussed before work begins.</p></div>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- OUR PROMISE -->
-
 <section class="trust-section" id="trust">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">A BETTER WAY TO WORK TOGETHER</span>
       <h2>Clarity at every <span class="gradient">step.</span></h2>
       <p>We're building INFINITE IQ around honest communication, clear expectations and useful digital work.</p>
     </div>
-
     <div class="trust-grid">
-
       <article class="trust-card reveal">
         <div class="trust-number">01</div>
         <h3>Clear project scope</h3>
         <p>We'll discuss the pages, features and requirements before work begins, so everyone understands what the project includes.</p>
       </article>
-
       <article class="trust-card reveal">
         <div class="trust-number">02</div>
         <h3>No surprise quotes</h3>
         <p>You'll receive a project quote based on the agreed requirements. Any separate domain, hosting or third-party costs should be explained in advance.</p>
       </article>
-
       <article class="trust-card reveal">
         <div class="trust-number">03</div>
         <h3>Review before launch</h3>
         <p>You'll have an opportunity to review the agreed website work and raise changes before the project is prepared for launch.</p>
       </article>
-
     </div>
-
-    <p class="trust-footnote">
-      We're growing our work and experience. We don't publish made-up testimonials or claim results we can't verify.
-    </p>
-
+    <p class="trust-footnote">We're growing our work and experience. We don't publish made-up testimonials or claim results we can't verify.</p>
   </div>
 </section>
-
-<!-- FREE PLANNER -->
 
 <section id="planner">
   <div class="container">
-
     <div class="planner-box reveal">
       <span class="eyebrow">A FREE TOOL BY INFINITE IQ</span>
-
-      <h2>
-        Start with a plan.<br>
-        <span class="gradient">Build with purpose.</span>
-      </h2>
-
-      <p>
-        Not sure what your business website needs? Use our free Business Website Planner to create a starter plan in minutes.
-      </p>
-
-      <a href="planner.html" class="btn btn-primary">
-        Launch the free planner ↗
-      </a>
+      <h2>Start with a plan.<br><span class="gradient">Build with purpose.</span></h2>
+      <p>Not sure what your business website needs? Use our free Business Website Planner to create a starter plan in minutes.</p>
+      <a href="planner.html" class="btn btn-primary">Launch the free planner ↗</a>
     </div>
-
   </div>
 </section>
 
-<!-- FAQ -->
-
 <section class="soft-section" id="faq">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">GOOD TO KNOW</span>
       <h2>Frequently asked <span class="gradient">questions.</span></h2>
       <p>A few useful details before you send a project enquiry.</p>
     </div>
-
     <div class="faq-list reveal">
-
       <details class="faq-item">
         <summary>How do I get a quote?</summary>
         <div class="faq-answer">Choose a package or send a general enquiry. Tell us what you need, and we'll discuss the project scope before providing a quote.</div>
       </details>
-
       <details class="faq-item">
         <summary>Do I need to know exactly what I want?</summary>
         <div class="faq-answer">No. You can describe your business and your main goals. The free Business Website Planner can also help you organise your starting ideas.</div>
       </details>
-
       <details class="faq-item">
         <summary>Will my website work on mobile phones?</summary>
-        <div class="faq-answer">Mobile-friendly layouts are included in all three website packages. The final design is planned for phones as well as larger screens.</div>
+        <div class="faq-answer">Mobile-friendly layouts are included in the website packages. The final design is planned for phones as well as larger screens.</div>
       </details>
-
-      <details class="faq-item">
-        <summary>How many pages are included?</summary>
-        <div class="faq-answer">Starter includes a one-page website, Professional includes up to five pages, and Premium includes up to eight pages. Any additional pages can be discussed and quoted separately.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How many revisions can I request?</summary>
-        <div class="faq-answer">Starter includes one round of revisions, Professional includes two rounds, and Premium includes three rounds. A revision round means one organised set of changes to the agreed design or content. New features or major changes to the agreed project scope may require a separate quote.</div>
-      </details>
-
       <details class="faq-item">
         <summary>Are domain names and hosting included?</summary>
         <div class="faq-answer">Not automatically. Domain names, hosting and some third-party services may have separate costs. These details should be agreed before the project starts.</div>
       </details>
-
       <details class="faq-item">
         <summary>Does sending an enquiry mean I have to pay?</summary>
         <div class="faq-answer">No. Sending an enquiry is just the first step in discussing your idea. Scope, pricing and arrangements are discussed before any work begins.</div>
       </details>
-
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact">
   <div class="container">
-
     <div class="section-heading reveal">
       <span class="eyebrow">LET'S CONNECT</span>
       <h2>Your idea could be <span class="gradient">the next step.</span></h2>
       <p>Tell us what you're planning. A clear starting point can turn a big idea into a practical project.</p>
     </div>
-
     <div class="contact-grid">
-
       <div class="panel reveal">
         <h3>Let's understand your vision.</h3>
         <p>Whether you need a website or have an idea for a digital tool, share a little about what you want to create.</p>
-
         <div class="contact-info">
           <p><strong>Brand:</strong> INFINITE IQ</p>
           <p><strong>Focus:</strong> Websites &amp; Digital Solutions</p>
           <p><strong>Tagline:</strong> Ideas Without Limits.</p>
         </div>
       </div>
-
       <div class="panel contact-card reveal">
         <h3>Ready to get started?</h3>
         <p>Send a project enquiry with your goals and requirements. We'll use it as the starting point for a conversation.</p>
-
-        <a href="enquiry.html" class="btn btn-primary">
-          Send a project enquiry ↗
-        </a>
-
-        <p class="contact-info">
-          No payment is required to send an enquiry. Project scope and pricing are discussed first.
-        </p>
+        <a href="enquiry.html" class="btn btn-primary">Send a project enquiry ↗</a>
+        <p class="contact-info">No payment is required to send an enquiry. Project scope and pricing are discussed first.</p>
       </div>
-
     </div>
   </div>
 </section>
-
 </main>
 
-<!-- FOOTER -->
+<!-- IQ ASSISTANT CHAT -->
+<button class="iq-chat-launch" id="iqChatLaunch" type="button" aria-label="Open IQ Assistant" aria-expanded="false" aria-controls="iqChatPanel">
+  <span class="iq-orb">✦</span>
+  <span>IQ Assistant</span>
+</button>
+
+<section class="iq-chat-panel" id="iqChatPanel" role="dialog" aria-label="IQ Assistant" aria-modal="false">
+  <div class="iq-chat-head">
+    <div class="iq-chat-avatar">IQ</div>
+    <div class="iq-chat-head-copy">
+      <strong>IQ ASSISTANT</strong>
+      <span>Your digital guide · INFINITE IQ</span>
+    </div>
+    <button class="iq-chat-close" id="iqChatClose" type="button" aria-label="Close assistant">×</button>
+  </div>
+
+  <div class="iq-chat-messages" id="iqChatMessages" aria-live="polite">
+    <div class="iq-message bot">Welcome to INFINITE IQ! ✦
+
+I'm your digital guide. I can explain our services, compare website packages and help you take the next step.
+
+What would you like to explore?</div>
+  </div>
+
+  <div class="iq-quick-replies" id="iqQuickReplies">
+    <button type="button" data-iq="What services do you offer?">Our services</button>
+    <button type="button" data-iq="Explain your packages">Packages</button>
+    <button type="button" data-iq="Help me choose a package">Choose a package</button>
+    <button type="button" data-iq="How do I start a project?">Start a project</button>
+  </div>
+
+  <form class="iq-chat-compose" id="iqChatForm">
+    <input id="iqChatInput" type="text" placeholder="Ask IQ Assistant..." autocomplete="off" aria-label="Type your message">
+    <button type="submit" aria-label="Send message">➤</button>
+  </form>
+
+  <div class="iq-chat-disclaimer">Guided assistant with prepared answers · Not a live person or AI service</div>
+</section>
 
 <footer>
   <div class="container footer-inner">
-
     <div>
       <p><strong>INFINITE IQ</strong> — Ideas Without Limits.</p>
       <p>© <span id="year"></span> INFINITE IQ. All rights reserved.</p>
     </div>
-
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="#home">Back to top ↑</a>
       <a href="#trust">Our Promise</a>
       <a href="planner.html">Free Planner</a>
       <a href="enquiry.html">Enquiries</a>
     </nav>
-
   </div>
 </footer>
 
 <script>
-/* MOBILE NAVIGATION */
-
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
 menuBtn.addEventListener("click", () => {
   const isOpen = navLinks.classList.toggle("active");
-
   menuBtn.setAttribute("aria-expanded", String(isOpen));
-  menuBtn.setAttribute(
-    "aria-label",
-    isOpen ? "Close navigation" : "Open navigation"
-  );
-
+  menuBtn.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
   menuBtn.textContent = isOpen ? "✕" : "☰";
 });
-
-/* CLOSE MENU AFTER CLICKING A LINK */
 
 document.querySelectorAll(".nav-links a").forEach(link => {
   link.addEventListener("click", () => {
@@ -1794,42 +671,289 @@ document.querySelectorAll(".nav-links a").forEach(link => {
   });
 });
 
-/* AUTOMATIC COPYRIGHT YEAR */
-
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-
-/* SCROLL REVEAL ANIMATIONS */
+document.getElementById("year").textContent = new Date().getFullYear();
 
 const revealElements = document.querySelectorAll(".reveal");
-
 if ("IntersectionObserver" in window) {
-
   const observer = new IntersectionObserver(entries => {
-
     entries.forEach(entry => {
-
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
-
     });
-
   }, { threshold: 0.12 });
-
-  revealElements.forEach(element => {
-    observer.observe(element);
-  });
-
+  revealElements.forEach(element => observer.observe(element));
 } else {
+  revealElements.forEach(element => element.classList.add("visible"));
+}
 
-  revealElements.forEach(element => {
-    element.classList.add("visible");
+// IQ ASSISTANT — runs locally; no API, account, or chat logging.
+(() => {
+  const launch = document.getElementById('iqChatLaunch');
+  const panel = document.getElementById('iqChatPanel');
+  const close = document.getElementById('iqChatClose');
+  const messages = document.getElementById('iqChatMessages');
+  const form = document.getElementById('iqChatForm');
+  const input = document.getElementById('iqChatInput');
+  const quick = document.getElementById('iqQuickReplies');
+
+  if (!launch || !panel || !messages || !form || !input || !quick) return;
+
+  let recommendationStep = 0;
+  let recommendation = { type: '', size: '' };
+
+  function openChat() {
+    panel.classList.add('open');
+    launch.setAttribute('aria-expanded', 'true');
+    input.focus();
+  }
+
+  function closeChat() {
+    panel.classList.remove('open');
+    launch.setAttribute('aria-expanded', 'false');
+    launch.focus();
+  }
+
+  launch.addEventListener('click', () => {
+    panel.classList.contains('open') ? closeChat() : openChat();
   });
 
-}
-</script>
+  close.addEventListener('click', closeChat);
 
+  function addMessage(text, who) {
+    const node = document.createElement('div');
+    node.className = 'iq-message ' + who;
+    node.textContent = text;
+    messages.appendChild(node);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function addLinkMessage(text, href, label) {
+    const node = document.createElement('div');
+    node.className = 'iq-message bot';
+    node.textContent = text + ' ';
+
+    const link = document.createElement('a');
+    link.href = href;
+    link.textContent = label;
+
+    node.appendChild(link);
+    messages.appendChild(node);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showQuick(items) {
+    quick.replaceChildren();
+
+    items.forEach(item => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = item;
+      button.dataset.iq = item;
+      quick.appendChild(button);
+    });
+  }
+
+  function startRecommendation() {
+    recommendationStep = 1;
+    recommendation = { type: '', size: '' };
+
+    addMessage('I can help narrow it down. What are you looking to build?', 'bot');
+
+    showQuick([
+      'A business website',
+      'A personal or portfolio website',
+      'An online tool or digital product',
+      'Not sure yet'
+    ]);
+  }
+
+  function recommendationReply(text) {
+    const value = text.toLowerCase();
+
+    if (recommendationStep === 1) {
+      recommendation.type = value;
+      recommendationStep = 2;
+
+      addMessage('How much does your idea need?', 'bot');
+
+      showQuick([
+        'One simple page',
+        'Several sections or pages',
+        'Multiple pages and custom features',
+        'I need help deciding'
+      ]);
+      return;
+    }
+
+    if (recommendationStep === 2) {
+      recommendation.size = value;
+      recommendationStep = 0;
+
+      let packageName = 'Professional Website';
+      let reason = 'because a multi-section website is a flexible starting point for many projects.';
+
+      if (value.includes('one simple')) {
+        packageName = 'Starter Website';
+        reason = 'because it is designed for a focused one-page website.';
+      } else if (value.includes('multiple pages')) {
+        packageName = 'Premium Website';
+        reason = 'because it is intended for custom multi-page experiences and project-specific features.';
+      } else if (value.includes('not sure') || value.includes('help deciding')) {
+        packageName = 'Professional Website';
+        reason = 'because it offers a balanced starting point while your exact requirements are clarified.';
+      }
+
+      addMessage(
+        'Based on those answers, the ' + packageName + ' may be a good starting point ' + reason +
+        '\n\nThis is only a guide. The final scope and quote depend on the features you need.',
+        'bot'
+      );
+
+      showQuick([
+        'Compare all packages',
+        'Send a project enquiry',
+        'Use the free website planner'
+      ]);
+      return;
+    }
+  }
+
+  function respond(text) {
+    const t = text.toLowerCase();
+
+    if (recommendationStep) {
+      recommendationReply(text);
+      return;
+    }
+
+    if (
+      t.includes('choose a package') ||
+      t.includes('recommend') ||
+      t.includes('which package') ||
+      t.includes('help me choose')
+    ) {
+      startRecommendation();
+      return;
+    }
+
+    if (t.includes('service') || t.includes('what do you do') || t.includes('offer')) {
+      addMessage(
+        'INFINITE IQ focuses on three areas:\n\n' +
+        '🌐 Website development — responsive websites for businesses, creators and personal brands.\n' +
+        '⚡ Digital tools — focused online tools for planning and organising.\n' +
+        '✧ Digital products — useful planners, templates and guides.',
+        'bot'
+      );
+
+      showQuick(['Explain your packages', 'Help me choose a package', 'How do I start a project?']);
+      return;
+    }
+
+    if (t.includes('package') || t.includes('price') || t.includes('cost') || t.includes('quote')) {
+      addMessage(
+        'We offer three website starting points:\n\n' +
+        '🚀 Starter — a focused one-page website.\n' +
+        '💎 Professional — a multi-section website with a project or product showcase.\n' +
+        '👑 Premium — a custom multi-page experience with advanced features.\n\n' +
+        'All projects receive a custom quote based on their requirements. Domain, hosting and third-party costs may be separate.',
+        'bot'
+      );
+
+      showQuick(['Help me choose a package', 'Send a project enquiry', 'Use the free website planner']);
+      return;
+    }
+
+    if (t.includes('start') || t.includes('begin') || t.includes('how do i') || t.includes('process')) {
+      addMessage(
+        'Getting started is simple:\n' +
+        '1. Tell us about your idea.\n' +
+        '2. We discuss the pages, features and design.\n' +
+        '3. We agree on the scope and quote.\n' +
+        '4. Development and review begin after arrangements are agreed.',
+        'bot'
+      );
+
+      addLinkMessage('You can send the details here:', 'enquiry.html', 'Open project enquiry ↗');
+      showQuick(['Help me choose a package', 'Use the free website planner']);
+      return;
+    }
+
+    if (t.includes('planner')) {
+      addMessage(
+        'Our free Business Website Planner helps you organise your goals, pages and requirements before starting.',
+        'bot'
+      );
+
+      addLinkMessage('Open it here:', 'planner.html', 'Launch free planner ↗');
+      showQuick(['Explain your packages', 'How do I start a project?']);
+      return;
+    }
+
+    if (t.includes('portfolio') || t.includes('project') || t.includes('work')) {
+      addMessage(
+        'You can explore the Business Website Planner, Project Brief Builder, Project Dashboard demo and Client Portal demo in our portfolio section. The dashboard and portal are browser-based demonstrations, not live client accounts.',
+        'bot'
+      );
+
+      addLinkMessage('Visit the portfolio:', '#portfolio', 'Explore our work ↗');
+      showQuick(['What services do you offer?', 'Explain your packages']);
+      return;
+    }
+
+    if (t.includes('contact') || t.includes('enquiry') || t.includes('talk') || t.includes('human')) {
+      addMessage(
+        'The best way to reach INFINITE IQ about a project is through the project enquiry form. Sending an enquiry does not require payment.',
+        'bot'
+      );
+
+      addLinkMessage('Start here:', 'enquiry.html', 'Send a project enquiry ↗');
+      return;
+    }
+
+    if (t.includes('hello') || t.includes('hi ') || t === 'hi' || t.includes('hey')) {
+      addMessage('Hello! Welcome to INFINITE IQ. What would you like help with today?', 'bot');
+      showQuick(['Our services', 'Packages', 'Choose a package', 'Start a project']);
+      return;
+    }
+
+    addMessage(
+      'I can help with INFINITE IQ services, website packages, project steps and our free planner. Try asking about one of those, or send a project enquiry for something specific.',
+      'bot'
+    );
+
+    showQuick(['Our services', 'Packages', 'Choose a package', 'Start a project']);
+  }
+
+  function send(text) {
+    const clean = text.trim();
+    if (!clean) return;
+
+    addMessage(clean, 'user');
+    respond(clean);
+  }
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    send(input.value);
+    input.value = '';
+    input.focus();
+  });
+
+  quick.addEventListener('click', event => {
+    const button = event.target.closest('button[data-iq]');
+    if (!button) return;
+
+    send(button.dataset.iq);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && panel.classList.contains('open')) {
+      closeChat();
+    }
+  });
+})();
+</script>
 </body>
 </html>
