@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +15,7 @@
   --blue: #50d9ff;
   --muted: #aaa8c0;
   --border: rgba(255,255,255,.12);
+  --success: #65e6b1;
 }
 
 * {
@@ -29,8 +29,8 @@ html { scroll-behavior: smooth; }
 body {
   font-family: Arial, sans-serif;
   background:
-    radial-gradient(ellipse at 15% 10%, rgba(155,108,255,.13), transparent 38%),
-    radial-gradient(ellipse at 90% 85%, rgba(80,217,255,.08), transparent 35%),
+    radial-gradient(ellipse at 12% 8%, rgba(155,108,255,.16), transparent 38%),
+    radial-gradient(ellipse at 90% 85%, rgba(80,217,255,.09), transparent 35%),
     var(--bg);
   color: #f7f5ff;
   min-height: 100vh;
@@ -39,28 +39,45 @@ body {
 }
 
 .container {
-  max-width: 760px;
+  max-width: 850px;
   margin: auto;
 }
 
 .logo {
   display: inline-block;
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 900;
   letter-spacing: -.8px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   text-decoration: none;
   color: white;
 }
 
 .logo span { color: var(--purple); }
 
+.top-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(101,230,177,.6);
+}
+
 .card {
-  background: rgba(17,17,32,.94);
+  background: rgba(17,17,32,.96);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 42px;
-  box-shadow: 0 25px 80px rgba(0,0,0,.25);
+  border-radius: 26px;
+  padding: 44px;
+  box-shadow: 0 25px 90px rgba(0,0,0,.3);
 }
 
 .tag {
@@ -73,10 +90,10 @@ body {
 }
 
 h1 {
-  font-size: clamp(34px, 7vw, 48px);
+  font-size: clamp(35px, 7vw, 52px);
   line-height: 1.12;
-  letter-spacing: -1.5px;
-  margin-bottom: 15px;
+  letter-spacing: -1.7px;
+  margin-bottom: 16px;
 }
 
 .gradient {
@@ -88,21 +105,67 @@ h1 {
 
 .intro {
   color: var(--muted);
-  margin-bottom: 32px;
-  max-width: 540px;
+  margin-bottom: 28px;
+  max-width: 570px;
   font-size: 15px;
 }
 
+.info-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 28px 0 34px;
+}
+
+.info-item {
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 15px 12px;
+}
+
+.info-icon {
+  color: var(--blue);
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.info-item strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+.info-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   color: #fff;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 1px;
-  margin: 30px 0 5px;
+  margin: 34px 0 5px;
   text-transform: uppercase;
 }
 
-.field { margin-top: 20px; }
+.section-number {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 8px;
+  background: rgba(155,108,255,.15);
+  color: var(--purple);
+  font-size: 11px;
+}
+
+.field { margin-top: 21px; }
 
 label {
   display: block;
@@ -112,7 +175,9 @@ label {
   color: #e9e5f7;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 15px 16px;
   background: #090916;
@@ -122,16 +187,18 @@ input, select, textarea {
   font: inherit;
   font-size: 14px;
   outline: none;
-  transition: border-color .2s, box-shadow .2s;
+  transition: border-color .2s, box-shadow .2s, background .2s;
 }
 
-input::placeholder, textarea::placeholder {
-  color: #77758d;
-}
+input::placeholder,
+textarea::placeholder { color: #77758d; }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   border-color: var(--purple);
   box-shadow: 0 0 0 3px rgba(155,108,255,.13);
+  background: #0c0c1c;
 }
 
 select { cursor: pointer; }
@@ -142,7 +209,7 @@ select option {
 }
 
 textarea {
-  min-height: 145px;
+  min-height: 155px;
   resize: vertical;
 }
 
@@ -152,10 +219,28 @@ textarea {
   margin-top: 7px;
 }
 
+.package-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(80,217,255,.055);
+  border: 1px solid rgba(80,217,255,.15);
+  border-radius: 12px;
+  padding: 13px 15px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.package-note span {
+  color: var(--blue);
+  font-size: 15px;
+}
+
 .submit-btn {
   width: 100%;
   margin-top: 30px;
-  padding: 16px;
+  padding: 17px;
   border: 0;
   border-radius: 30px;
   background: linear-gradient(100deg,var(--purple),#6652dc);
@@ -177,11 +262,48 @@ textarea {
   transform: none;
 }
 
-.note {
+.privacy-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 16px;
+}
+
+.privacy-note span { color: var(--success); }
+
+.next-steps {
+  margin-top: 35px;
+  padding: 22px;
+  background: rgba(255,255,255,.025);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.next-steps h2 {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.step strong {
+  display: block;
+  color: var(--blue);
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 11px;
 }
 
 .back {
@@ -204,9 +326,44 @@ footer {
 
 @media(max-width:600px) {
   body { padding: 22px 13px; }
-  .card { padding: 28px 20px; border-radius: 19px; }
+
+  .card {
+    padding: 28px 20px;
+    border-radius: 19px;
+  }
+
   .logo { margin-bottom: 22px; }
+
   h1 { letter-spacing: -1px; }
+
+  .info-strip {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .info-icon { margin: 0; }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
 }
 </style>
 </head>
@@ -219,16 +376,50 @@ footer {
 INFINITE<span> IQ</span>
 </a>
 
+<div class="top-label">
+<span class="status-dot"></span>
+YOUR NEXT DIGITAL PROJECT STARTS HERE
+</div>
+
 <main class="card">
 
 <div class="tag">LET'S BUILD SOMETHING GREAT</div>
 
-<h1>Start Your <span class="gradient">Project.</span></h1>
+<h1>Let's bring your <span class="gradient">idea to life.</span></h1>
 
 <p class="intro">
 Every great digital experience starts with an idea.
-Tell us what you're planning, and let's explore what we can build together.
+Tell us about your business and what you have in mind.
+We'll review your enquiry and explore the best way to bring your vision online.
 </p>
+
+<div class="info-strip">
+
+<div class="info-item">
+<div class="info-icon">✦</div>
+<div>
+<strong>Share your idea</strong>
+<span>Tell us what you need.</span>
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">◇</div>
+<div>
+<strong>Discuss the project</strong>
+<span>Explore the right solution.</span>
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">↗</div>
+<div>
+<strong>Plan the next step</strong>
+<span>Agree on the project scope.</span>
+</div>
+</div>
+
+</div>
 
 <form
   id="enquiryForm"
@@ -245,7 +436,6 @@ Tell us what you're planning, and let's explore what we can build together.
 <input type="hidden" name="_replyto" id="replyTo" value="">
 <input type="hidden" name="_ts" id="formTimestamp" value="">
 
-<!-- Spam protection -->
 <div style="position:absolute;left:-9999px" aria-hidden="true">
 <label for="website">Leave this field empty</label>
 <input
@@ -257,7 +447,10 @@ Tell us what you're planning, and let's explore what we can build together.
 >
 </div>
 
-<div class="section-heading">Your details</div>
+<div class="section-heading">
+<span class="section-number">01</span>
+Your details
+</div>
 
 <div class="field">
 <label for="name">Your full name *</label>
@@ -296,9 +489,13 @@ Tell us what you're planning, and let's explore what we can build together.
   autocomplete="email"
   placeholder="you@example.com"
 >
+<p class="field-hint">Please use an email address where we can reach you.</p>
 </div>
 
-<div class="section-heading">Your project</div>
+<div class="section-heading">
+<span class="section-number">02</span>
+Your project
+</div>
 
 <div class="field">
 <label for="package">Which package interests you? *</label>
@@ -312,6 +509,11 @@ Tell us what you're planning, and let's explore what we can build together.
 </select>
 </div>
 
+<div class="package-note">
+<span>ⓘ</span>
+<p>Not sure which package is right for you? That's completely fine. Choose "Not sure yet" and we'll discuss your needs.</p>
+</div>
+
 <div class="field">
 <label for="description">Tell us about your project *</label>
 
@@ -320,10 +522,10 @@ Tell us what you're planning, and let's explore what we can build together.
   name="description"
   required
   maxlength="3000"
-  placeholder="What kind of website do you want? What should it do? What features do you have in mind?"
+  placeholder="What kind of website do you want? What is your business about? What features or ideas do you have in mind?"
 ></textarea>
 
-<p class="field-hint">The more details you provide, the better we'll understand your idea.</p>
+<p class="field-hint">Share as much detail as you can. You don't need to have everything figured out yet.</p>
 </div>
 
 <button type="submit" class="submit-btn" id="submitBtn">
@@ -332,9 +534,35 @@ Send My Enquiry ↗
 
 </form>
 
-<p class="note">
-Your enquiry will be submitted through our existing form service.
+<p class="privacy-note">
+<span>✓</span>
+Your enquiry is sent through our existing form service.
 </p>
+
+<div class="next-steps">
+
+<h2>What happens after you submit?</h2>
+
+<div class="steps">
+
+<div class="step">
+<strong>01 — REVIEW</strong>
+<p>We'll review the information you've shared.</p>
+</div>
+
+<div class="step">
+<strong>02 — DISCUSS</strong>
+<p>We'll discuss your goals and requirements.</p>
+</div>
+
+<div class="step">
+<strong>03 — PLAN</strong>
+<p>We'll agree on the project scope and next steps.</p>
+</div>
+
+</div>
+
+</div>
 
 <a href="index.html" class="back">
 ← Back to INFINITE IQ
