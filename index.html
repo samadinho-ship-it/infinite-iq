@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#080b14">
+	<title>INFINITE IQ | Think Beyond Limits</title>
+	<style>
+		:root {
+			--bg: #080b14;
+			--panel: #111725;
+			--text: #f4f7ff;
+			--muted: #a0abc0;
+			--accent: #8b7bff;
+			--cyan: #51e5ff;
+		}
+
+		* { box-sizing: border-box; margin: 0; padding: 0; }
+		html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+		body {
+			background: var(--bg);
+			color: var(--text);
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+			line-height: 1.7;
+		}
+		a { color: inherit; text-decoration: none; }
+		.container { width: min(1100px, 90%); margin: auto; }
+		header {
+			position: sticky; top: 0; z-index: 10;
+			background: rgba(8, 11, 20, .88);
+			backdrop-filter: blur(16px);
+			border-bottom: 1px solid #ffffff12;
+		}
+		nav {
+			min-height: 74px; display: flex; justify-content: space-between;
+			align-items: center; gap: 20px;
+		}
+		.logo { font-weight: 900; font-size: 1.2rem; letter-spacing: 2px; }
+		.logo span { color: var(--accent); }
+		.nav-links { display: flex; gap: 26px; align-items: center; }
+		.nav-links a { color: var(--muted); font-size: .94rem; }
+		.nav-links a:hover { color: var(--cyan); }
+		.menu-btn {
+			display: none; background: none; border: 1px solid #ffffff30;
+			color: white; border-radius: 9px; padding: 8px 12px; cursor: pointer;
+		}
+		.hero {
+			min-height: 83vh; display: flex; align-items: center;
+			position: relative; overflow: hidden;
+		}
+		.hero::before {
+			content: ""; position: absolute; width: 430px; height: 430px;
+			right: -100px; top: 80px;
+			background: radial-gradient(circle, #6555ff36, transparent 68%);
+			pointer-events: none;
+		}
+		.tag {
+			display: inline-block; color: var(--cyan); background: #51e5ff12;
+			border: 1px solid #51e5ff35; border-radius: 100px;
+			padding: 6px 13px; font-size: .8rem; letter-spacing: 1px;
+		}
+		h1 {
+			font-size: clamp(3.2rem, 9vw, 6.7rem);
+			line-height: .99; letter-spacing: -4px; margin: 25px 0;
+		}
+		h1 span {
+			background: linear-gradient(100deg, var(--accent), var(--cyan));
+			color: transparent; background-clip: text;
+		}
+		.hero p, .section-intro { color: var(--muted); max-width: 600px; }
+		.actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+		.btn {
+			display: inline-flex; justify-content: center; align-items: center;
+			border-radius: 10px; padding: 12px 20px; font-weight: 700;
+			border: 1px solid #ffffff25; cursor: pointer; transition: .2s;
+			font: inherit; font-weight: 700;
+		}
+		.btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
+		.btn:hover { transform: translateY(-3px); }
+		section { padding: 95px 0; }
+		.eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: 3px; font-size: .8rem; }
+		h2 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.2; margin: 12px 0 18px; letter-spacing: -1px; }
+		.section-intro { margin-bottom: 35px; }
+		.about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px; align-items: center; }
+		.about-card, .project-card, .contact-card {
+			background: var(--panel); border: 1px solid #ffffff12;
+			border-radius: 18px; padding: 28px;
+		}
+		.about-card p { color: var(--muted); }
+		.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+		.stat { padding: 22px; border: 1px solid #ffffff15; border-radius: 14px; }
+		.stat strong { display: block; font-size: 1.7rem; color: var(--cyan); }
+		.stat span { color: var(--muted); font-size: .9rem; }
+		.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+		.project-card { transition: transform .25s, border-color .25s; }
+		.project-card:hover { transform: translateY(-6px); border-color: #8b7bff80; }
+		.project-icon { font-size: 2rem; margin-bottom: 16px; }
+		.project-card p { color: var(--muted); margin: 10px 0 18px; font-size: .94rem; }
+		.project-link { color: var(--cyan); font-size: .9rem; }
+		.contact-card { max-width: 720px; }
+		.contact-card p { color: var(--muted); margin-bottom: 20px; }
+		footer { padding: 28px 0; border-top: 1px solid #ffffff12; color: var(--muted); font-size: .88rem; }
+		footer .container { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+		#topBtn {
+			position: fixed; right: 20px; bottom: 20px; width: 44px; height: 44px;
+			background: var(--accent); color: white; border: 0; border-radius: 12px;
+			cursor: pointer; display: none; font-size: 1.2rem;
+		}
+		@media (max-width: 760px) {
+			.menu-btn { display: block; }
+			.nav-links {
+				display: none; position: absolute; top: 74px; left: 0; right: 0;
+				background: #0c1120; padding: 22px 5%; flex-direction: column;
+				align-items: flex-start; border-bottom: 1px solid #ffffff18;
+			}
+			.nav-links.open { display: flex; }
+			h1 { letter-spacing: -2px; }
+			.about-grid, .projects { grid-template-columns: 1fr; }
+			section { padding: 70px 0; }
+			.hero { min-height: 75vh; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="container">
+			<a class="logo" href="#home">INFINITE<span> IQ</span></a>
+			<button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+			<div class="nav-links" id="navLinks">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#projects">Projects</a>
+				<a href="#contact">Contact</a>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero container" id="home">
+			<div>
+				<span class="tag">DREAM BIG. BUILD SMART.</span>
+				<h1>Think beyond<br><span>limits.</span></h1>
+				<p>Welcome to INFINITE IQ — a space for big ideas, creative technology and building a future without limits. This is where the journey begins.</p>
+				<div class="actions">
+					<a class="btn btn-primary" href="#projects">Explore my projects ↗</a>
+					<a class="btn" href="#about">Discover my story</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="about">
+			<div class="container">
+				<span class="eyebrow">The person behind the vision</span>
+				<h2>Building something<br>from nothing.</h2>
+				<div class="about-grid">
+					<div class="about-card">
+						<p>I'm the creator behind INFINITE IQ. I'm learning how technology and creativity can turn ideas into real things. My goal is to keep learning, build useful products and create opportunities through innovation.</p>
+						<p style="margin-top:14px">Every expert starts as a beginner. This is my starting point — and I'm just getting started.</p>
+					</div>
+					<div class="stats">
+						<div class="stat"><strong>∞</strong><span>Ideas to explore</span></div>
+						<div class="stat"><strong>01</strong><span>Journey begins</span></div>
+						<div class="stat"><strong>100%</strong><span>Room to grow</span></div>
+						<div class="stat"><strong>Next</strong><span>Big things ahead</span></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="projects">
+			<div class="container">
+				<span class="eyebrow">Ideas in progress</span>
+				<h2>My projects.</h2>
+				<p class="section-intro">Every project starts with an idea. These cards are ready for you to replace with the real things you build.</p>
+				<div class="projects">
+					<article class="project-card">
+						<div class="project-icon">✦</div>
+						<h3>INFINITE IQ</h3>
+						<p>A personal digital home for ideas, experiments and future creations.</p>
+						<a class="project-link" href="#contact">Let's connect ↗</a>
+					</article>
+					<article class="project-card">
+						<div class="project-icon">⌘</div>
+						<h3>Future Apps</h3>
+						<p>Exploring ways to turn everyday problems into simple digital tools.</p>
+						<a class="project-link" href="#contact">Coming soon ↗</a>
+					</article>
+					<article class="project-card">
+						<div class="project-icon">◎</div>
+						<h3>Big Ideas</h3>
+						<p>A growing collection of concepts that could become something bigger.</p>
+						<a class="project-link" href="#contact">Stay connected ↗</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact">
+			<div class="container">
+				<span class="eyebrow">Start a conversation</span>
+				<h2>Have an idea?</h2>
+				<div class="contact-card">
+					<p>Got a project, a question or an interesting idea? I'd love to hear from you. Add your real email address below in the code to make this contact button yours.</p>
+					<a class="btn btn-primary" id="emailBtn" href="mailto:hello@example.com">Get in touch ↗</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<span>© <span id="year"></span> INFINITE IQ</span>
+			<span>Built with curiosity and ambition.</span>
+		</div>
+	</footer>
+
+	<button id="topBtn" aria-label="Back to top">↑</button>
+
+	<script>
+		const menuBtn = document.getElementById('menuBtn');
+		const navLinks = document.getElementById('navLinks');
+		menuBtn.addEventListener('click', () => {
+			const open = navLinks.classList.toggle('open');
+			menuBtn.setAttribute('aria-expanded', String(open));
+		});
+
+		navLinks.querySelectorAll('a').forEach(link => {
+			link.addEventListener('click', () => {
+				navLinks.classList.remove('open');
+				menuBtn.setAttribute('aria-expanded', 'false');
+			});
+		});
+
+		document.getElementById('year').textContent = new Date().getFullYear();
+
+		const topBtn = document.getElementById('topBtn');
+		window.addEventListener('scroll', () => {
+			topBtn.style.display = window.scrollY > 350 ? 'block' : 'none';
+		});
+		topBtn.addEventListener('click', () => {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	</script>
+</body>
+</html>
