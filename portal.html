@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+<title>Client Portal | INFINITE IQ</title>
+
+<style>
+:root {
+  --bg:#080b14;
+  --panel:#111827;
+  --text:#f4f6ff;
+  --muted:#929db4;
+  --purple:#8b5cf6;
+  --cyan:#22d3ee;
+  --border:rgba(255,255,255,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:25px}
+body{
+  background:radial-gradient(circle at 80% 0%,#211440 0,transparent 35%),var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.layout{display:flex;min-height:100vh}
+.sidebar{
+  width:245px;padding:30px 20px;border-right:1px solid var(--border);
+  background:rgba(8,11,20,.92);position:fixed;inset:0 auto 0 0;
+  z-index:10;
+}
+.logo{font-size:21px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--cyan)}
+.tagline{font-size:11px;color:var(--muted);margin-top:7px}
+.nav{margin-top:55px}
+.nav a{
+  display:block;padding:13px 15px;margin:7px 0;border-radius:11px;
+  color:var(--muted);font-size:14px;transition:.2s;
+}
+.nav a.active,.nav a:hover{background:#211b3b;color:white}
+.nav a.active{border-left:3px solid var(--purple)}
+.sidebar-bottom{position:absolute;bottom:28px;left:20px;right:20px}
+.demo-note{font-size:11px;color:var(--muted);line-height:1.7}
+.main{margin-left:245px;width:calc(100% - 245px);padding:35px 5% 60px}
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;margin-bottom:38px;
+}
+.topbar p{color:var(--muted);font-size:13px;margin-top:7px}
+.top-actions{display:flex;align-items:center;gap:12px}
+.avatar{
+  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));font-weight:800;
+}
+.btn{
+  border:0;border-radius:10px;padding:11px 16px;color:white;
+  background:linear-gradient(100deg,var(--purple),#6555dc);
+  font-weight:700;transition:.2s;
+}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.15)}
+.btn.secondary{background:#202a40;border:1px solid var(--border)}
+h1{font-size:clamp(25px,4vw,35px);letter-spacing:-1px}
+h2{font-size:18px;margin-bottom:18px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-bottom:25px}
+.card{
+  background:linear-gradient(145deg,rgba(21,30,48,.96),rgba(14,19,33,.96));
+  border:1px solid var(--border);border-radius:17px;padding:22px;
+  min-width:0;
+}
+.stat-label{font-size:12px;color:var(--muted)}
+.stat-value{font-size:27px;font-weight:800;margin-top:13px}
+.stat-small{font-size:11px;color:var(--cyan);margin-top:7px}
+.section-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.pill{
+  display:inline-block;padding:6px 10px;border-radius:30px;font-size:10px;
+  color:#c4b5fd;background:rgba(139,92,246,.15);
+}
+.project-title{font-size:20px;font-weight:800;margin:8px 0}
+.project-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.progress-row{display:flex;justify-content:space-between;font-size:12px;margin:25px 0 10px}
+.progress{height:8px;background:#252d40;border-radius:20px;overflow:hidden}
+.progress div{
+  height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));
+  border-radius:20px;transition:width .3s;
+}
+.deadline{font-size:13px;color:var(--muted);margin-top:18px;line-height:1.7}
+.deadline strong{color:white}
+.task{
+  display:flex;align-items:center;gap:12px;padding:14px 0;
+  border-bottom:1px solid var(--border);font-size:13px;
+}
+.task:last-child{border:0}
+.task input{accent-color:var(--purple);width:16px;height:16px;flex-shrink:0}
+.task small{display:block;color:var(--muted);margin-top:5px}
+.task.done span{text-decoration:line-through;color:var(--muted)}
+.timeline{border-left:1px solid #51417d;margin-left:7px;padding-left:20px}
+.update{position:relative;padding:0 0 23px}
+.update:before{
+  content:"";position:absolute;width:10px;height:10px;border-radius:50%;
+  background:var(--cyan);left:-25px;top:4px;
+}
+.update strong{font-size:13px}
+.update p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6}
+.note-input{
+  width:100%;margin-top:15px;padding:13px;border-radius:10px;
+  background:#0b1220;border:1px solid var(--border);color:white;
+  outline:none;resize:vertical;min-height:95px;
+}
+.note-input:focus{border-color:var(--purple)}
+.note-list{margin-top:18px}
+.client-note{
+  padding:12px;margin-top:10px;background:#0b1220;
+  border:1px solid var(--border);border-radius:10px;
+  font-size:12px;line-height:1.6;overflow-wrap:anywhere;
+}
+.client-note time{display:block;color:var(--muted);font-size:10px;margin-top:7px}
+.empty{font-size:12px;color:var(--muted);margin-top:12px}
+.footer{color:var(--muted);font-size:11px;text-align:center;margin-top:45px;line-height:1.8}
+.notice{
+  padding:13px 15px;border:1px solid rgba(34,211,238,.2);
+  background:rgba(34,211,238,.05);border-radius:12px;
+  color:#b9dce7;font-size:12px;line-height:1.6;margin-bottom:22px;
+}
+@media(max-width:850px){
+  .sidebar{width:205px}
+  .main{margin-left:205px;width:calc(100% - 205px);padding:25px}
+  .grid{grid-template-columns:1fr 1fr}
+  .section-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .layout{display:block}
+  .sidebar{
+    position:relative;width:100%;height:auto;padding:18px 20px;
+    border-right:0;border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;gap:5px;overflow-x:auto;margin-top:18px}
+  .nav a{white-space:nowrap;margin:0;padding:10px;font-size:12px}
+  .sidebar-bottom{display:none}
+  .main{margin:0;width:100%;padding:25px 17px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card{padding:16px}
+  .stat-value{font-size:22px}
+  .topbar{align-items:flex-start}
+  .top-actions .btn{display:none}
+}
+@media(max-width:370px){
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <a href="index.html" class="logo">INFINITE<span>IQ</span></a>
+  <p class="tagline">BUILDING WHAT'S NEXT.</p>
+
+  <nav class="nav">
+    <a class="active" href="#overview">Overview</a>
+    <a href="#project">My Project</a>
+    <a href="#tasks">Tasks</a>
+    <a href="#updates">Updates</a>
+    <a href="index.html">Main Website ↗</a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <p class="demo-note">
+      DEMO PORTAL<br>
+      This is a sample client experience. Project information is demonstration data.
+    </p>
+  </div>
+</aside>
+
+<main class="main" id="overview">
+
+<header class="topbar">
+  <div>
+    <h1>Welcome back 👋</h1>
+    <p>Here's what's happening with your project.</p>
+  </div>
+  <div class="top-actions">
+    <a class="btn" href="index.html#contact">Contact Team</a>
+    <div class="avatar">C</div>
+  </div>
+</header>
+
+<div class="notice">
+  <strong>Demo workspace:</strong> This portal currently stores task progress and notes
+  in this browser only. It is not connected to live client accounts or your project database.
+</div>
+
+<section class="grid">
+  <div class="card">
+    <p class="stat-label">PROJECT PROGRESS</p>
+    <div class="stat-value" id="progressValue">60%</div>
+    <p class="stat-small">↗ Based on completed tasks</p>
+  </div>
+  <div class="card">
+    <p class="stat-label">TASKS COMPLETED</p>
+    <div class="stat-value" id="taskCount">3 / 5</div>
+    <p class="stat-small">Keep up the momentum</p>
+  </div>
+  <div class="card">
+    <p class="stat-label">PROJECT STATUS</p>
+    <div class="stat-value" id="projectStatus" style="font-size:21px;margin-top:17px">In progress</div>
+    <p class="stat-small" id="statusMessage">On track</p>
+  </div>
+</section>
+
+<section class="section-grid">
+
+  <div class="card" id="project">
+    <span class="pill">WEBSITE DEVELOPMENT</span>
+    <h2 style="margin-top:18px;margin-bottom:8px">Your Project</h2>
+    <div class="project-title">Business Website</div>
+    <p class="project-desc">
+      A modern, responsive website designed to help your business build a strong digital presence.
+    </p>
+
+    <div class="progress-row">
+      <span>Overall completion</span>
+      <strong id="progressLabel">60%</strong>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+
+    <p class="deadline">
+      Expected delivery: <strong>Demo date — 20 November 2026</strong>
+    </p>
+  </div>
+
+  <div class="card" id="tasks">
+    <h2>Project Tasks</h2>
+    <div id="tasksList">
+      <label class="task done">
+        <input type="checkbox" data-task="discovery" checked>
+        <span>Project discovery<small>Completed</small></span>
+      </label>
+      <label class="task done">
+        <input type="checkbox" data-task="design" checked>
+        <span>Design direction<small>Completed</small></span>
+      </label>
+      <label class="task done">
+        <input type="checkbox" data-task="homepage" checked>
+        <span>Homepage structure<small>Completed</small></span>
+      </label>
+      <label class="task">
+        <input type="checkbox" data-task="development">
+        <span>Website development<small>In progress</small></span>
+      </label>
+      <label class="task">
+        <input type="checkbox" data-task="review">
+        <span>Final review<small>Pending</small></span>
+      </label>
+    </div>
+    <p class="empty" id="taskHint">Tick tasks to update your project progress.</p>
+  </div>
+
+  <div class="card" id="updates">
+    <h2>Latest Updates</h2>
+    <div class="timeline">
+      <div class="update">
+        <strong>Homepage design approved</strong>
+        <p>The main website layout has been completed in this demo.</p>
+      </div>
+      <div class="update">
+        <strong>Development underway</strong>
+        <p>The website is moving into its development stage.</p>
+      </div>
+      <div class="update">
+        <strong>Project created</strong>
+        <p>Your sample project portal has been set up.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Project Notes</h2>
+    <p class="project-desc">
+      Leave yourself a note or record a question about your project.
+      Notes are saved in this browser.
+    </p>
+    <textarea class="note-input" id="noteInput" maxlength="500"
+      placeholder="Write a project note..."></textarea>
+    <button class="btn" id="saveNote" style="margin-top:12px">Save Note</button>
+    <div class="note-list" id="noteList"></div>
+  </div>
+
+  <div class="card">
+    <h2>Need assistance?</h2>
+    <p class="project-desc">
+      Have a question about your project? Reach out to the INFINITE IQ team.
+    </p>
+    <a class="btn" style="display:inline-block;margin-top:20px"
+      href="index.html#contact">Get in touch ↗</a>
+  </div>
+
+</section>
+
+<footer class="footer">
+  © 2026 INFINITE IQ. BUILDING WHAT'S NEXT.
+  <br>
+  Demo interface — no real client accounts or live project data are connected.
+</footer>
+
+</main>
+</div>
+
+<script>
+const taskBoxes = [...document.querySelectorAll('#tasksList input')];
+const taskCount = document.getElementById('taskCount');
+const progressValue = document.getElementById('progressValue');
+const progressLabel = document.getElementById('progressLabel');
+const progressBar = document.getElementById('progressBar');
+const projectStatus = document.getElementById('projectStatus');
+const statusMessage = document.getElementById('statusMessage');
+
+const STORAGE_KEY = 'infiniteIQPortalTasks';
+const NOTES_KEY = 'infiniteIQPortalNotes';
+
+function loadTasks(){
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if(saved && typeof saved === 'object'){
+      taskBoxes.forEach(box => {
+        if(typeof saved[box.dataset.task] === 'boolean'){
+          box.checked = saved[box.dataset.task];
+        }
+      });
+    }
+  } catch(error) {
+    console.warn('Could not load saved tasks.', error);
+  }
+}
+
+function updateTasks(){
+  const completed = taskBoxes.filter(box => box.checked).length;
+  const total = taskBoxes.length;
+  const percentage = Math.round((completed / total) * 100);
+
+  taskCount.textContent = `${completed} / ${total}`;
+  progressValue.textContent = `${percentage}%`;
+  progressLabel.textContent = `${percentage}%`;
+  progressBar.style.width = `${percentage}%`;
+
+  taskBoxes.forEach(box => {
+    const task = box.closest('.task');
+    task.classList.toggle('done', box.checked);
+    const small = task.querySelector('small');
+    small.textContent = box.checked ? 'Completed' : 'Pending';
+  });
+
+  if(completed === total){
+    projectStatus.textContent = 'Completed';
+    statusMessage.textContent = 'All demo tasks finished';
+  } else if(completed === 0){
+    projectStatus.textContent = 'Not started';
+    statusMessage.textContent = 'Waiting to begin';
+  } else {
+    projectStatus.textContent = 'In progress';
+    statusMessage.textContent = 'Keep moving forward';
+  }
+
+  const saved = {};
+  taskBoxes.forEach(box => saved[box.dataset.task] = box.checked);
+
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  } catch(error) {
+    console.warn('Could not save task progress.', error);
+  }
+}
+
+taskBoxes.forEach(box => box.addEventListener('change', updateTasks));
+
+function loadNotes(){
+  const list = document.getElementById('noteList');
+  list.replaceChildren();
+
+  let notes = [];
+  try {
+    notes = JSON.parse(localStorage.getItem(NOTES_KEY)) || [];
+  } catch(error) {
+    notes = [];
+  }
+
+  if(!Array.isArray(notes)) notes = [];
+
+  if(notes.length === 0){
+    const empty = document.createElement('p');
+    empty.className = 'empty';
+    empty.textContent = 'No notes yet.';
+    list.appendChild(empty);
+    return;
+  }
+
+  notes.forEach(note => {
+    const item = document.createElement('div');
+    item.className = 'client-note';
+
+    const content = document.createElement('div');
+    content.textContent = note.text;
+
+    const date = document.createElement('time');
+    date.textContent = note.date;
+
+    item.append(content, date);
+    list.appendChild(item);
+  });
+}
+
+document.getElementById('saveNote').addEventListener('click', () => {
+  const input = document.getElementById('noteInput');
+  const text = input.value.trim();
+
+  if(!text){
+    alert('Please write a note first.');
+    return;
+  }
+
+  let notes = [];
+  try {
+    notes = JSON.parse(localStorage.getItem(NOTES_KEY)) || [];
+  } catch(error) {
+    notes = [];
+  }
+
+  if(!Array.isArray(notes)) notes = [];
+
+  notes.unshift({
+    text,
+    date: new Date().toLocaleString()
+  });
+
+  try {
+    localStorage.setItem(NOTES_KEY, JSON.stringify(notes.slice(0,30)));
+    input.value = '';
+    loadNotes();
+  } catch(error) {
+    alert('Your browser could not save this note.');
+  }
+});
+
+loadTasks();
+updateTasks();
+loadNotes();
+</script>
+</body>
+</html>

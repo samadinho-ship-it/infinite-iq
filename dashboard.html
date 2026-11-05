@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<title>INFINITE IQ | Project Dashboard</title>
+
+<style>
+:root{
+--bg:#080d18;--panel:#101a2b;--panel2:#152238;
+--line:#263750;--text:#f3f7ff;--muted:#9aabc3;
+--blue:#5c9dff;--cyan:#51e0dc;--purple:#a78bfa;
+--red:#ff7888;--green:#62e6ae;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;
+background:radial-gradient(circle at top right,#142b4b 0,transparent 35%),var(--bg);
+color:var(--text);
+font-family:Inter,Arial,sans-serif;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:22px 5%;border-bottom:1px solid var(--line);
+gap:15px;flex-wrap:wrap;
+}
+.logo{font-size:21px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--cyan)}
+header small{
+display:block;color:var(--muted);font-size:10px;
+letter-spacing:3px;margin-top:5px
+}
+a{color:var(--cyan);text-decoration:none}
+.container{max-width:1250px;margin:auto;padding:35px 5% 70px}
+.welcome{
+display:flex;justify-content:space-between;align-items:center;
+gap:20px;flex-wrap:wrap;margin-bottom:28px
+}
+h1{font-size:clamp(27px,5vw,40px);margin:0 0 9px}
+p{color:var(--muted);line-height:1.6}
+.btn{
+border:0;border-radius:10px;padding:12px 17px;
+background:linear-gradient(110deg,var(--blue),var(--cyan));
+color:#06111e;font-weight:800;transition:.2s;
+}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.btn.secondary{
+background:var(--panel2);border:1px solid var(--line);color:var(--text)
+}
+.btn.danger{
+background:#3a1c2a;color:#ffb4bd;border:1px solid #743449
+}
+.btn.small{padding:8px 11px;font-size:12px}
+.stats{
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:14px;margin-bottom:25px
+}
+.stat,.panel{
+background:linear-gradient(145deg,#121e32,#0e1727);
+border:1px solid var(--line);border-radius:17px;padding:20px
+}
+.stat small{color:var(--muted)}
+.stat strong{display:block;font-size:30px;margin-top:12px}
+.layout{
+display:grid;grid-template-columns:1.2fr .8fr;
+gap:18px;margin-bottom:18px
+}
+.panel h2{font-size:18px;margin:0 0 18px}
+.field{margin-bottom:13px}
+label{display:block;color:#c4d2e6;font-size:12px;margin-bottom:7px}
+input,select,textarea{
+width:100%;padding:12px;background:#091321;
+border:1px solid var(--line);border-radius:9px;
+color:var(--text);outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+textarea{min-height:85px;resize:vertical}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+.project{
+border:1px solid var(--line);background:#0c1728;
+border-radius:13px;padding:16px;margin-bottom:12px
+}
+.projecttop{
+display:flex;justify-content:space-between;gap:12px;align-items:start
+}
+.project h3{margin:0 0 6px;font-size:16px;overflow-wrap:anywhere}
+.project p{font-size:13px;margin:5px 0}
+.tag{
+display:inline-block;padding:5px 9px;border-radius:30px;
+background:#1b3552;color:#9bc9ff;font-size:11px
+}
+.tag.completed{background:#153c32;color:#8bf0c2}
+.tag.hold{background:#40351e;color:#f6d58c}
+.progress{
+height:7px;background:#26364d;border-radius:20px;
+overflow:hidden;margin:12px 0
+}
+.progress span{
+display:block;height:100%;
+background:linear-gradient(90deg,var(--blue),var(--cyan))
+}
+.task{
+display:flex;align-items:center;gap:10px;
+padding:11px 0;border-bottom:1px solid var(--line);
+font-size:13px
+}
+.task input{width:auto}
+.task label{margin:0;flex:1;font-size:13px}
+.task.done label{text-decoration:line-through;color:var(--muted)}
+.muted{color:var(--muted);font-size:12px}
+.empty{
+padding:25px;text-align:center;color:var(--muted);
+border:1px dashed var(--line);border-radius:12px
+}
+.money{font-size:20px;font-weight:800;color:var(--cyan)}
+.search-row{
+display:grid;grid-template-columns:1fr 180px;
+gap:10px;margin-bottom:15px
+}
+.notice{
+padding:13px 15px;border:1px solid rgba(81,224,220,.2);
+background:rgba(81,224,220,.05);border-radius:12px;
+color:#b9dce7;font-size:12px;line-height:1.6;margin-bottom:22px
+}
+.status-message{font-size:12px;color:var(--green);margin-top:10px}
+footer{
+text-align:center;color:var(--muted);padding:25px;
+border-top:1px solid var(--line);font-size:12px
+}
+.modal{
+position:fixed;inset:0;background:rgba(0,0,0,.78);
+display:none;align-items:center;justify-content:center;
+padding:18px;z-index:50;overflow-y:auto
+}
+.modal.open{display:flex}
+.modal-content{
+width:min(650px,100%);max-height:90vh;overflow-y:auto;
+background:#101a2b;border:1px solid var(--line);
+border-radius:17px;padding:23px
+}
+.modal-head{
+display:flex;justify-content:space-between;
+align-items:center;margin-bottom:20px;gap:12px
+}
+.modal-head h2{margin:0}
+.close{
+border:1px solid var(--line);background:#1b2940;
+color:white;border-radius:8px;padding:7px 12px
+}
+@media(max-width:850px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.layout{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.formgrid,.search-row{grid-template-columns:1fr}
+.container{padding-top:25px}
+.stat{padding:15px}
+.stat strong{font-size:25px}
+.projecttop{flex-wrap:wrap}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">INFINITE<span> IQ</span>
+<small>PROJECT CONTROL CENTER</small></div>
+<a href="index.html">← Back to website</a>
+</header>
+
+<main class="container">
+
+<section class="welcome">
+<div>
+<h1>Project Dashboard</h1>
+<p>Plan your work. Track progress. Build something remarkable.</p>
+</div>
+<button class="btn" id="newProjectBtn">＋ New project</button>
+</section>
+
+<div class="notice">
+<strong>Private workspace:</strong> Dashboard information is stored in this browser on this device.
+It is not automatically connected to your Google Sheets Admin Workspace.
+</div>
+
+<section class="stats">
+<div class="stat"><small>Total projects</small><strong id="totalProjects">0</strong></div>
+<div class="stat"><small>Active projects</small><strong id="activeProjects">0</strong></div>
+<div class="stat"><small>Completed</small><strong id="completedProjects">0</strong></div>
+<div class="stat"><small>Tasks remaining</small><strong id="remainingTasks">0</strong></div>
+</section>
+
+<section class="layout">
+
+<div class="panel" id="projectFormPanel">
+<h2 id="formTitle">Create a project</h2>
+
+<form id="projectForm">
+<div class="field">
+<label for="projectName">Project name *</label>
+<input id="projectName" required maxlength="100" placeholder="e.g. NOVA THREADS website">
+</div>
+
+<div class="formgrid">
+<div class="field">
+<label for="clientName">Client / business</label>
+<input id="clientName" maxlength="100" placeholder="Client name">
+</div>
+<div class="field">
+<label for="projectType">Project type</label>
+<select id="projectType">
+<option>Website</option>
+<option>Online store</option>
+<option>Digital product</option>
+<option>Branding</option>
+<option>Other</option>
+</select>
+</div>
+<div class="field">
+<label for="deadline">Deadline</label>
+<input id="deadline" type="date">
+</div>
+<div class="field">
+<label for="projectStatus">Status</label>
+<select id="projectStatus">
+<option>Planning</option>
+<option>In progress</option>
+<option>On hold</option>
+<option>Completed</option>
+</select>
+</div>
+<div class="field">
+<label for="projectBudget">Agreed budget (KSh)</label>
+<input id="projectBudget" type="number" min="0" step="1" placeholder="15000">
+</div>
+<div class="field">
+<label for="projectPaid">Amount paid (KSh)</label>
+<input id="projectPaid" type="number" min="0" step="1" placeholder="0">
+</div>
+</div>
+
+<div class="field">
+<label for="projectNotes">Project notes</label>
+<textarea id="projectNotes" maxlength="2000" placeholder="What needs to be done?"></textarea>
+</div>
+
+<div class="actions">
+<button class="btn" type="submit" id="submitProject">Save project</button>
+<button class="btn secondary" type="button" id="cancelEdit" hidden>Cancel edit</button>
+</div>
+<p class="status-message" id="formMessage" aria-live="polite"></p>
+</form>
+</div>
+
+<div class="panel">
+<h2>Quick task list</h2>
+<form id="taskForm">
+<div class="field">
+<label for="taskName">Task description</label>
+<input id="taskName" required maxlength="150" placeholder="e.g. Design homepage">
+</div>
+<div class="field">
+<label for="taskProject">Project</label>
+<select id="taskProject"><option value="">General task</option></select>
+</div>
+<div class="field">
+<label for="taskDue">Due date</label>
+<input id="taskDue" type="date">
+</div>
+<button class="btn" type="submit">＋ Add task</button>
+</form>
+
+<div style="margin-top:20px">
+<h2>Tasks</h2>
+<div id="taskList"></div>
+</div>
+</div>
+
+</section>
+
+<section class="layout">
+
+<div class="panel">
+<h2>Your projects</h2>
+<div class="search-row">
+<input id="projectSearch" placeholder="Search projects...">
+<select id="projectFilter">
+<option value="All">All statuses</option>
+<option>Planning</option>
+<option>In progress</option>
+<option>On hold</option>
+<option>Completed</option>
+</select>
+</div>
+<div id="projectList"></div>
+</div>
+
+<div class="panel">
+<h2>Payment overview</h2>
+<p class="muted">Based on the budgets and payments you record.</p>
+<div class="field">
+<label>Total agreed budget</label>
+<div class="money" id="totalBudget">KSh 0</div>
+</div>
+<div class="field">
+<label>Total received</label>
+<div class="money" id="totalPaid">KSh 0</div>
+</div>
+<div class="field">
+<label>Outstanding balance</label>
+<div class="money" id="totalBalance">KSh 0</div>
+</div>
+<p class="muted">Manual records only. No payment processor or bank connection.</p>
+</div>
+
+</section>
+
+<section class="panel">
+<h2>Data and privacy</h2>
+<p class="muted">
+Your dashboard data is stored in this browser on this device.
+Export backups regularly. Import a backup to restore your projects and tasks.
+</p>
+<div class="actions">
+<button class="btn secondary" id="exportBtn">↓ Export backup</button>
+<button class="btn secondary" id="importBtn">↑ Import backup</button>
+<input type="file" id="importFile" accept=".json,application/json" hidden>
+<button class="btn danger" id="clearBtn">Delete all dashboard data</button>
+</div>
+<p class="status-message" id="backupMessage" aria-live="polite"></p>
+</section>
+
+</main>
+
+<footer>© 2026 INFINITE IQ · Ideas Without Limits.</footer>
+
+<div class="modal" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+<div class="modal-content">
+<div class="modal-head">
+<h2 id="editTitle">Edit project</h2>
+<button class="close" id="closeModal" type="button">✕</button>
+</div>
+<form id="editForm">
+<input type="hidden" id="editId">
+
+<div class="field">
+<label for="editName">Project name *</label>
+<input id="editName" required maxlength="100">
+</div>
+
+<div class="formgrid">
+<div class="field">
+<label for="editClient">Client / business</label>
+<input id="editClient" maxlength="100">
+</div>
+<div class="field">
+<label for="editType">Project type</label>
+<select id="editType">
+<option>Website</option><option>Online store</option>
+<option>Digital product</option><option>Branding</option><option>Other</option>
+</select>
+</div>
+<div class="field">
+<label for="editDeadline">Deadline</label>
+<input id="editDeadline" type="date">
+</div>
+<div class="field">
+<label for="editStatus">Status</label>
+<select id="editStatus">
+<option>Planning</option><option>In progress</option>
+<option>On hold</option><option>Completed</option>
+</select>
+</div>
+<div class="field">
+<label for="editBudget">Agreed budget (KSh)</label>
+<input id="editBudget" type="number" min="0" step="1">
+</div>
+<div class="field">
+<label for="editPaid">Amount paid (KSh)</label>
+<input id="editPaid" type="number" min="0" step="1">
+</div>
+</div>
+
+<div class="field">
+<label for="editNotes">Project notes</label>
+<textarea id="editNotes" maxlength="2000"></textarea>
+</div>
+
+<div class="actions">
+<button class="btn" type="submit">Save changes</button>
+<button class="btn secondary" id="cancelModal" type="button">Cancel</button>
+</div>
+</form>
+</div>
+</div>
+
+<script>
+const KEY="infiniteIQDashboardV1";
+
+let data={projects:[],tasks:[]};
+let editingId=null;
+
+const $=id=>document.getElementById(id);
+
+const STATUSES=["Planning","In progress","On hold","Completed"];
+const TYPES=["Website","Online store","Digital product","Branding","Other"];
+
+function makeId(){
+if(window.crypto && crypto.randomUUID)return crypto.randomUUID();
+return "id-"+Date.now()+"-"+Math.random().toString(36).slice(2);
+}
+
+function money(n){
+return "KSh "+Number(n||0).toLocaleString("en-KE");
+}
+
+function validData(value){
+if(!value || typeof value!=="object")return false;
+if(!Array.isArray(value.projects)||!Array.isArray(value.tasks))return false;
+
+const projects=value.projects.every(p=>
+p && typeof p==="object" &&
+typeof p.id==="string" &&
+typeof p.name==="string" &&
+typeof p.client==="string" &&
+TYPES.includes(p.type) &&
+typeof p.deadline==="string" &&
+STATUSES.includes(p.status) &&
+Number.isFinite(p.budget) && p.budget>=0 &&
+Number.isFinite(p.paid) && p.paid>=0 &&
+typeof p.notes==="string"
+);
+
+const tasks=value.tasks.every(t=>
+t && typeof t==="object" &&
+typeof t.id==="string" &&
+typeof t.name==="string" &&
+typeof t.project==="string" &&
+typeof t.due==="string" &&
+typeof t.done==="boolean"
+);
+
+return projects&&tasks;
+}
+
+function loadData(){
+try{
+const saved=JSON.parse(localStorage.getItem(KEY));
+if(validData(saved))data=saved;
+}catch(error){
+console.warn("Dashboard data could not be loaded.",error);
+}
+}
+
+function saveData(){
+try{
+localStorage.setItem(KEY,JSON.stringify(data));
+return true;
+}catch(error){
+alert("Your browser could not save the data. Export a backup or free some browser storage.");
+return false;
+}
+}
+
+function safe(value){
+return String(value??"").replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function render(){
+const projects=data.projects;
+const tasks=data.tasks;
+
+$("totalProjects").textContent=projects.length;
+$("activeProjects").textContent=projects.filter(p=>p.status==="In progress").length;
+$("completedProjects").textContent=projects.filter(p=>p.status==="Completed").length;
+$("remainingTasks").textContent=tasks.filter(t=>!t.done).length;
+
+const budget=projects.reduce((s,p)=>s+p.budget,0);
+const paid=projects.reduce((s,p)=>s+p.paid,0);
+
+$("totalBudget").textContent=money(budget);
+$("totalPaid").textContent=money(paid);
+$("totalBalance").textContent=money(budget-paid);
+
+renderProjects();
+renderTasks();
+renderProjectOptions();
+}
+
+function renderProjects(){
+const search=$("projectSearch").value.trim().toLowerCase();
+const filter=$("projectFilter").value;
+
+const filtered=data.projects.filter(p=>{
+const matchesSearch=[p.name,p.client,p.type,p.notes].join(" ").toLowerCase().includes(search);
+const matchesFilter=filter==="All"||p.status===filter;
+return matchesSearch&&matchesFilter;
+});
+
+$("projectList").innerHTML=filtered.length?filtered.map(p=>{
+const paymentPercent=p.budget>0?Math.min(100,Math.round(p.paid/p.budget*100)):0;
+const statusClass=p.status==="Completed"?"completed":p.status==="On hold"?"hold":"";
+
+return `<article class="project">
+<div class="projecttop">
+<div><h3>${safe(p.name)}</h3>
+<p>${safe(p.client||"No client added")} · ${safe(p.type)}</p></div>
+<span class="tag ${statusClass}">${safe(p.status)}</span>
+</div>
+<p class="muted">Deadline: ${safe(p.deadline||"Not set")}</p>
+<p class="muted">${safe(p.notes||"No notes")}</p>
+<div class="progress"><span style="width:${paymentPercent}%"></span></div>
+<p class="muted">Payment recorded: ${money(p.paid)} / ${money(p.budget)}</p>
+<div class="actions">
+<button class="btn secondary small" data-action="edit-project" data-id="${safe(p.id)}">Edit project</button>
+<button class="btn danger small" data-action="delete-project" data-id="${safe(p.id)}">Delete</button>
+</div>
+</article>`;
+}).join(""):'<div class="empty">No matching projects found.</div>';
+}
+
+function renderProjectOptions(){
+const current=$("taskProject").value;
+$("taskProject").innerHTML='<option value="">General task</option>'+
+data.projects.map(p=>`<option value="${safe(p.id)}">${safe(p.name)}</option>`).join("");
+
+if(data.projects.some(p=>p.id===current))$("taskProject").value=current;
+}
+
+function renderTasks(){
+$("taskList").innerHTML=data.tasks.length?data.tasks.map(t=>{
+const project=data.projects.find(p=>p.id===t.project);
+return `<div class="task ${t.done?"done":""}">
+<input type="checkbox" data-action="toggle-task" data-id="${safe(t.id)}" ${t.done?"checked":""} aria-label="Mark task complete">
+<label>${safe(t.name)}
+<div class="muted">${safe(project?.name||"General task")} · ${safe(t.due||"No due date")}</div>
+</label>
+<button class="btn danger small" data-action="delete-task" data-id="${safe(t.id)}">×</button>
+</div>`;
+}).join(""):'<div class="empty">No tasks yet. Add one above.</div>';
+}
+
+function resetProjectForm(){
+$("projectForm").reset();
+editingId=null;
+$("formTitle").textContent="Create a project";
+$("submitProject").textContent="Save project";
+$("cancelEdit").hidden=true;
+$("formMessage").textContent="";
+}
+
+$("projectForm").addEventListener("submit",e=>{
+e.preventDefault();
+
+const name=$("projectName").value.trim();
+const budget=Number($("projectBudget").value||0);
+const paid=Number($("projectPaid").value||0);
+
+if(!name){alert("Please enter a project name.");return}
+if(!Number.isFinite(budget)||budget<0||!Number.isFinite(paid)||paid<0){
+alert("Enter valid non-negative amounts.");return;
+}
+if(paid>budget&&budget>0){
+if(!confirm("The payment is higher than the agreed budget. Save anyway?"))return;
+}
+
+const project={
+id:editingId||makeId(),
+name,
+client:$("clientName").value.trim(),
+type:$("projectType").value,
+deadline:$("deadline").value,
+status:$("projectStatus").value,
+budget,
+paid,
+notes:$("projectNotes").value.trim()
+};
+
+if(editingId){
+const index=data.projects.findIndex(p=>p.id===editingId);
+if(index!==-1)data.projects[index]=project;
+}else{
+data.projects.push(project);
+}
+
+if(saveData()){
+resetProjectForm();
+render();
+$("formMessage").textContent="Project saved successfully.";
+}
+});
+
+$("taskForm").addEventListener("submit",e=>{
+e.preventDefault();
+const name=$("taskName").value.trim();
+if(!name)return;
+
+data.tasks.push({
+id:makeId(),
+name,
+project:$("taskProject").value,
+due:$("taskDue").value,
+done:false
+});
+
+if(saveData()){
+e.target.reset();
+render();
+}
+});
+
+function editProject(id){
+const p=data.projects.find(x=>x.id===id);
+if(!p)return;
+
+$("editId").value=p.id;
+$("editName").value=p.name;
+$("editClient").value=p.client;
+$("editType").value=p.type;
+$("editDeadline").value=p.deadline;
+$("editStatus").value=p.status;
+$("editBudget").value=p.budget;
+$("editPaid").value=p.paid;
+$("editNotes").value=p.notes;
+
+$("editModal").classList.add("open");
+$("editName").focus();
+}
+
+function closeModal(){
+$("editModal").classList.remove("open");
+}
+
+$("editForm").addEventListener("submit",e=>{
+e.preventDefault();
+
+const id=$("editId").value;
+const p=data.projects.find(x=>x.id===id);
+if(!p)return;
+
+const budget=Number($("editBudget").value||0);
+const paid=Number($("editPaid").value||0);
+
+if(!Number.isFinite(budget)||budget<0||!Number.isFinite(paid)||paid<0){
+alert("Enter valid non-negative amounts.");return;
+}
+if(paid>budget&&budget>0){
+if(!confirm("The payment is higher than the agreed budget. Save anyway?"))return;
+}
+
+p.name=$("editName").value.trim();
+p.client=$("editClient").value.trim();
+p.type=$("editType").value;
+p.deadline=$("editDeadline").value;
+p.status=$("editStatus").value;
+p.budget=budget;
+p.paid=paid;
+p.notes=$("editNotes").value.trim();
+
+if(!p.name){alert("Project name is required.");return}
+
+if(saveData()){
+closeModal();
+render();
+}
+});
+
+$("closeModal").addEventListener("click",closeModal);
+$("cancelModal").addEventListener("click",closeModal);
+$("editModal").addEventListener("click",e=>{
+if(e.target===$("editModal"))closeModal();
+});
+
+$("cancelEdit").addEventListener("click",resetProjectForm);
+
+$("newProjectBtn").addEventListener("click",()=>{
+resetProjectForm();
+$("projectFormPanel").scrollIntoView({behavior:"smooth"});
+$("projectName").focus();
+});
+
+$("projectList").addEventListener("click",e=>{
+const button=e.target.closest("button[data-action]");
+if(!button)return;
+const {action,id}=button.dataset;
+
+if(action==="edit-project")editProject(id);
+
+if(action==="delete-project"){
+if(confirm("Delete this project? Tasks linked to it will become general tasks.")){
+data.projects=data.projects.filter(p=>p.id!==id);
+data.tasks.forEach(t=>{if(t.project===id)t.project=""});
+if(saveData())render();
+}
+}
+});
+
+$("taskList").addEventListener("change",e=>{
+if(e.target.dataset.action!=="toggle-task")return;
+const task=data.tasks.find(t=>t.id===e.target.dataset.id);
+if(task){task.done=e.target.checked;if(saveData())render()}
+});
+
+$("taskList").addEventListener("click",e=>{
+const button=e.target.closest("button[data-action='delete-task']");
+if(!button)return;
+const id=button.dataset.id;
+if(confirm("Delete this task?")){
+data.tasks=data.tasks.filter(t=>t.id!==id);
+if(saveData())render();
+}
+});
+
+$("projectSearch").addEventListener("input",renderProjects);
+$("projectFilter").addEventListener("change",renderProjects);
+
+$("exportBtn").addEventListener("click",()=>{
+const backup={
+format:"INFINITE-IQ-DASHBOARD",
+version:1,
+exportedAt:new Date().toISOString(),
+data
+};
+
+const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
+const url=URL.createObjectURL(blob);
+const a=document.createElement("a");
+a.href=url;
+a.download="infinite-iq-dashboard-backup.json";
+a.click();
+URL.revokeObjectURL(url);
+$("backupMessage").textContent="Backup exported successfully.";
+});
+
+$("importBtn").addEventListener("click",()=>$("importFile").click());
+
+$("importFile").addEventListener("change",async e=>{
+const file=e.target.files[0];
+if(!file)return;
+
+try{
+const parsed=JSON.parse(await file.text());
+const imported=parsed?.data||parsed;
+
+if(!validData(imported)){
+throw new Error("This file does not contain a valid INFINITE IQ dashboard backup.");
+}
+
+if(!confirm("Importing will replace the projects and tasks currently stored in this browser. Continue?"))return;
+
+const previous=data;
+data=imported;
+
+if(saveData()){
+render();
+$("backupMessage").textContent="Backup imported successfully.";
+}else{
+data=previous;
+}
+}catch(error){
+alert(error.message||"Could not read this backup file.");
+}finally{
+e.target.value="";
+}
+});
+
+$("clearBtn").addEventListener("click",()=>{
+if(!confirm("This permanently deletes all projects and tasks saved in this browser. Export a backup first if you need one. Continue?"))return;
+
+const previous=data;
+data={projects:[],tasks:[]};
+
+if(saveData()){
+resetProjectForm();
+render();
+$("backupMessage").textContent="Dashboard data deleted.";
+}else{
+data=previous;
+}
+});
+
+loadData();
+render();
+</script>
+
+</body>
+</html>

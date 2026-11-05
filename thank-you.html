@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080812">
+<meta name="description" content="Your project enquiry has been received by INFINITE IQ.">
+<title>Enquiry Received | INFINITE IQ</title>
+
+<style>
+:root {
+  --bg: #080812;
+  --card: #111120;
+  --purple: #9b6cff;
+  --blue: #50d9ff;
+  --muted: #aaa8c0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: #f7f5ff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.background {
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: #7950ff;
+  filter: blur(160px);
+  opacity: .16;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.background-two {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #50d9ff;
+  filter: blur(150px);
+  opacity: .08;
+  bottom: -100px;
+  right: -70px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  margin-bottom: 35px;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.logo span { color: var(--purple); }
+
+.card {
+  background: rgba(17,17,32,.88);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 25px;
+  padding: 50px 40px;
+  box-shadow: 0 20px 80px rgba(0,0,0,.3);
+  backdrop-filter: blur(15px);
+  animation: fadeUp .7s ease both;
+}
+
+.check {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  background: linear-gradient(135deg,var(--purple),var(--blue));
+  box-shadow: 0 0 40px rgba(155,108,255,.3);
+  animation: pop .7s ease;
+}
+
+.tag {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 17px;
+}
+
+h1 {
+  font-size: clamp(34px,7vw,52px);
+  line-height: 1.15;
+  letter-spacing: -1.3px;
+  margin-bottom: 20px;
+}
+
+.gradient {
+  background: linear-gradient(100deg,var(--purple),var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 490px;
+  margin: 0 auto 30px;
+}
+
+.reference {
+  display: inline-block;
+  color: #aaa8c0;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 30px;
+  padding: 8px 15px;
+  font-size: 11px;
+  margin-bottom: 28px;
+}
+
+.next {
+  background: #090916;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.next h2 {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 17px;
+}
+
+.number {
+  min-width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(155,108,255,.13);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.step strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 28px;
+  border-radius: 30px;
+  background: linear-gradient(100deg,var(--purple),#6652dc);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(155,108,255,.25);
+}
+
+.secondary {
+  display: block;
+  margin-top: 22px;
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.secondary:hover { opacity: .7; }
+
+footer {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #77758d;
+}
+
+@keyframes pop {
+  0% { transform: scale(.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:550px) {
+  body { padding: 20px 13px; }
+  .card { padding: 38px 21px; border-radius: 20px; }
+  .logo { margin-bottom: 25px; }
+  .next { padding: 20px 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="background-two"></div>
+
+<div class="container">
+
+<a href="index.html" class="logo">
+INFINITE<span> IQ</span>
+</a>
+
+<main class="card">
+
+<div class="check" aria-hidden="true">✓</div>
+
+<div class="tag">ENQUIRY RECEIVED</div>
+
+<h1>One Step Closer to <span class="gradient">Something Great.</span></h1>
+
+<p class="description">
+Thank you for reaching out to INFINITE IQ.
+Your enquiry has been submitted, and we're excited to learn more about your vision.
+</p>
+
+<div class="reference">
+YOUR NEXT CHAPTER STARTS HERE
+</div>
+
+<section class="next">
+<h2>What happens next?</h2>
+
+<div class="step">
+<div class="number">01</div>
+<div>
+<strong>Enquiry review</strong>
+<p>We'll review the details and requirements you shared with us.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="number">02</div>
+<div>
+<strong>We'll get in touch</strong>
+<p>We'll use the email address you provided to discuss your project.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="number">03</div>
+<div>
+<strong>Plan the next steps</strong>
+<p>We'll discuss the direction, features and next steps for your project.</p>
+</div>
+</div>
+
+</section>
+
+<a href="index.html" class="button">
+Return to INFINITE IQ ↗
+</a>
+
+<a href="index.html#services" class="secondary">
+Explore Our Services
+</a>
+
+</main>
+
+<footer>
+© <span id="year"></span> INFINITE IQ · Ideas Without Limits.
+</footer>
+
+</div>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>

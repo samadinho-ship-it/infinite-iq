@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080812">
+<meta name="description" content="Start your next digital project with INFINITE IQ. Tell us about your business and website idea.">
+<title>Start Your Project | INFINITE IQ</title>
+
+<style>
+:root {
+  --bg: #080812;
+  --card: #111120;
+  --purple: #9b6cff;
+  --blue: #50d9ff;
+  --muted: #aaa8c0;
+  --border: rgba(255,255,255,.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(155,108,255,.13), transparent 38%),
+    radial-gradient(ellipse at 90% 85%, rgba(80,217,255,.08), transparent 35%),
+    var(--bg);
+  color: #f7f5ff;
+  min-height: 100vh;
+  padding: 35px 18px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 760px;
+  margin: auto;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -.8px;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+.logo span { color: var(--purple); }
+
+.card {
+  background: rgba(17,17,32,.94);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 42px;
+  box-shadow: 0 25px 80px rgba(0,0,0,.25);
+}
+
+.tag {
+  display: inline-block;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: clamp(34px, 7vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  margin-bottom: 15px;
+}
+
+.gradient {
+  background: linear-gradient(100deg,var(--purple),var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.intro {
+  color: var(--muted);
+  margin-bottom: 32px;
+  max-width: 540px;
+  font-size: 15px;
+}
+
+.section-heading {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 30px 0 5px;
+  text-transform: uppercase;
+}
+
+.field { margin-top: 20px; }
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #e9e5f7;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 15px 16px;
+  background: #090916;
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #77758d;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(155,108,255,.13);
+}
+
+select { cursor: pointer; }
+
+select option {
+  background: #111120;
+  color: white;
+}
+
+textarea {
+  min-height: 145px;
+  resize: vertical;
+}
+
+.field-hint {
+  color: #85829c;
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 30px;
+  padding: 16px;
+  border: 0;
+  border-radius: 30px;
+  background: linear-gradient(100deg,var(--purple),#6652dc);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(155,108,255,.25);
+}
+
+.submit-btn:disabled {
+  opacity: .65;
+  cursor: wait;
+  transform: none;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 28px;
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 13px;
+  transition: opacity .2s;
+}
+
+.back:hover { opacity: .7; }
+
+footer {
+  text-align: center;
+  color: #77758d;
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+@media(max-width:600px) {
+  body { padding: 22px 13px; }
+  .card { padding: 28px 20px; border-radius: 19px; }
+  .logo { margin-bottom: 22px; }
+  h1 { letter-spacing: -1px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="index.html" class="logo">
+INFINITE<span> IQ</span>
+</a>
+
+<main class="card">
+
+<div class="tag">LET'S BUILD SOMETHING GREAT</div>
+
+<h1>Start Your <span class="gradient">Project.</span></h1>
+
+<p class="intro">
+Every great digital experience starts with an idea.
+Tell us what you're planning, and let's explore what we can build together.
+</p>
+
+<form
+  id="enquiryForm"
+  action="https://formsubmit.app/f/negj8tb4h4"
+  method="POST"
+>
+
+<input
+  type="hidden"
+  name="_redirect"
+  value="https://samadinho-ship-it.github.io/infinite-iq-new/thank-you.html"
+>
+
+<input type="hidden" name="_replyto" id="replyTo" value="">
+<input type="hidden" name="_ts" id="formTimestamp" value="">
+
+<!-- Spam protection -->
+<div style="position:absolute;left:-9999px" aria-hidden="true">
+<label for="website">Leave this field empty</label>
+<input
+  type="text"
+  id="website"
+  name="_gotcha"
+  tabindex="-1"
+  autocomplete="off"
+>
+</div>
+
+<div class="section-heading">Your details</div>
+
+<div class="field">
+<label for="name">Your full name *</label>
+<input
+  id="name"
+  name="name"
+  type="text"
+  required
+  maxlength="100"
+  autocomplete="name"
+  placeholder="Enter your full name"
+>
+</div>
+
+<div class="field">
+<label for="business">Business name *</label>
+<input
+  id="business"
+  name="business"
+  type="text"
+  required
+  maxlength="100"
+  autocomplete="organization"
+  placeholder="Enter your business name"
+>
+</div>
+
+<div class="field">
+<label for="email">Email address *</label>
+<input
+  id="email"
+  name="email"
+  type="email"
+  required
+  maxlength="150"
+  autocomplete="email"
+  placeholder="you@example.com"
+>
+</div>
+
+<div class="section-heading">Your project</div>
+
+<div class="field">
+<label for="package">Which package interests you? *</label>
+
+<select id="package" name="package" required>
+<option value="">Choose a package</option>
+<option value="Starter Website">Starter Website</option>
+<option value="Professional Website">Professional Website</option>
+<option value="Premium Website">Premium Website</option>
+<option value="Not sure yet">Not sure yet</option>
+</select>
+</div>
+
+<div class="field">
+<label for="description">Tell us about your project *</label>
+
+<textarea
+  id="description"
+  name="description"
+  required
+  maxlength="3000"
+  placeholder="What kind of website do you want? What should it do? What features do you have in mind?"
+></textarea>
+
+<p class="field-hint">The more details you provide, the better we'll understand your idea.</p>
+</div>
+
+<button type="submit" class="submit-btn" id="submitBtn">
+Send My Enquiry ↗
+</button>
+
+</form>
+
+<p class="note">
+Your enquiry will be submitted through our existing form service.
+</p>
+
+<a href="index.html" class="back">
+← Back to INFINITE IQ
+</a>
+
+</main>
+
+<footer>
+© <span id="year"></span> INFINITE IQ · Ideas Without Limits.
+</footer>
+
+</div>
+
+<script>
+const form = document.getElementById("enquiryForm");
+const emailInput = document.getElementById("email");
+const submitBtn = document.getElementById("submitBtn");
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+document.getElementById("formTimestamp").value =
+  Date.now();
+
+emailInput.addEventListener("input", function() {
+  document.getElementById("replyTo").value =
+    emailInput.value.trim();
+});
+
+// Automatically select a package from the previous page
+const params = new URLSearchParams(window.location.search);
+const selected = params.get("package");
+
+const packageOptions = {
+  starter: "Starter Website",
+  professional: "Professional Website",
+  premium: "Premium Website"
+};
+
+if (selected && packageOptions[selected]) {
+  document.getElementById("package").value =
+    packageOptions[selected];
+}
+
+// Prevent accidental repeated submissions
+form.addEventListener("submit", function(event) {
+  if (!form.reportValidity()) {
+    event.preventDefault();
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending Your Enquiry...";
+});
+</script>
+
+</body>
+</html>

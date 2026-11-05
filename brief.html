@@ -1,0 +1,1280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+<title>INFINITE IQ | Project Studio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:#080b14;
+  --panel:#111827;
+  --panel2:#172238;
+  --text:#f4f7ff;
+  --muted:#9aa8bd;
+  --cyan:#54e5ff;
+  --purple:#9c7bff;
+  --line:rgba(255,255,255,.1);
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  font-family:'DM Sans',sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 0%,#19294a,transparent 35%),
+    radial-gradient(circle at 90% 35%,#21183e,transparent 30%),
+    var(--bg);
+  min-height:100vh;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 7%;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  background:rgba(8,11,20,.94);
+  backdrop-filter:blur(15px);
+  z-index:10;
+}
+
+.logo {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logo span { color:var(--cyan); }
+
+header a {
+  color:var(--muted);
+  font-size:13px;
+  text-decoration:none;
+}
+
+header a:hover { color:var(--cyan); }
+
+main {
+  max-width:1200px;
+  margin:auto;
+  padding:60px 22px 85px;
+}
+
+.intro {
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.tag {
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+h1 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(35px,6vw,62px);
+  margin:16px 0;
+  line-height:1.15;
+}
+
+.gradient {
+  background:linear-gradient(100deg,var(--cyan),var(--purple));
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+}
+
+.intro p {
+  max-width:680px;
+  margin:auto;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.progress-wrap {
+  max-width:700px;
+  margin:0 auto 32px;
+}
+
+.progress-label {
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:9px;
+}
+
+.progress-track {
+  height:6px;
+  background:#202b3e;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar {
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  transition:.3s;
+}
+
+.layout {
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:22px;
+  align-items:start;
+}
+
+.panel {
+  background:rgba(17,24,39,.96);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:27px;
+  box-shadow:0 20px 60px #0002;
+}
+
+h2 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:21px;
+  margin:0 0 8px;
+}
+
+.small {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  margin:0 0 22px;
+}
+
+.form-section {
+  padding-bottom:27px;
+  margin-bottom:25px;
+  border-bottom:1px solid var(--line);
+}
+
+.form-section:last-of-type {
+  border-bottom:0;
+}
+
+.section-title {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-bottom:8px;
+}
+
+.section-number {
+  width:33px;
+  height:33px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#292143;
+  color:var(--cyan);
+  font-weight:800;
+  font-size:13px;
+}
+
+.section-title h3 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:17px;
+  margin:0;
+}
+
+.section-description {
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+label {
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin:18px 0 8px;
+}
+
+input,select,textarea {
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  background:#0b1220;
+  color:var(--text);
+  border:1px solid var(--line);
+  font:inherit;
+  font-size:14px;
+  outline:none;
+  transition:border .2s;
+}
+
+input:focus,select:focus,textarea:focus {
+  border-color:var(--cyan);
+}
+
+input::placeholder,textarea::placeholder {
+  color:#728098;
+}
+
+textarea {
+  min-height:105px;
+  resize:vertical;
+}
+
+select option {
+  background:#111827;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 16px;
+}
+
+.checks {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:10px;
+}
+
+.check {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  background:var(--panel2);
+  padding:12px;
+  border-radius:9px;
+  font-size:12px;
+  color:#dbe5f5;
+  margin:0;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+
+.check:hover { border-color:#53627b; }
+
+.check:has(input:checked) {
+  border-color:var(--cyan);
+  background:#152d3b;
+}
+
+.check input {
+  width:16px;
+  height:16px;
+  accent-color:var(--cyan);
+  flex-shrink:0;
+}
+
+.hint {
+  color:var(--muted);
+  font-size:11px;
+  margin-top:8px;
+}
+
+button {
+  border:0;
+  border-radius:10px;
+  padding:13px 17px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:13px;
+  font-family:inherit;
+  transition:.2s;
+}
+
+button:hover {
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+
+button:focus-visible,a:focus-visible {
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+}
+
+.primary {
+  width:100%;
+  margin-top:25px;
+  color:#07111a;
+  background:linear-gradient(100deg,var(--cyan),var(--purple));
+  padding:17px;
+  font-size:14px;
+}
+
+.secondary {
+  color:var(--text);
+  background:#202c40;
+  border:1px solid var(--line);
+}
+
+.actions {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:12px;
+}
+
+.actions button { width:100%; }
+
+.actions[hidden] { display:none; }
+
+.status {
+  color:var(--cyan);
+  font-size:12px;
+  min-height:18px;
+  margin-top:12px;
+}
+
+.result {
+  position:sticky;
+  top:100px;
+}
+
+.empty {
+  min-height:260px;
+  background:#0a1220;
+  border:1px dashed var(--line);
+  border-radius:13px;
+  padding:25px;
+  color:var(--muted);
+  display:grid;
+  place-content:center;
+  text-align:center;
+  line-height:1.8;
+  font-size:13px;
+}
+
+.proposal {
+  display:none;
+  background:#fff;
+  color:#172033;
+  border-radius:13px;
+  overflow:hidden;
+}
+
+.proposal-head {
+  padding:27px;
+  background:#0d1728;
+  color:white;
+  border-bottom:4px solid #54e5ff;
+}
+
+.proposal-brand {
+  font-weight:900;
+  letter-spacing:2px;
+  font-size:18px;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.proposal-brand span { color:#54e5ff; }
+
+.proposal-head small {
+  display:block;
+  color:#b4c2d7;
+  margin-top:8px;
+}
+
+.proposal-body { padding:25px; }
+
+.proposal h3 {
+  font-size:12px;
+  letter-spacing:1.2px;
+  color:#53627a;
+  margin:22px 0 9px;
+  text-transform:uppercase;
+}
+
+.proposal h3:first-child { margin-top:0; }
+
+.proposal p {
+  font-size:13px;
+  line-height:1.8;
+  margin:6px 0;
+  overflow-wrap:anywhere;
+  color:#475569;
+}
+
+.proposal ul {
+  padding-left:19px;
+  margin:8px 0;
+}
+
+.proposal li {
+  font-size:13px;
+  line-height:1.8;
+  color:#475569;
+}
+
+.proposal-divider {
+  height:1px;
+  background:#e3e8ef;
+  margin:19px 0;
+}
+
+.package-highlight {
+  background:#edf8ff;
+  border:1px solid #c9eaff;
+  border-radius:10px;
+  padding:14px;
+}
+
+.package-highlight strong {
+  color:#086c92;
+  font-size:16px;
+}
+
+.package-grid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:9px;
+}
+
+.package-card {
+  border:1px solid #e1e6ed;
+  border-radius:9px;
+  padding:12px;
+}
+
+.package-card strong { font-size:13px; }
+
+.package-card p {
+  font-size:12px;
+  color:#58677d;
+}
+
+.proposal-foot {
+  background:#f2f5f9;
+  padding:16px 24px;
+  color:#64748b;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.tool-note {
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+  margin-top:15px;
+}
+
+footer {
+  text-align:center;
+  padding:35px 20px;
+  color:#777;
+  font-size:13px;
+  border-top:1px solid var(--line);
+}
+
+@media(max-width:850px) {
+  .layout { grid-template-columns:1fr; }
+  .result { position:static; }
+}
+
+@media(max-width:550px) {
+  .checks,.grid { grid-template-columns:1fr; }
+  .panel { padding:19px; }
+  header { padding:18px 5%; }
+  main { padding-top:38px; }
+  .actions { grid-template-columns:1fr; }
+}
+
+@media print {
+  @page { size:A4; margin:14mm; }
+
+  body {
+    background:white!important;
+    color:#172033!important;
+  }
+
+  header,.intro,.progress-wrap,.form-panel,
+  .result-title,.result-desc,.actions,.status,
+  .tool-note,footer {
+    display:none!important;
+  }
+
+  main {
+    padding:0!important;
+    max-width:none!important;
+  }
+
+  .layout { display:block!important; }
+
+  .result-panel {
+    padding:0!important;
+    border:0!important;
+    background:white!important;
+    box-shadow:none!important;
+  }
+
+  .proposal {
+    display:block!important;
+    overflow:visible!important;
+  }
+
+  .proposal-head,.proposal-foot,.package-highlight {
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  .proposal h3 { break-after:avoid; }
+
+  .proposal li,.package-card { break-inside:avoid; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">INFINITE <span>IQ</span></div>
+  <a href="index.html">← Back to website</a>
+</header>
+
+<main>
+
+<section class="intro">
+  <div class="tag">INFINITE IQ PROJECT STUDIO</div>
+  <h1>Turn Your Idea Into <span class="gradient">A Plan.</span></h1>
+  <p>
+    Tell us what you're building. Get a personalised website plan,
+    package recommendation and professional project proposal.
+  </p>
+</section>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span>Project details</span>
+    <span id="progressText">0% complete</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+</div>
+
+<div class="layout">
+
+<section class="panel form-panel">
+
+<h2>Tell us about your project</h2>
+<p class="small">
+  Fields marked * are required. The more details you provide,
+  the more useful your proposal will be.
+</p>
+
+<form id="briefForm">
+
+<div class="form-section">
+  <div class="section-title">
+    <div class="section-number">01</div>
+    <h3>Client information</h3>
+  </div>
+  <p class="section-description">Who are we working with?</p>
+
+  <div class="grid">
+    <div>
+      <label for="name">Your name</label>
+      <input id="name" placeholder="Your full name">
+    </div>
+    <div>
+      <label for="email">Email address</label>
+      <input id="email" type="email" placeholder="you@example.com">
+    </div>
+  </div>
+
+  <label for="business">Business or project name *</label>
+  <input id="business" placeholder="e.g. Nova Threads" required>
+
+  <div class="grid">
+    <div>
+      <label for="location">Business location</label>
+      <input id="location" placeholder="e.g. Nairobi, Kenya">
+    </div>
+    <div>
+      <label for="existing">Existing website</label>
+      <input id="existing" type="url" placeholder="https://example.com">
+    </div>
+  </div>
+</div>
+
+<div class="form-section">
+  <div class="section-title">
+    <div class="section-number">02</div>
+    <h3>Project overview</h3>
+  </div>
+  <p class="section-description">Help us understand your idea and its purpose.</p>
+
+  <label for="type">What type of website do you need? *</label>
+  <select id="type" required>
+    <option value="">Choose a website type</option>
+    <option>Business website</option>
+    <option>Personal brand website</option>
+    <option>Online store / e-commerce</option>
+    <option>Portfolio website</option>
+    <option>Blog or news website</option>
+    <option>Landing page</option>
+    <option>Other / Not sure yet</option>
+  </select>
+
+  <label for="description">Describe your business or idea *</label>
+  <textarea id="description" placeholder="What do you offer? What problem do you solve?" required></textarea>
+
+  <label for="audience">Who are your target customers?</label>
+  <input id="audience" placeholder="e.g. Local customers, students, businesses">
+
+  <label for="goal">What is the main goal of the website?</label>
+  <select id="goal">
+    <option value="">Choose your main goal</option>
+    <option>Increase brand awareness</option>
+    <option>Generate enquiries and leads</option>
+    <option>Sell products online</option>
+    <option>Showcase my work</option>
+    <option>Receive bookings</option>
+    <option>Share information and content</option>
+    <option>Build a customer community</option>
+  </select>
+</div>
+
+<div class="form-section">
+  <div class="section-title">
+    <div class="section-number">03</div>
+    <h3>Website structure</h3>
+  </div>
+  <p class="section-description">Choose the pages you want included.</p>
+
+  <div class="checks">
+    <label class="check"><input type="checkbox" name="pages" value="Home"> Home</label>
+    <label class="check"><input type="checkbox" name="pages" value="About Us"> About Us</label>
+    <label class="check"><input type="checkbox" name="pages" value="Products / Shop"> Products / Shop</label>
+    <label class="check"><input type="checkbox" name="pages" value="Services"> Services</label>
+    <label class="check"><input type="checkbox" name="pages" value="Portfolio"> Portfolio</label>
+    <label class="check"><input type="checkbox" name="pages" value="Testimonials"> Testimonials</label>
+    <label class="check"><input type="checkbox" name="pages" value="Blog"> Blog</label>
+    <label class="check"><input type="checkbox" name="pages" value="Contact"> Contact</label>
+    <label class="check"><input type="checkbox" name="pages" value="FAQ"> FAQ</label>
+    <label class="check"><input type="checkbox" name="pages" value="Booking"> Booking</label>
+  </div>
+
+  <p class="hint">Select all the pages you think your website needs.</p>
+</div>
+
+<div class="form-section">
+  <div class="section-title">
+    <div class="section-number">04</div>
+    <h3>Website functionality</h3>
+  </div>
+  <p class="section-description">Choose the tools and features visitors should be able to use.</p>
+
+  <div class="checks">
+    <label class="check"><input type="checkbox" name="features" value="Contact form"> Contact form</label>
+    <label class="check"><input type="checkbox" name="features" value="Online payments"> Online payments</label>
+    <label class="check"><input type="checkbox" name="features" value="Product gallery"> Product gallery</label>
+    <label class="check"><input type="checkbox" name="features" value="Booking system"> Booking system</label>
+    <label class="check"><input type="checkbox" name="features" value="WhatsApp contact"> WhatsApp contact</label>
+    <label class="check"><input type="checkbox" name="features" value="Blog or articles"> Blog or articles</label>
+    <label class="check"><input type="checkbox" name="features" value="Customer dashboard"> Customer dashboard</label>
+    <label class="check"><input type="checkbox" name="features" value="Search and filtering"> Search and filtering</label>
+    <label class="check"><input type="checkbox" name="features" value="Newsletter signup"> Newsletter signup</label>
+    <label class="check"><input type="checkbox" name="features" value="Social media links"> Social media links</label>
+    <label class="check"><input type="checkbox" name="features" value="Mobile-friendly design"> Mobile-friendly design</label>
+    <label class="check"><input type="checkbox" name="features" value="Customer accounts"> Customer accounts</label>
+  </div>
+</div>
+
+<div class="form-section">
+  <div class="section-title">
+    <div class="section-number">05</div>
+    <h3>Design direction</h3>
+  </div>
+  <p class="section-description">Describe the look and feel you want.</p>
+
+  <div class="grid">
+    <div>
+      <label for="style">Preferred design style</label>
+      <select id="style">
+        <option value="">Choose a style</option>
+        <option>Modern and minimal</option>
+        <option>Premium and elegant</option>
+        <option>Bold and colourful</option>
+        <option>Dark and futuristic</option>
+        <option>Simple and professional</option>
+        <option>Creative and experimental</option>
+        <option>Let INFINITE IQ recommend one</option>
+      </select>
+    </div>
+    <div>
+      <label for="colours">Preferred colours</label>
+      <input id="colours" placeholder="e.g. Black, white and gold">
+    </div>
+  </div>
+
+  <label for="inspiration">Design inspiration</label>
+  <input id="inspiration" placeholder="Website links or examples you admire">
+
+  <label for="assets">Do you have a logo and images ready?</label>
+  <select id="assets">
+    <option value="Not decided">Not decided</option>
+    <option value="Yes, everything is ready">Yes, everything is ready</option>
+    <option value="I have some materials">I have some materials</option>
+    <option value="I need help creating them">I need help creating them</option>
+  </select>
+</div>
+
+<div class="form-section">
+  <div class="section-title">
+    <div class="section-number">06</div>
+    <h3>Budget and timeline</h3>
+  </div>
+  <p class="section-description">Help us understand your project expectations.</p>
+
+  <div class="grid">
+    <div>
+      <label for="budget">Budget in mind</label>
+      <select id="budget">
+        <option value="">Prefer not to say</option>
+        <option>Still deciding</option>
+        <option>Under KSh 5,000</option>
+        <option>KSh 5,000–15,000</option>
+        <option>KSh 15,000–30,000</option>
+        <option>KSh 30,000–60,000</option>
+        <option>Above KSh 60,000</option>
+      </select>
+    </div>
+    <div>
+      <label for="timeline">Preferred timeline</label>
+      <select id="timeline">
+        <option value="">Not decided yet</option>
+        <option>As soon as reasonably possible</option>
+        <option>Within 2 weeks</option>
+        <option>Within 1 month</option>
+        <option>Within 2–3 months</option>
+        <option>Flexible timeline</option>
+      </select>
+    </div>
+  </div>
+
+  <label for="extra">Additional requirements</label>
+  <textarea id="extra" placeholder="Anything else we should know about your project?"></textarea>
+</div>
+
+<button class="primary" type="submit">
+  Create My Professional Proposal →
+</button>
+
+</form>
+</section>
+
+<aside class="panel result result-panel">
+
+<h2 class="result-title">Your project proposal</h2>
+<p class="small result-desc">
+  Your personalised proposal will appear here.
+  You can copy, download or save it as a PDF.
+</p>
+
+<div class="empty" id="emptyState">
+  <div>
+    <strong style="color:#54e5ff">Your project starts here.</strong>
+    <br>
+    Complete the form and generate your proposal.
+  </div>
+</div>
+
+<article class="proposal" id="proposal">
+  <div class="proposal-head">
+    <div class="proposal-brand">INFINITE <span>IQ</span></div>
+    <small>Ideas Without Limits · Website Project Proposal</small>
+  </div>
+
+  <div class="proposal-body" id="proposalBody"></div>
+
+  <div class="proposal-foot">
+    Prepared by INFINITE IQ. This is an initial planning document,
+    not a contract or final quotation. All project scope, costs and
+    timelines must be agreed before work begins.
+  </div>
+</article>
+
+<div class="actions" id="actions" hidden>
+  <button class="secondary" id="copyBtn" type="button">Copy report</button>
+  <button class="secondary" id="downloadBtn" type="button">Download text</button>
+  <button class="secondary" id="printBtn" type="button">Save as PDF / Print</button>
+  <button class="secondary" id="enquiryBtn" type="button">Continue to enquiry →</button>
+</div>
+
+<p class="status" id="status" aria-live="polite"></p>
+
+<p class="tool-note">
+  Your answers are processed in your browser. Generating this proposal
+  does not automatically submit or store your information.
+</p>
+
+</aside>
+</div>
+</main>
+
+<footer>
+© <span id="year"></span> INFINITE IQ · Ideas Without Limits.
+</footer>
+
+<script>
+"use strict";
+
+const form = document.getElementById("briefForm");
+const output = document.getElementById("proposalBody");
+const statusText = document.getElementById("status");
+const emptyState = document.getElementById("emptyState");
+const proposal = document.getElementById("proposal");
+const actions = document.getElementById("actions");
+
+let generatedBrief = "";
+let recommendedPackage = "starter";
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+const progressFields = [
+  "business",
+  "type",
+  "description",
+  "audience",
+  "goal",
+  "style",
+  "colours",
+  "budget",
+  "timeline"
+];
+
+function updateProgress() {
+  let complete = 0;
+
+  progressFields.forEach(id => {
+    if (document.getElementById(id).value.trim()) complete++;
+  });
+
+  const checked = document.querySelectorAll(
+    'input[name="pages"]:checked, input[name="features"]:checked'
+  ).length;
+
+  const percentage = Math.round(
+    ((complete + (checked > 0 ? 1 : 0)) /
+    (progressFields.length + 1)) * 100
+  );
+
+  document.getElementById("progressBar").style.width =
+    percentage + "%";
+
+  document.getElementById("progressText").textContent =
+    percentage + "% complete";
+}
+
+form.addEventListener("input", updateProgress);
+form.addEventListener("change", updateProgress);
+
+function getValue(id, fallback = "Not specified") {
+  const value = document.getElementById(id).value.trim();
+  return value || fallback;
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[char]);
+}
+
+function selectedItems(name) {
+  return Array.from(
+    document.querySelectorAll(`input[name="${name}"]:checked`)
+  ).map(item => item.value);
+}
+
+function makeList(items) {
+  return "<ul>" + items.map(item =>
+    "<li>" + escapeHTML(item) + "</li>"
+  ).join("") + "</ul>";
+}
+
+function section(title, content) {
+  return "<h3>" + title + "</h3>" + content;
+}
+
+function recommendPackage(type, features, pages) {
+  let score = 0;
+
+  if (type === "Online store / e-commerce") score += 3;
+  if (type === "Business website") score += 1;
+  if (type === "Personal brand website") score += 1;
+  if (type === "Portfolio website") score += 1;
+  if (type === "Blog or news website") score += 2;
+
+  if (features.includes("Online payments")) score += 2;
+  if (features.includes("Booking system")) score += 2;
+  if (features.includes("Customer dashboard")) score += 3;
+  if (features.includes("Customer accounts")) score += 3;
+  if (features.includes("Search and filtering")) score += 2;
+  if (features.includes("Product gallery")) score += 1;
+  if (features.includes("Newsletter signup")) score += 1;
+  if (features.includes("Blog or articles")) score += 1;
+
+  if (pages.length >= 7) score += 2;
+  else if (pages.length >= 5) score += 1;
+
+  if (score >= 7) {
+    return {
+      name:"Premium",
+      key:"premium",
+      reason:"Your project includes several advanced requirements or more complex functionality."
+    };
+  }
+
+  if (score >= 3) {
+    return {
+      name:"Professional",
+      key:"professional",
+      reason:"Your project needs a combination of useful features and a stronger business presence."
+    };
+  }
+
+  return {
+    name:"Starter",
+    key:"starter",
+    reason:"Your project appears to need a simpler, focused website."
+  };
+}
+
+function recommendPages(type) {
+  const pages = {
+    "Business website":["Home","About","Services","Contact"],
+    "Personal brand website":["Home","About Me","My Work","Contact"],
+    "Online store / e-commerce":[
+      "Home","Shop / Products","Product Details","About","Contact"
+    ],
+    "Portfolio website":["Home","About","Portfolio / Projects","Contact"],
+    "Blog or news website":[
+      "Home","Articles","Article Details","About","Contact"
+    ],
+    "Landing page":["Landing Page","Benefits","Contact or Enquiry"],
+    "Other / Not sure yet":["Home","About","Main Content","Contact"]
+  };
+
+  return pages[type] || pages["Other / Not sure yet"];
+}
+
+const featureReasons = {
+  "Contact form":"Lets visitors send questions and enquiries.",
+  "Online payments":"Can support checkout through a suitable payment provider.",
+  "Product gallery":"Displays products visually.",
+  "Booking system":"Can help visitors request appointments.",
+  "WhatsApp contact":"Provides a familiar way to contact the business.",
+  "Blog or articles":"Creates space for news and useful content.",
+  "Customer dashboard":"May provide personalised customer features and requires additional technical planning.",
+  "Search and filtering":"Helps visitors find relevant products or information.",
+  "Newsletter signup":"Allows visitors to subscribe to updates using a suitable email service.",
+  "Social media links":"Connects visitors to the business's social channels.",
+  "Mobile-friendly design":"Helps the website work across phones, tablets and computers.",
+  "Customer accounts":"Allows customer registration and sign-in, requiring secure account functionality."
+};
+
+const roadmap = [
+  "Discovery — understand the business, goals and audience.",
+  "Planning — agree on pages, features and project scope.",
+  "Design — establish the layout and visual direction.",
+  "Development — build the agreed website functionality.",
+  "Review — test the website and collect client feedback.",
+  "Launch — publish after approval and confirm handover."
+];
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const business = getValue("business");
+  const type = getValue("type");
+  const description = getValue("description");
+
+  if (!business || !type || !description) {
+    statusText.textContent = "Please complete all required fields.";
+    return;
+  }
+
+  const name = getValue("name");
+  const email = getValue("email");
+  const location = getValue("location");
+  const existing = getValue("existing");
+  const audience = getValue("audience");
+  const goal = getValue("goal");
+  const style = getValue("style", "Open to recommendations");
+  const colours = getValue("colours", "Open to recommendations");
+  const inspiration = getValue("inspiration");
+  const assets = getValue("assets");
+  const budget = getValue("budget");
+  const timeline = getValue("timeline");
+  const extra = getValue("extra");
+
+  const pages = selectedItems("pages");
+  const features = selectedItems("features");
+
+  const finalPages = pages.length ? pages : recommendPages(type);
+
+  const finalFeatures = features.length
+    ? features.map(feature =>
+        feature + ": " + featureReasons[feature]
+      )
+    : ["No specific features selected yet."];
+
+  const pack = recommendPackage(type, features, finalPages);
+  recommendedPackage = pack.key;
+
+  const date = new Date().toLocaleDateString();
+
+  const reportHTML =
+    section("01 · Client details",
+      "<p><strong>Name:</strong> " + escapeHTML(name) + "</p>" +
+      "<p><strong>Email:</strong> " + escapeHTML(email) + "</p>" +
+      "<p><strong>Business:</strong> " + escapeHTML(business) + "</p>" +
+      "<p><strong>Location:</strong> " + escapeHTML(location) + "</p>" +
+      "<p><strong>Existing website:</strong> " + escapeHTML(existing) + "</p>" +
+      "<p><strong>Prepared:</strong> " + escapeHTML(date) + "</p>"
+    ) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("02 · Project overview",
+      "<p><strong>Website type:</strong> " + escapeHTML(type) + "</p>" +
+      "<p><strong>Target audience:</strong> " + escapeHTML(audience) + "</p>" +
+      "<p><strong>Main goal:</strong> " + escapeHTML(goal) + "</p>" +
+      "<p>" + escapeHTML(description).replace(/\n/g,"<br>") + "</p>"
+    ) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("03 · Website structure", makeList(finalPages)) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("04 · Requested functionality", makeList(finalFeatures)) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("05 · Design direction",
+      "<p><strong>Preferred style:</strong> " + escapeHTML(style) + "</p>" +
+      "<p><strong>Colours:</strong> " + escapeHTML(colours) + "</p>" +
+      "<p><strong>Inspiration:</strong> " + escapeHTML(inspiration) + "</p>" +
+      "<p><strong>Logo and images:</strong> " + escapeHTML(assets) + "</p>"
+    ) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("06 · Recommended package",
+      '<div class="package-highlight"><strong>' +
+      escapeHTML(pack.name) + ' PACKAGE</strong><p>' +
+      escapeHTML(pack.reason) +
+      '</p></div><p>This is an automated starting recommendation. Final package selection depends on confirmed project scope and technical requirements.</p>'
+    ) +
+
+    section("Package overview",
+      '<div class="package-grid">' +
+      '<div class="package-card"><strong>STARTER</strong><p>Essential pages and a simple online presence.</p></div>' +
+      '<div class="package-card"><strong>PROFESSIONAL</strong><p>More pages, features and flexibility for growing businesses.</p></div>' +
+      '<div class="package-card"><strong>PREMIUM</strong><p>Complex projects and advanced functionality.</p></div>' +
+      '</div>'
+    ) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("07 · Project roadmap", makeList(roadmap)) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("08 · Client preparation checklist", makeList([
+      "Provide your business logo and brand colours, if available.",
+      "Prepare the text and images you want on the website.",
+      "List your products, services or main business information.",
+      "Identify websites you like for design inspiration.",
+      "Confirm who will review and approve the finished website."
+    ])) +
+
+    '<div class="proposal-divider"></div>' +
+
+    section("09 · Project preferences",
+      "<p><strong>Budget:</strong> " + escapeHTML(budget) + "</p>" +
+      "<p><strong>Preferred timeline:</strong> " + escapeHTML(timeline) + "</p>" +
+      "<p><strong>Additional requirements:</strong> " +
+      escapeHTML(extra).replace(/\n/g,"<br>") + "</p>"
+    ) +
+
+    section("10 · Next steps", makeList([
+      "Review this proposal.",
+      "Discuss requirements with INFINITE IQ.",
+      "Confirm the pages, features and project scope.",
+      "Agree on the final quotation and timeline.",
+      "Begin work after approval."
+    ]));
+
+  const reportText =
+`INFINITE IQ — WEBSITE PROJECT PROPOSAL
+Ideas Without Limits.
+
+01. CLIENT DETAILS
+Name: ${name}
+Email: ${email}
+Business: ${business}
+Location: ${location}
+Existing website: ${existing}
+Prepared: ${date}
+
+02. PROJECT OVERVIEW
+Website type: ${type}
+Target audience: ${audience}
+Main goal: ${goal}
+
+Description:
+${description}
+
+03. WEBSITE STRUCTURE
+${finalPages.map(item => "• " + item).join("\n")}
+
+04. REQUESTED FEATURES
+${finalFeatures.map(item => "• " + item).join("\n")}
+
+05. DESIGN DIRECTION
+Style: ${style}
+Colours: ${colours}
+Inspiration: ${inspiration}
+Logo and images: ${assets}
+
+06. RECOMMENDED PACKAGE
+${pack.name}
+${pack.reason}
+
+Package overview:
+Starter: Essential pages and simple online presence.
+Professional: More pages and features for growing businesses.
+Premium: Complex projects and advanced functionality.
+
+07. PROJECT ROADMAP
+${roadmap.map((item,index) => (index+1) + ". " + item).join("\n")}
+
+08. CLIENT PREPARATION CHECKLIST
+• Provide logo and brand colours if available.
+• Prepare website text and images.
+• List products, services or business information.
+• Identify design inspiration.
+• Confirm who will approve the website.
+
+09. PROJECT PREFERENCES
+Budget: ${budget}
+Timeline: ${timeline}
+Additional requirements: ${extra}
+
+10. NEXT STEPS
+• Review this proposal.
+• Discuss requirements with INFINITE IQ.
+• Confirm scope and features.
+• Agree on final quotation and timeline.
+• Begin work after approval.
+
+IMPORTANT
+This is an initial planning document, not a contract or final quotation.
+External services, hosting, domains and payment processing may involve
+separate costs and arrangements.
+
+INFINITE IQ — Ideas Without Limits.`;
+
+  output.innerHTML = reportHTML;
+  generatedBrief = reportText;
+
+  emptyState.style.display = "none";
+  proposal.style.display = "block";
+  actions.hidden = false;
+
+  statusText.textContent = "Your professional proposal is ready!";
+
+  document.querySelector(".result").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+});
+
+document.getElementById("copyBtn").addEventListener("click", async function() {
+  if (!generatedBrief) return;
+
+  try {
+    await navigator.clipboard.writeText(generatedBrief);
+    statusText.textContent = "Proposal copied successfully!";
+  } catch(error) {
+    const temporary = document.createElement("textarea");
+    temporary.value = generatedBrief;
+    document.body.appendChild(temporary);
+    temporary.select();
+
+    const copied = document.execCommand("copy");
+    temporary.remove();
+
+    statusText.textContent = copied
+      ? "Proposal copied successfully!"
+      : "Copy unavailable. Try downloading the report.";
+  }
+});
+
+document.getElementById("downloadBtn").addEventListener("click", function() {
+  if (!generatedBrief) return;
+
+  const blob = new Blob([generatedBrief], {
+    type:"text/plain;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "infinite-iq-project-proposal.txt";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+  statusText.textContent = "Your proposal is downloading!";
+});
+
+document.getElementById("printBtn").addEventListener("click", function() {
+  if (!generatedBrief) return;
+  window.print();
+});
+
+document.getElementById("enquiryBtn").addEventListener("click", function() {
+  if (!generatedBrief) return;
+
+  window.location.href =
+    "enquiry.html?package=" + encodeURIComponent(recommendedPackage);
+});
+
+updateProgress();
+</script>
+
+</body>
+</html>
