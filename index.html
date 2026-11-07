@@ -633,7 +633,7 @@ What would you like to explore?</div>
     <button type="submit" aria-label="Send message">➤</button>
   </form>
 
-  <div class="iq-chat-disclaimer">Guided assistant with prepared answers · Not a live person or AI service</div>
+  <div class="iq-chat-disclaimer">AI-powered assistant · Local development version</div>
 </section>
 
 <footer>
@@ -652,6 +652,8 @@ What would you like to explore?</div>
 </footer>
 
 <script>
+/* INFINITE IQ — WEBSITE INTERACTIONS */
+
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
@@ -674,6 +676,7 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const revealElements = document.querySelectorAll(".reveal");
+
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -683,273 +686,155 @@ if ("IntersectionObserver" in window) {
       }
     });
   }, { threshold: 0.12 });
+
   revealElements.forEach(element => observer.observe(element));
 } else {
   revealElements.forEach(element => element.classList.add("visible"));
 }
 
-// IQ ASSISTANT — runs locally; no API, account, or chat logging.
+/* REAL LOCAL AI — OLLAMA */
+
 (() => {
-  const launch = document.getElementById('iqChatLaunch');
-  const panel = document.getElementById('iqChatPanel');
-  const close = document.getElementById('iqChatClose');
-  const messages = document.getElementById('iqChatMessages');
-  const form = document.getElementById('iqChatForm');
-  const input = document.getElementById('iqChatInput');
-  const quick = document.getElementById('iqQuickReplies');
+  const launch = document.getElementById("iqChatLaunch");
+  const panel = document.getElementById("iqChatPanel");
+  const close = document.getElementById("iqChatClose");
+  const messages = document.getElementById("iqChatMessages");
+  const form = document.getElementById("iqChatForm");
+  const input = document.getElementById("iqChatInput");
+  const quick = document.getElementById("iqQuickReplies");
 
-  if (!launch || !panel || !messages || !form || !input || !quick) return;
+  if (!launch || !panel || !close || !messages || !form || !input || !quick) return;
 
-  let recommendationStep = 0;
-  let recommendation = { type: '', size: '' };
+  const API_URL = "http://127.0.0.1:3000/chat";
+  const history = [];
+  let isSending = false;
 
   function openChat() {
-    panel.classList.add('open');
-    launch.setAttribute('aria-expanded', 'true');
+    panel.classList.add("open");
+    launch.setAttribute("aria-expanded", "true");
     input.focus();
   }
 
   function closeChat() {
-    panel.classList.remove('open');
-    launch.setAttribute('aria-expanded', 'false');
+    panel.classList.remove("open");
+    launch.setAttribute("aria-expanded", "false");
     launch.focus();
   }
 
-  launch.addEventListener('click', () => {
-    panel.classList.contains('open') ? closeChat() : openChat();
+  launch.addEventListener("click", () => {
+    panel.classList.contains("open") ? closeChat() : openChat();
   });
 
-  close.addEventListener('click', closeChat);
+  close.addEventListener("click", closeChat);
 
   function addMessage(text, who) {
-    const node = document.createElement('div');
-    node.className = 'iq-message ' + who;
+    const node = document.createElement("div");
+    node.className = "iq-message " + who;
     node.textContent = text;
     messages.appendChild(node);
     messages.scrollTop = messages.scrollHeight;
-  }
-
-  function addLinkMessage(text, href, label) {
-    const node = document.createElement('div');
-    node.className = 'iq-message bot';
-    node.textContent = text + ' ';
-
-    const link = document.createElement('a');
-    link.href = href;
-    link.textContent = label;
-
-    node.appendChild(link);
-    messages.appendChild(node);
-    messages.scrollTop = messages.scrollHeight;
+    return node;
   }
 
   function showQuick(items) {
     quick.replaceChildren();
 
     items.forEach(item => {
-      const button = document.createElement('button');
-      button.type = 'button';
+      const button = document.createElement("button");
+      button.type = "button";
       button.textContent = item;
       button.dataset.iq = item;
       quick.appendChild(button);
     });
   }
 
-  function startRecommendation() {
-    recommendationStep = 1;
-    recommendation = { type: '', size: '' };
-
-    addMessage('I can help narrow it down. What are you looking to build?', 'bot');
-
-    showQuick([
-      'A business website',
-      'A personal or portfolio website',
-      'An online tool or digital product',
-      'Not sure yet'
-    ]);
+  function showTyping() {
+    return addMessage("IQ Assistant is thinking...", "bot");
   }
 
-  function recommendationReply(text) {
-    const value = text.toLowerCase();
+  async function sendMessage(text) {
+    const clean = text.trim();
 
-    if (recommendationStep === 1) {
-      recommendation.type = value;
-      recommendationStep = 2;
+    if (!clean || isSending) return;
 
-      addMessage('How much does your idea need?', 'bot');
+    isSending = true;
+    input.disabled = true;
 
-      showQuick([
-        'One simple page',
-        'Several sections or pages',
-        'Multiple pages and custom features',
-        'I need help deciding'
-      ]);
-      return;
-    }
+    addMessage(clean, "user");
+    showQuick([]);
 
-    if (recommendationStep === 2) {
-      recommendation.size = value;
-      recommendationStep = 0;
+    const typing = showTyping();
 
-      let packageName = 'Professional Website';
-      let reason = 'because a multi-section website is a flexible starting point for many projects.';
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: clean,
+          history: history
+        })
+      });
 
-      if (value.includes('one simple')) {
-        packageName = 'Starter Website';
-        reason = 'because it is designed for a focused one-page website.';
-      } else if (value.includes('multiple pages')) {
-        packageName = 'Premium Website';
-        reason = 'because it is intended for custom multi-page experiences and project-specific features.';
-      } else if (value.includes('not sure') || value.includes('help deciding')) {
-        packageName = 'Professional Website';
-        reason = 'because it offers a balanced starting point while your exact requirements are clarified.';
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "The assistant could not respond.");
       }
 
-      addMessage(
-        'Based on those answers, the ' + packageName + ' may be a good starting point ' + reason +
-        '\n\nThis is only a guide. The final scope and quote depend on the features you need.',
-        'bot'
+      if (!data.reply) {
+        throw new Error("The assistant returned an empty response.");
+      }
+
+      typing.remove();
+      addMessage(data.reply, "bot");
+
+      history.push(
+        { role: "user", content: clean },
+        { role: "assistant", content: data.reply }
       );
 
-      showQuick([
-        'Compare all packages',
-        'Send a project enquiry',
-        'Use the free website planner'
-      ]);
-      return;
+      if (history.length > 20) {
+        history.splice(0, history.length - 20);
+      }
+
+    } catch (error) {
+      typing.remove();
+
+      addMessage(
+        "I couldn't connect to IQ Assistant. Please check that Ollama and the INFINITE IQ backend are running on your Mac.",
+        "bot"
+      );
+
+      console.error("IQ Assistant error:", error);
+
+    } finally {
+      isSending = false;
+      input.disabled = false;
+      input.focus();
     }
   }
 
-  function respond(text) {
-    const t = text.toLowerCase();
-
-    if (recommendationStep) {
-      recommendationReply(text);
-      return;
-    }
-
-    if (
-      t.includes('choose a package') ||
-      t.includes('recommend') ||
-      t.includes('which package') ||
-      t.includes('help me choose')
-    ) {
-      startRecommendation();
-      return;
-    }
-
-    if (t.includes('service') || t.includes('what do you do') || t.includes('offer')) {
-      addMessage(
-        'INFINITE IQ focuses on three areas:\n\n' +
-        '🌐 Website development — responsive websites for businesses, creators and personal brands.\n' +
-        '⚡ Digital tools — focused online tools for planning and organising.\n' +
-        '✧ Digital products — useful planners, templates and guides.',
-        'bot'
-      );
-
-      showQuick(['Explain your packages', 'Help me choose a package', 'How do I start a project?']);
-      return;
-    }
-
-    if (t.includes('package') || t.includes('price') || t.includes('cost') || t.includes('quote')) {
-      addMessage(
-        'We offer three website starting points:\n\n' +
-        '🚀 Starter — a focused one-page website.\n' +
-        '💎 Professional — a multi-section website with a project or product showcase.\n' +
-        '👑 Premium — a custom multi-page experience with advanced features.\n\n' +
-        'All projects receive a custom quote based on their requirements. Domain, hosting and third-party costs may be separate.',
-        'bot'
-      );
-
-      showQuick(['Help me choose a package', 'Send a project enquiry', 'Use the free website planner']);
-      return;
-    }
-
-    if (t.includes('start') || t.includes('begin') || t.includes('how do i') || t.includes('process')) {
-      addMessage(
-        'Getting started is simple:\n' +
-        '1. Tell us about your idea.\n' +
-        '2. We discuss the pages, features and design.\n' +
-        '3. We agree on the scope and quote.\n' +
-        '4. Development and review begin after arrangements are agreed.',
-        'bot'
-      );
-
-      addLinkMessage('You can send the details here:', 'enquiry.html', 'Open project enquiry ↗');
-      showQuick(['Help me choose a package', 'Use the free website planner']);
-      return;
-    }
-
-    if (t.includes('planner')) {
-      addMessage(
-        'Our free Business Website Planner helps you organise your goals, pages and requirements before starting.',
-        'bot'
-      );
-
-      addLinkMessage('Open it here:', 'planner.html', 'Launch free planner ↗');
-      showQuick(['Explain your packages', 'How do I start a project?']);
-      return;
-    }
-
-    if (t.includes('portfolio') || t.includes('project') || t.includes('work')) {
-      addMessage(
-        'You can explore the Business Website Planner, Project Brief Builder, Project Dashboard demo and Client Portal demo in our portfolio section. The dashboard and portal are browser-based demonstrations, not live client accounts.',
-        'bot'
-      );
-
-      addLinkMessage('Visit the portfolio:', '#portfolio', 'Explore our work ↗');
-      showQuick(['What services do you offer?', 'Explain your packages']);
-      return;
-    }
-
-    if (t.includes('contact') || t.includes('enquiry') || t.includes('talk') || t.includes('human')) {
-      addMessage(
-        'The best way to reach INFINITE IQ about a project is through the project enquiry form. Sending an enquiry does not require payment.',
-        'bot'
-      );
-
-      addLinkMessage('Start here:', 'enquiry.html', 'Send a project enquiry ↗');
-      return;
-    }
-
-    if (t.includes('hello') || t.includes('hi ') || t === 'hi' || t.includes('hey')) {
-      addMessage('Hello! Welcome to INFINITE IQ. What would you like help with today?', 'bot');
-      showQuick(['Our services', 'Packages', 'Choose a package', 'Start a project']);
-      return;
-    }
-
-    addMessage(
-      'I can help with INFINITE IQ services, website packages, project steps and our free planner. Try asking about one of those, or send a project enquiry for something specific.',
-      'bot'
-    );
-
-    showQuick(['Our services', 'Packages', 'Choose a package', 'Start a project']);
-  }
-
-  function send(text) {
-    const clean = text.trim();
-    if (!clean) return;
-
-    addMessage(clean, 'user');
-    respond(clean);
-  }
-
-  form.addEventListener('submit', event => {
+  form.addEventListener("submit", event => {
     event.preventDefault();
-    send(input.value);
-    input.value = '';
-    input.focus();
+
+    const text = input.value;
+    input.value = "";
+
+    sendMessage(text);
   });
 
-  quick.addEventListener('click', event => {
-    const button = event.target.closest('button[data-iq]');
-    if (!button) return;
+  quick.addEventListener("click", event => {
+    const button = event.target.closest("button[data-iq]");
 
-    send(button.dataset.iq);
+    if (!button || isSending) return;
+
+    sendMessage(button.dataset.iq);
   });
 
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && panel.classList.contains('open')) {
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && panel.classList.contains("open")) {
       closeChat();
     }
   });
