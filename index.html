@@ -410,6 +410,12 @@
       font-weight: 700;
     }
 
+    .project-notice {
+      margin-top: 12px;
+      font-size: .78rem;
+      color: var(--cyan);
+    }
+
     /* PROCESS */
 
     .process-grid {
@@ -956,42 +962,80 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
+  <!-- PORTFOLIO: UPDATED PROJECTS -->
 
   <section class="section" id="portfolio">
     <div class="container">
       <div class="section-heading">
         <span>Selected Work</span>
         <h2>Ideas Into <span class="gradient-text">Reality.</span></h2>
-        <p>A look at the kind of digital experiences we aim to create.</p>
+        <p>Explore websites designed and developed by INFINITE IQ.</p>
       </div>
 
       <div class="cards-grid">
 
+        <!-- ELITE CUTS -->
+
         <article class="project-card">
-          <div class="project-visual">🖥️</div>
+          <div class="project-visual">✂️</div>
+
           <div class="project-info">
-            <h3>Business Websites</h3>
-            <p>Modern online experiences for businesses and personal brands.</p>
-            <a href="enquiry.html">Build something similar ↗</a>
+            <h3>ELITE CUTS</h3>
+
+            <p>
+              A premium barbershop website featuring services,
+              a gallery and an interactive appointment-request experience.
+            </p>
+
+            <a href="elite-cuts.html" target="_blank" rel="noopener">
+              Explore ELITE CUTS ↗
+            </a>
+
+            <p class="project-notice">
+              Portfolio demonstration — no real bookings.
+            </p>
           </div>
         </article>
 
+        <!-- NOVA STREET -->
+
         <article class="project-card">
-          <div class="project-visual">📊</div>
+          <div class="project-visual">👟</div>
+
           <div class="project-info">
-            <h3>Digital Dashboards</h3>
-            <p>Organised interfaces that make information easier to explore.</p>
-            <a href="enquiry.html">Discuss a project ↗</a>
+            <h3>NOVA STREET</h3>
+
+            <p>
+              A modern streetwear shopping experience with product
+              collections, category filters and an interactive cart.
+            </p>
+
+            <a href="nova-street.html" target="_blank" rel="noopener">
+              Explore NOVA STREET ↗
+            </a>
+
+            <p class="project-notice">
+              Portfolio demonstration — no real payments.
+            </p>
           </div>
         </article>
 
+        <!-- FUTURE PROJECTS -->
+
         <article class="project-card">
-          <div class="project-visual">✨</div>
+          <div class="project-visual">🚀</div>
+
           <div class="project-info">
-            <h3>Creative Experiences</h3>
-            <p>Interactive concepts built around useful ideas and design.</p>
-            <a href="enquiry.html">Start an idea ↗</a>
+            <h3>Your Next Big Idea</h3>
+
+            <p>
+              Have a business or digital idea? Let's turn it into
+              a modern online experience.
+            </p>
+
+            <a href="enquiry.html">
+              Start a Project ↗
+            </a>
           </div>
         </article>
 
@@ -1276,7 +1320,6 @@
       return;
     }
 
-    // Replace this with the real Render URL after deployment.
     const API_URL = "https://infinite-iq-assistant.onrender.com/chat";
 
     let isSending = false;

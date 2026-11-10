@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA STREET | Wear Your Identity</title>
+<style>
+:root{--bg:#101010;--panel:#191919;--white:#fff;--muted:#aaa;--line:#303030}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
+button,a{font:inherit}
+button{cursor:pointer}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;border-bottom:1px solid var(--line);position:sticky;top:0;background:#101010;z-index:10}
+.logo{font-size:26px;font-weight:900;letter-spacing:2px}
+nav{display:flex;gap:26px;align-items:center}
+nav a{color:#ddd;text-decoration:none;font-size:12px}
+nav a:hover{color:white}
+.header-actions{display:flex;align-items:center;gap:15px}
+.cart-button,.menu-button{background:none;color:white;border:1px solid #555;padding:11px 15px}
+.menu-button{display:none}
+.hero{min-height:560px;padding:90px 8%;display:flex;align-items:center;background:linear-gradient(90deg,#101010 15%,#101010aa),url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=1600') center/cover}
+.hero-content{max-width:620px}
+.tag{color:#aaa;letter-spacing:4px;font-size:11px}
+h1{font-size:clamp(55px,9vw,105px);line-height:.95;margin:25px 0;font-weight:900}
+.hero p{color:#ccc;line-height:1.8;max-width:440px}
+.btn{display:inline-block;background:white;color:#111;padding:16px 25px;text-decoration:none;font-weight:bold;margin-top:28px;font-size:12px;border:0}
+.btn:hover{background:#ccc}
+section{padding:85px 8%}
+.section-title{font-size:35px;margin-bottom:12px}
+.subtitle{color:var(--muted);margin-bottom:32px}
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.filter{background:transparent;border:1px solid #555;color:#ddd;padding:11px 17px;font-size:12px}
+.filter.active,.filter:hover{background:white;color:#111;border-color:white}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.product{background:var(--panel);padding-bottom:22px;overflow:hidden}
+.product img{width:100%;height:330px;object-fit:cover;display:block;transition:.3s}
+.product:hover img{transform:scale(1.035)}
+.product h3{margin:18px 16px 8px}
+.product p{margin:0 16px;color:#aaa;font-size:13px}
+.product .price{color:white;margin-top:12px;font-weight:bold}
+.product button{margin:16px 16px 0;padding:12px 15px;background:white;color:#111;border:0;font-weight:bold;font-size:12px}
+.product button:hover{background:#ccc}
+.about{background:var(--panel);display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.about img{width:100%;height:400px;object-fit:cover}
+.about p{color:#bbb;line-height:1.9;margin-top:20px}
+.contact{text-align:center}
+.contact p{color:#aaa;margin-top:15px}
+footer{padding:30px 8%;border-top:1px solid var(--line);color:#888;font-size:12px;display:flex;justify-content:space-between;gap:15px}
+.cart-panel{position:fixed;right:-420px;top:0;width:min(400px,100%);height:100vh;background:#191919;z-index:30;padding:25px;transition:.3s;overflow-y:auto;border-left:1px solid #444}
+.cart-panel.open{right:0}
+.cart-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.close-cart{background:none;color:white;border:1px solid #555;padding:8px 12px}
+.cart-item{padding:16px 0;border-bottom:1px solid #444}
+.cart-item h4{margin-bottom:8px}
+.cart-item p{color:#bbb;font-size:13px}
+.quantity{display:flex;gap:12px;align-items:center;margin-top:12px}
+.quantity button{background:#333;color:white;border:0;padding:7px 12px}
+.remove{background:none;border:0;color:#ff8888;margin-left:auto}
+.cart-total{display:flex;justify-content:space-between;margin-top:25px;font-weight:bold}
+.checkout{width:100%;padding:15px;background:white;color:#111;border:0;margin-top:20px;font-weight:bold}
+.empty{text-align:center;color:#aaa;padding:35px 0}
+.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:20}
+.overlay.show{display:block}
+@media(max-width:750px){
+header{padding:0 5%}
+.menu-button{display:block}
+nav{display:none;position:absolute;top:76px;left:0;width:100%;background:#191919;padding:25px;flex-direction:column;align-items:flex-start;border-bottom:1px solid #444}
+nav.open{display:flex}
+nav a{font-size:14px}
+.hero{min-height:500px;padding:70px 6%}
+section{padding:65px 6%}
+.products{grid-template-columns:repeat(2,1fr);gap:12px}
+.product img{height:230px}
+.product h3{font-size:15px}
+.product button{margin-left:12px}
+.about{grid-template-columns:1fr}
+.about img{height:300px}
+footer{flex-direction:column}
+}
+@media(max-width:430px){
+.products{grid-template-columns:1fr}
+.product img{height:330px}
+.logo{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">NOVA.</div>
+<nav id="navigation">
+<a href="#home">HOME</a>
+<a href="#collection">COLLECTION</a>
+<a href="#about">ABOUT</a>
+<a href="#contact">CONTACT</a>
+</nav>
+<div class="header-actions">
+<button class="cart-button" onclick="toggleCart()">CART (<span id="cartCount">0</span>)</button>
+<button class="menu-button" onclick="toggleMenu()">☰</button>
+</div>
+</header>
+
+<main>
+<div class="hero" id="home">
+<div class="hero-content">
+<div class="tag">NEW GENERATION STREETWEAR</div>
+<h1>WEAR YOUR IDENTITY.</h1>
+<p>Not just clothing. A statement. Discover everyday essentials designed for people who refuse to blend in.</p>
+<a href="#collection" class="btn">EXPLORE COLLECTION</a>
+</div>
+</div>
+
+<section id="collection">
+<h2 class="section-title">THE COLLECTION</h2>
+<p class="subtitle">Everyday pieces. Unforgettable style.</p>
+
+<div class="filter-bar">
+<button class="filter active" onclick="filterProducts('All',this)">ALL</button>
+<button class="filter" onclick="filterProducts('Hoodies',this)">HOODIES</button>
+<button class="filter" onclick="filterProducts('T-Shirts',this)">T-SHIRTS</button>
+<button class="filter" onclick="filterProducts('Sneakers',this)">SNEAKERS</button>
+<button class="filter" onclick="filterProducts('Accessories',this)">ACCESSORIES</button>
+</div>
+
+<div class="products" id="productGrid"></div>
+</section>
+
+<section class="about" id="about">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900" alt="Streetwear fashion">
+<div>
+<div class="tag">OUR IDENTITY</div>
+<h2 class="section-title">MORE THAN A BRAND.</h2>
+<p>NOVA STREET is built around individuality, creativity and confidence. We believe your style should tell your story before you even say a word.</p>
+<p>Be different. Be original. Be NOVA.</p>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="tag">STAY CONNECTED</div>
+<h2 class="section-title">YOUR STYLE. YOUR RULES.</h2>
+<p>Have a question about our collection? Send us an enquiry.</p>
+<button class="btn" onclick="contactUs()">CONTACT US ON WHATSAPP</button>
+</section>
+</main>
+
+<footer>
+<span>NOVA STREET © 2026</span>
+<span>WEAR YOUR IDENTITY.</span>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+<div class="cart-heading">
+<h2>YOUR CART</h2>
+<button class="close-cart" onclick="toggleCart()">CLOSE ✕</button>
+</div>
+<div id="cartItems"></div>
+<div class="cart-total">
+<span>Total</span><span id="cartTotal">KSh 0</span>
+</div>
+<button class="checkout" onclick="checkout()">ENQUIRE ABOUT ORDER</button>
+</aside>
+
+<script>
+const products=[
+{id:1,name:"Essential Hoodie",category:"Hoodies",price:2800,image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700",description:"Comfort meets street style."},
+{id:2,name:"Classic T-Shirt",category:"T-Shirts",price:1500,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700",description:"Minimal. Comfortable. Timeless."},
+{id:3,name:"Street Sneakers",category:"Sneakers",price:5000,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",description:"Step into your own style."},
+{id:4,name:"Urban Hoodie",category:"Hoodies",price:3200,image:"https://images.unsplash.com/photo-1578681994506-b8f463449011?w=700",description:"Made for everyday movement."},
+{id:5,name:"Graphic Tee",category:"T-Shirts",price:1800,image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=700",description:"Express yourself."},
+{id:6,name:"Street Cap",category:"Accessories",price:900,image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=700",description:"The finishing touch."}
+];
+
+let cart=[];
+
+function renderProducts(category="All"){
+const grid=document.getElementById("productGrid");
+const filtered=category==="All"?products:products.filter(p=>p.category===category);
+grid.innerHTML=filtered.map(p=>`
+<article class="product">
+<img src="${p.image}" alt="${p.name}">
+<h3>${p.name}</h3>
+<p>${p.description}</p>
+<p class="price">KSh ${p.price.toLocaleString()}</p>
+<button onclick="addToCart(${p.id})">ADD TO CART</button>
+</article>`).join("");
+}
+
+function filterProducts(category,button){
+document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
+renderProducts(category);
+}
+
+function addToCart(id){
+const item=cart.find(p=>p.id===id);
+if(item)item.quantity++;
+else cart.push({...products.find(p=>p.id===id),quantity:1});
+updateCart();
+}
+
+function updateCart(){
+document.getElementById("cartCount").textContent=cart.reduce((sum,p)=>sum+p.quantity,0);
+const area=document.getElementById("cartItems");
+if(cart.length===0){
+area.innerHTML='<div class="empty">Your cart is empty. Explore the collection!</div>';
+}else{
+area.innerHTML=cart.map(p=>`
+<div class="cart-item">
+<h4>${p.name}</h4>
+<p>KSh ${p.price.toLocaleString()} each</p>
+<div class="quantity">
+<button onclick="changeQuantity(${p.id},-1)">−</button>
+<span>${p.quantity}</span>
+<button onclick="changeQuantity(${p.id},1)">+</button>
+<button class="remove" onclick="removeItem(${p.id})">REMOVE</button>
+</div>
+</div>`).join("");
+}
+const total=cart.reduce((sum,p)=>sum+p.price*p.quantity,0);
+document.getElementById("cartTotal").textContent="KSh "+total.toLocaleString();
+}
+
+function changeQuantity(id,amount){
+const item=cart.find(p=>p.id===id);
+if(!item)return;
+item.quantity+=amount;
+if(item.quantity<=0)removeItem(id);
+else updateCart();
+}
+
+function removeItem(id){
+cart=cart.filter(p=>p.id!==id);
+updateCart();
+}
+
+function toggleCart(){
+document.getElementById("cartPanel").classList.toggle("open");
+document.getElementById("overlay").classList.toggle("show");
+}
+
+function toggleMenu(){
+document.getElementById("navigation").classList.toggle("open");
+}
+
+function contactUs(){
+const message=encodeURIComponent("Hello NOVA STREET! I would like to enquire about your collection.");
+const phone="2547XXXXXXXX";
+if(phone.includes("X")){
+alert("Demo store: add the real shop WhatsApp number before publishing.");
+return;
+}
+window.open("https://wa.me/"+phone+"?text="+message,"_blank");
+}
+
+function checkout(){
+if(cart.length===0){
+alert("Your cart is empty!");
+return;
+}
+const lines=cart.map(p=>p.name+" x "+p.quantity+" — KSh "+(p.price*p.quantity).toLocaleString()).join("\n");
+const total=cart.reduce((sum,p)=>sum+p.price*p.quantity,0);
+const message=encodeURIComponent("Hello NOVA STREET! I would like to enquire about this order:\n\n"+lines+"\n\nTotal: KSh "+total.toLocaleString()+"\n\nPlease confirm availability.");
+const phone="2547XXXXXXXX";
+if(phone.includes("X")){
+alert("Demo store: add the real shop WhatsApp number before publishing.\n\nYour cart total is KSh "+total.toLocaleString());
+return;
+}
+window.open("https://wa.me/"+phone+"?text="+message,"_blank");
+}
+
+renderProducts();
+updateCart();
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELITE CUTS | Welcome to Excellence</title>
+<meta name="description" content="Welcome to ELITE CUTS, where precision, confidence and personal style meet.">
+<style>
+:root{--gold:#d6b477;--bg:#100f0d;--panel:#1d1a16;--muted:#b9b1a5;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font:inherit}
+header{height:82px;padding:0 8%;display:flex;align-items:center;justify-content:space-between;background:#100f0d;border-bottom:1px solid #383127;position:sticky;top:0;z-index:20}
+.logo{font-size:25px;font-weight:900;letter-spacing:3px}
+.logo span{color:var(--gold)}
+nav{display:flex;align-items:center;gap:27px}
+nav a{font-size:11px;letter-spacing:1px;color:#ddd}
+nav a:hover{color:var(--gold)}
+.nav-book{background:var(--gold);color:#17130e;padding:13px 18px}
+.menu{display:none;background:none;color:white;border:1px solid #665c4d;padding:9px 12px}
+.hero{min-height:650px;display:flex;align-items:center;padding:100px 9%;background:linear-gradient(90deg,#100e0b 5%,#100e0bcc 48%,#100e0b33),url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1800') center/cover}
+.hero-content{max-width:700px}
+.eyebrow{color:var(--gold);letter-spacing:5px;font-size:11px}
+.hero h1{font-size:clamp(55px,8vw,100px);line-height:.98;margin:25px 0;font-weight:900}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:16px;line-height:1.9;color:#ddd;max-width:490px}
+.actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--gold);color:#17130e;padding:17px 25px;margin-top:30px;font-weight:bold;font-size:11px;letter-spacing:1px;border:1px solid var(--gold)}
+.btn.secondary{background:transparent;color:white;border-color:#8c7957}
+.btn:hover{filter:brightness(1.12)}
+section{padding:95px 9%}
+.section-head{text-align:center;margin-bottom:50px}
+.section-head .eyebrow{margin-bottom:14px}
+.section-head h2{font-size:38px;margin-bottom:14px}
+.section-head p{color:var(--muted);line-height:1.7}
+.welcome{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+.welcome img{width:100%;height:460px;object-fit:cover}
+.welcome h2{font-size:42px;line-height:1.2;margin:20px 0}
+.welcome p{color:var(--muted);line-height:1.95;margin-top:16px}
+.welcome-points{display:flex;gap:25px;flex-wrap:wrap;margin-top:30px}
+.point strong{display:block;color:var(--gold);font-size:20px;margin-bottom:7px}
+.point span{font-size:11px;color:#aaa}
+.services{background:#171512}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service{padding:30px;background:#211e19;border:1px solid #383127;transition:.25s}
+.service:hover{transform:translateY(-5px);border-color:var(--gold)}
+.service .number{color:var(--gold);font-size:12px;letter-spacing:2px}
+.service h3{font-size:21px;margin:20px 0 12px}
+.service p{color:#aaa;line-height:1.8;font-size:13px}
+.price{color:var(--gold);font-weight:bold;margin-top:20px;font-size:17px}
+.experience{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;text-align:center}
+.experience article{padding:25px 15px}
+.experience .symbol{font-size:32px;color:var(--gold)}
+.experience h3{margin:18px 0 12px}
+.experience p{font-size:13px;color:#aaa;line-height:1.8}
+.gallery{background:#171512}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gallery-grid img{width:100%;height:320px;object-fit:cover}
+.booking{background:linear-gradient(120deg,#201c16,#100f0d)}
+.booking-wrap{max-width:720px;margin:auto}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:9px}
+.field.full{grid-column:1/-1}
+label{font-size:12px;color:#ddd}
+input,select,textarea{width:100%;padding:15px;background:#211e19;color:white;border:1px solid #554a39;font:inherit}
+textarea{min-height:115px}
+form button{grid-column:1/-1}
+.contact{text-align:center}
+.contact p{color:#aaa;line-height:1.9;margin-top:18px}
+footer{border-top:1px solid #393127;padding:35px 9%;display:flex;justify-content:space-between;gap:20px;color:#999;font-size:12px}
+@media(max-width:800px){
+header{padding:0 5%}
+.menu{display:block}
+nav{display:none;position:absolute;top:82px;left:0;width:100%;background:#191612;padding:25px;flex-direction:column;align-items:stretch}
+nav.open{display:flex}
+nav a{padding:10px}
+.nav-book{text-align:center}
+.hero{min-height:560px;padding:75px 6%}
+section{padding:70px 6%}
+.welcome{grid-template-columns:1fr;gap:35px}
+.welcome img{height:330px}
+.service-grid{grid-template-columns:1fr 1fr}
+.experience{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.gallery-grid img{height:230px}
+footer{padding:28px 6%;flex-direction:column}
+}
+@media(max-width:480px){
+.service-grid,.gallery-grid{grid-template-columns:1fr}
+.gallery-grid img{height:320px}
+form{grid-template-columns:1fr}
+.field.full,form button{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">ELITE <span>CUTS.</span></div>
+<nav id="nav">
+<a href="#home">HOME</a>
+<a href="#welcome">OUR STORY</a>
+<a href="#services">SERVICES</a>
+<a href="#gallery">GALLERY</a>
+<a href="#booking" class="nav-book">BOOK YOUR VISIT</a>
+</nav>
+<button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="eyebrow">WELCOME TO ELITE CUTS</div>
+<h1>YOUR STYLE.<br>OUR <span>PASSION.</span></h1>
+<p>Step into a grooming experience where every detail matters. From precision fades to timeless styles, we're here to help you look sharp, feel confident and leave with a fresh perspective.</p>
+<div class="actions">
+<a href="#booking" class="btn">BOOK YOUR EXPERIENCE</a>
+<a href="#services" class="btn secondary">EXPLORE OUR SERVICES</a>
+</div>
+</div>
+</section>
+
+<section class="welcome" id="welcome">
+<img src="https://images.unsplash.com/photo-1521490683712-35a1cb235dcd?w=1000" alt="Professional barber at work">
+<div>
+<div class="eyebrow">A WARM WELCOME</div>
+<h2>MORE THAN A HAIRCUT. IT'S YOUR EXPERIENCE.</h2>
+<p>Welcome to ELITE CUTS, where great style begins with great attention to detail.</p>
+<p>We believe a visit to the barbershop should be more than an ordinary appointment. It's your time to relax, refresh and express yourself.</p>
+<p>Whether you prefer a classic look or a modern transformation, our barbershop concept celebrates individuality, confidence and craftsmanship.</p>
+<div class="welcome-points">
+<div class="point"><strong>01</strong><span>PRECISION</span></div>
+<div class="point"><strong>02</strong><span>STYLE</span></div>
+<div class="point"><strong>03</strong><span>CONFIDENCE</span></div>
+</div>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="section-head">
+<div class="eyebrow">THE ART OF GROOMING</div>
+<h2>OUR SERVICES</h2>
+<p>Find the look that feels like you.</p>
+</div>
+<div class="service-grid">
+<article class="service"><div class="number">01 / CLASSIC</div><h3>Classic Haircut</h3><p>A clean, professional haircut tailored to your preferred look.</p><div class="price">KSh 500</div></article>
+<article class="service"><div class="number">02 / PRECISION</div><h3>Premium Fade</h3><p>Sharp transitions and carefully detailed finishing.</p><div class="price">KSh 700</div></article>
+<article class="service"><div class="number">03 / DETAIL</div><h3>Beard Trim</h3><p>Professional beard shaping and a polished finish.</p><div class="price">KSh 300</div></article>
+<article class="service"><div class="number">04 / COMBO</div><h3>Haircut + Beard</h3><p>A complete grooming experience in one appointment.</p><div class="price">KSh 900</div></article>
+<article class="service"><div class="number">05 / FINISH</div><h3>Hairline Design</h3><p>Careful finishing to complete your personal style.</p><div class="price">KSh 200</div></article>
+<article class="service"><div class="number">06 / PREMIUM</div><h3>Full Grooming</h3><p>A complete haircut, beard trim and finishing experience.</p><div class="price">KSh 1,200</div></article>
+</div>
+</section>
+
+<section>
+<div class="section-head">
+<div class="eyebrow">WHY THE EXPERIENCE MATTERS</div>
+<h2>THE ELITE DIFFERENCE</h2>
+<p>Good grooming is about more than looking good.</p>
+</div>
+<div class="experience">
+<article><div class="symbol">✦</div><h3>Attention to Detail</h3><p>Every style deserves care, precision and a thoughtful finish.</p></article>
+<article><div class="symbol">✧</div><h3>Your Personal Style</h3><p>We celebrate individuality and the confidence that comes with it.</p></article>
+<article><div class="symbol">◆</div><h3>A Relaxed Experience</h3><p>A welcoming atmosphere where you can take a moment for yourself.</p></article>
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<div class="section-head">
+<div class="eyebrow">THE CRAFT</div>
+<h2>STYLE IN EVERY DETAIL</h2>
+<p>Explore the world of modern grooming.</p>
+</div>
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700" alt="Barbershop interior">
+<img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=700" alt="Barber styling">
+<img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700" alt="Barber haircut">
+<img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=700" alt="Barber shop">
+<img src="https://images.unsplash.com/photo-1593702295094-aea6397a3e4b?w=700" alt="Haircut">
+<img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700" alt="Barber tools">
+</div>
+</section>
+
+<section class="booking" id="booking">
+<div class="section-head">
+<div class="eyebrow">YOUR NEXT LOOK STARTS HERE</div>
+<h2>LET'S GET YOU BOOKED</h2>
+<p>Tell us what you need and choose your preferred appointment.</p>
+</div>
+<div class="booking-wrap">
+<form id="bookingForm">
+<div class="field"><label for="customer">YOUR NAME</label><input id="customer" placeholder="Your full name" required></div>
+<div class="field"><label for="phone">PHONE NUMBER</label><input id="phone" type="tel" placeholder="Your phone number" required></div>
+<div class="field"><label for="service">CHOOSE YOUR SERVICE</label><select id="service" required><option value="">Select service</option><option>Classic Haircut — KSh 500</option><option>Premium Fade — KSh 700</option><option>Beard Trim — KSh 300</option><option>Haircut + Beard — KSh 900</option><option>Hairline Design — KSh 200</option><option>Full Grooming — KSh 1,200</option></select></div>
+<div class="field"><label for="date">PREFERRED DATE</label><input id="date" type="date" required></div>
+<div class="field"><label for="time">PREFERRED TIME</label><select id="time" required><option value="">Select time</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+<div class="field full"><label for="message">ANYTHING ELSE WE SHOULD KNOW?</label><textarea id="message" placeholder="Tell us about your preferred style or any special requests..."></textarea></div>
+<button class="btn" type="submit">REQUEST MY APPOINTMENT</button>
+</form>
+</div>
+</section>
+
+<section class="contact">
+<div class="eyebrow">THANK YOU FOR VISITING</div>
+<h2 style="font-size:40px;margin-top:20px">YOU DESERVE TO FEEL ELITE.</h2>
+<p>We appreciate you choosing ELITE CUTS.<br>Your style journey starts with a single visit.</p>
+<a href="#booking" class="btn">PLAN YOUR VISIT</a>
+</section>
+</main>
+
+<footer>
+<span>ELITE CUTS © 2026</span>
+<span>CRAFTED WITH PRECISION. BUILT ON STYLE.</span>
+</footer>
+
+<script>
+const date=document.getElementById("date");
+const now=new Date();
+date.min=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().split("T")[0];
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+e.preventDefault();
+const details={
+name:document.getElementById("customer").value,
+phone:document.getElementById("phone").value,
+service:document.getElementById("service").value,
+date:document.getElementById("date").value,
+time:document.getElementById("time").value,
+message:document.getElementById("message").value
+};
+alert("Thank you, "+details.name+"!\n\nYour demo appointment request has been prepared.\n\nService: "+details.service+"\nDate: "+details.date+"\nTime: "+details.time+"\n\nThis is a portfolio demonstration. No actual appointment has been booked or sent.");
+});
+</script>
+</body>
+</html>
