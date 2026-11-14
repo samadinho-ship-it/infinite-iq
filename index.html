@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +7,13 @@
 <meta name="description" content="INFINITE IQ — Ideas Without Limits. Websites, digital solutions and free project tools.">
 <title>INFINITE IQ | Ideas Without Limits</title>
 
-<style>
-:root {
-  --bg:#080812;
-  --surface:#111120;
-  --surface-light:#19192b;
-  --text:#f5f5ff;
-  --muted:#aaaac0;
-  --purple:#a855f7;
-  --cyan:#22d3ee;
-  --border:rgba(255,255,255,.09);
-  --gradient:linear-gradient(135deg,#a855f7,#22d3ee);
-}
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<style>
+:root{--bg:#080812;--surface:#111120;--surface-light:#19192b;--text:#f5f5ff;--muted:#aaaac0;--purple:#a855f7;--cyan:#22d3ee;--border:rgba(255,255,255,.09);--gradient:linear-gradient(135deg,#a855f7,#22d3ee)}
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
 .container{width:min(1150px,90%);margin:auto}
 .gradient-text{background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
 .section{padding:100px 0}
@@ -32,19 +21,13 @@ button{font:inherit;cursor:pointer}
 .section-heading span{color:var(--cyan);font-size:.85rem;text-transform:uppercase;letter-spacing:3px;font-weight:700}
 .section-heading h2{font-size:clamp(2rem,5vw,3.2rem);margin:12px 0}
 .section-heading p{color:var(--muted);max-width:650px;margin:auto}
-
-/* NAVIGATION */
 header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(8,8,18,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
 nav{min-height:78px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:1.5rem;font-weight:900;letter-spacing:-1px}
-.logo span{color:var(--cyan)}
+.logo{font-size:1.5rem;font-weight:900;letter-spacing:-1px}.logo span{color:var(--cyan)}
 .nav-links{display:flex;align-items:center;gap:25px;list-style:none}
-.nav-links a{color:var(--muted);font-size:.9rem;transition:.25s}
-.nav-links a:hover{color:var(--cyan)}
+.nav-links a{color:var(--muted);font-size:.9rem;transition:.25s}.nav-links a:hover{color:var(--cyan)}
 .nav-links .nav-cta{padding:11px 19px;border-radius:30px;color:white;background:var(--gradient)}
 .menu-toggle{display:none;border:0;color:white;background:transparent;font-size:1.8rem}
-
-/* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;width:500px;height:500px;background:#9333ea;filter:blur(180px);opacity:.18;top:5%;right:-150px;pointer-events:none}
 .hero-content{max-width:850px;position:relative;z-index:1}
@@ -53,11 +36,8 @@ nav{min-height:78px;display:flex;justify-content:space-between;align-items:cente
 .hero p{color:var(--muted);max-width:620px;font-size:1.12rem;margin-bottom:35px}
 .hero-buttons{display:flex;gap:15px;flex-wrap:wrap}
 .btn{display:inline-flex;justify-content:center;align-items:center;padding:14px 25px;border-radius:35px;font-weight:700;transition:.3s;border:1px solid transparent}
-.btn-primary{background:var(--gradient);color:white}
-.btn-secondary{border-color:var(--border);color:white;background:transparent}
+.btn-primary{background:var(--gradient);color:white}.btn-secondary{border-color:var(--border);color:white;background:transparent}
 .btn:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(168,85,247,.2)}
-
-/* ABOUT */
 .about-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
 .about-card{padding:35px;border:1px solid var(--border);border-radius:25px;background:linear-gradient(145deg,#151526,#0d0d19)}
 .about-card h3{font-size:1.8rem;margin-bottom:18px}
@@ -65,10 +45,7 @@ nav{min-height:78px;display:flex;justify-content:space-between;align-items:cente
 .about-copy h3{font-size:2rem;margin-bottom:20px}
 .about-stat{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:25px}
 .stat{padding:20px;border-radius:15px;background:var(--surface-light)}
-.stat strong{display:block;font-size:1.7rem;color:var(--cyan)}
-.stat small{color:var(--muted)}
-
-/* CARDS */
+.stat strong{display:block;font-size:1.7rem;color:var(--cyan)}.stat small{color:var(--muted)}
 .cards-grid,.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .service-card,.package-card,.project-card,.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;transition:.3s}
 .service-card,.package-card{padding:30px}
@@ -78,22 +55,15 @@ nav{min-height:78px;display:flex;justify-content:space-between;align-items:cente
 .service-card p,.package-card p,.project-card p{color:var(--muted);font-size:.95rem}
 .package-card.featured{border-color:var(--purple);background:linear-gradient(145deg,rgba(168,85,247,.12),#111120)}
 .package-label{display:inline-block;color:var(--cyan);font-size:.75rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:15px}
-.package-card ul{list-style:none;margin:22px 0}
-.package-card li{color:var(--muted);margin:12px 0;font-size:.92rem}
+.package-card ul{list-style:none;margin:22px 0}.package-card li{color:var(--muted);margin:12px 0;font-size:.92rem}
 .package-card li::before{content:"✓";color:var(--cyan);margin-right:10px}
 .package-price{font-size:1.5rem;font-weight:800;margin:20px 0}
-
-/* PORTFOLIO */
 .project-card{padding:0;overflow:hidden}
 .project-visual{min-height:190px;display:grid;place-items:center;font-size:3rem;background:linear-gradient(135deg,rgba(168,85,247,.25),rgba(34,211,238,.12))}
-.project-info{padding:25px}
-.project-info a{display:inline-block;margin-top:17px;color:var(--cyan);font-weight:700}
+.project-info{padding:25px}.project-info a{display:inline-block;margin-top:17px;color:var(--cyan);font-weight:700}
 .project-notice{margin-top:12px;font-size:.78rem;color:var(--cyan)}
-
-/* TOOLS */
 .tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.tool-card{padding:26px}
-.tool-card h3{margin:10px 0;font-size:1.25rem}
+.tool-card{padding:26px}.tool-card h3{margin:10px 0;font-size:1.25rem}
 .tool-card p{color:var(--muted);font-size:.94rem;margin-bottom:16px}
 .tool-card a{color:var(--cyan);font-weight:750;display:inline-block;margin-top:4px}
 .tools-note{text-align:center;color:var(--muted);margin-top:24px;font-size:.88rem}
@@ -102,77 +72,38 @@ nav{min-height:78px;display:flex;justify-content:space-between;align-items:cente
 .tool-card input:not([type="checkbox"]),.tool-card select,.tool-card textarea{width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:10px;background:#090916;color:var(--text);font:inherit}
 .tool-card input:focus,.tool-card select:focus,.tool-card textarea:focus{outline:1px solid var(--cyan);border-color:var(--cyan)}
 .tool-card legend{color:var(--cyan);padding:0 7px}
-
-/* PROCESS */
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .process-step{padding:25px;border-left:2px solid var(--purple);background:var(--surface);border-radius:0 15px 15px 0}
-.process-step strong{color:var(--cyan);font-size:1.8rem}
-.process-step h3{margin:12px 0}
+.process-step strong{color:var(--cyan);font-size:1.8rem}.process-step h3{margin:12px 0}
 .process-step p{color:var(--muted);font-size:.9rem}
-
-/* PROMISE */
 .promise-box{text-align:center;padding:55px 30px;border-radius:25px;background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(34,211,238,.08));border:1px solid var(--border)}
 .promise-box h2{font-size:clamp(2rem,5vw,3rem);margin-bottom:15px}
 .promise-box p{color:var(--muted);max-width:650px;margin:0 auto 25px}
-
-/* FAQ */
-.faq-list{max-width:800px;margin:auto}
-.faq-item{border-bottom:1px solid var(--border);padding:22px 0}
+.faq-list{max-width:800px;margin:auto}.faq-item{border-bottom:1px solid var(--border);padding:22px 0}
 .faq-question{width:100%;background:none;border:0;color:white;text-align:left;display:flex;justify-content:space-between;gap:20px;font-weight:700;font-size:1.05rem}
-.faq-answer{display:none;color:var(--muted);padding-top:15px}
-.faq-item.active .faq-answer{display:block}
-
-/* CONTACT */
+.faq-answer{display:none;color:var(--muted);padding-top:15px}.faq-item.active .faq-answer{display:block}
 .contact-info p{color:var(--muted);margin:15px 0}
 .contact-form{padding:30px;background:var(--surface);border:1px solid var(--border);border-radius:20px}
 .contact-form input,.contact-form textarea{width:100%;padding:15px;margin-bottom:15px;border:1px solid var(--border);border-radius:10px;color:white;background:#090916;outline:none}
 .contact-form textarea{min-height:130px;resize:vertical}
-
-/* FOOTER */
 footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text-align:center}
-
-/* FLOATING IQ ASSISTANT */
-.iq-chat-launch{
-  position:fixed;
-  right:24px;
-  bottom:24px;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:13px 20px;
-  min-height:58px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:50px;
-  background:var(--gradient);
-  color:#080812;
-  font-size:14px;
-  font-weight:900;
-  box-shadow:0 10px 35px rgba(168,85,247,.4);
-  transition:.25s;
-}
+.status-message{padding:12px 15px;margin:14px 0;border-radius:10px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.2);color:var(--cyan);font-size:.9rem;overflow-wrap:anywhere}
+.status-message.error{background:rgba(255,70,90,.08);border-color:rgba(255,70,90,.3);color:#ff9aa8}
+.status-message.success{background:rgba(60,220,150,.08);border-color:rgba(60,220,150,.3);color:#83e8b8}
+.auth-card{padding:25px;margin:25px 0;background:linear-gradient(145deg,#151526,#0d0d19);border:1px solid rgba(168,85,247,.35);border-radius:20px}
+.auth-card h3{margin-bottom:8px}.auth-card p{color:var(--muted)}
+.auth-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:15px}
+.auth-card input{width:100%;padding:13px;margin:8px 0;border:1px solid var(--border);border-radius:10px;background:#090916;color:white}
+.dashboard-item{padding:16px;margin:12px 0;border:1px solid var(--border);border-radius:14px}
+.dashboard-item p{margin:4px 0}.dashboard-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.iq-chat-launch{position:fixed;right:24px;bottom:24px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;min-height:58px;border:1px solid rgba(255,255,255,.25);border-radius:50px;background:var(--gradient);color:#080812;font-size:14px;font-weight:900;box-shadow:0 10px 35px rgba(168,85,247,.4);transition:.25s}
 .iq-chat-launch:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(34,211,238,.3)}
 .iq-chat-launch .iq-orb{width:30px;height:30px;display:grid;place-items:center;background:rgba(8,8,18,.13);border-radius:50%;font-size:18px}
-.iq-chat-panel{
-  display:none;
-  position:fixed;
-  right:24px;
-  bottom:96px;
-  width:min(390px,calc(100vw - 28px));
-  height:min(560px,calc(100dvh - 125px));
-  background:#111120;
-  border:1px solid rgba(168,85,247,.4);
-  border-radius:20px;
-  overflow:hidden;
-  z-index:9998;
-  box-shadow:0 20px 70px rgba(0,0,0,.55);
-}
+.iq-chat-panel{display:none;position:fixed;right:24px;bottom:96px;width:min(390px,calc(100vw - 28px));height:min(560px,calc(100dvh - 125px));background:#111120;border:1px solid rgba(168,85,247,.4);border-radius:20px;overflow:hidden;z-index:9998;box-shadow:0 20px 70px rgba(0,0,0,.55)}
 .iq-chat-panel.open{display:flex;flex-direction:column;animation:chatOpen .2s ease}
 @keyframes chatOpen{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .iq-chat-header{padding:18px;background:linear-gradient(135deg,#7128b5,#176b83);display:flex;justify-content:space-between;align-items:center}
-.iq-chat-header h3{font-size:1rem}
-.iq-chat-header p{font-size:.75rem;opacity:.85}
+.iq-chat-header h3{font-size:1rem}.iq-chat-header p{font-size:.75rem;opacity:.85}
 .iq-chat-close{border:0;color:white;background:transparent;font-size:1.7rem;padding:5px 10px}
 .iq-chat-messages{flex:1;padding:17px;overflow-y:auto;display:flex;flex-direction:column;gap:13px}
 .iq-message{max-width:88%;padding:12px 14px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.9rem}
@@ -184,22 +115,18 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 .iq-chat-form input{flex:1;min-width:0;background:#090916;border:1px solid var(--border);color:white;padding:12px;border-radius:10px;outline:none}
 .iq-chat-form button{width:43px;border:0;border-radius:10px;color:#080812;background:var(--gradient);font-weight:900}
 .iq-chat-disclaimer{text-align:center;color:#88889f;font-size:.68rem;padding:7px}
-
-/* RESPONSIVE */
 @media(max-width:850px){
-  .nav-links{display:none;position:absolute;top:78px;left:0;width:100%;padding:25px;background:#10101e;flex-direction:column;align-items:flex-start}
-  .nav-links.show{display:flex}
-  .menu-toggle{display:block}
-  .about-grid,.contact-grid{grid-template-columns:1fr}
-  .cards-grid,.packages-grid{grid-template-columns:repeat(2,1fr)}
-  .process-grid{grid-template-columns:repeat(2,1fr)}
+.nav-links{display:none;position:absolute;top:78px;left:0;width:100%;padding:25px;background:#10101e;flex-direction:column;align-items:flex-start}
+.nav-links.show{display:flex}.menu-toggle{display:block}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.cards-grid,.packages-grid{grid-template-columns:repeat(2,1fr)}
+.process-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:580px){
-  .section{padding:75px 0}
-  .hero h1{letter-spacing:-2px}
-  .cards-grid,.packages-grid,.process-grid,.tools-grid{grid-template-columns:1fr}
-  .iq-chat-panel{right:10px;bottom:84px;width:calc(100vw - 20px);height:min(570px,calc(100dvh - 105px))}
-  .iq-chat-launch{right:16px;bottom:16px}
+.section{padding:75px 0}.hero h1{letter-spacing:-2px}
+.cards-grid,.packages-grid,.process-grid,.tools-grid{grid-template-columns:1fr}
+.iq-chat-panel{right:10px;bottom:84px;width:calc(100vw - 20px);height:min(570px,calc(100dvh - 105px))}
+.iq-chat-launch{right:16px;bottom:16px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
@@ -211,14 +138,10 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 <nav>
 <a href="#home" class="logo">INFINITE<span>IQ.</span></a>
 <ul class="nav-links" id="navLinks">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#packages">Packages</a></li>
-<li><a href="#portfolio">Projects</a></li>
-<li><a href="#tools">Tools</a></li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+<li><a href="#home">Home</a></li><li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li><li><a href="#packages">Packages</a></li>
+<li><a href="#portfolio">Projects</a></li><li><a href="#tools">Tools</a></li>
+<li><a href="#faq">FAQ</a></li><li><a href="#contact" class="nav-cta">Let's Talk</a></li>
 </ul>
 <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
 </nav>
@@ -226,140 +149,65 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 </header>
 
 <main>
-
-<section class="hero" id="home">
-<div class="container">
-<div class="hero-content">
+<section class="hero" id="home"><div class="container"><div class="hero-content">
 <div class="hero-tag">✦ IDEAS WITHOUT LIMITS</div>
 <h1>Welcome to<br><span class="gradient-text">INFINITE IQ.</span></h1>
 <p>We turn ambitious ideas into powerful digital experiences. From modern websites to creative digital solutions, your next big idea starts here.</p>
-<div class="hero-buttons">
-<a href="#contact" class="btn btn-primary">Start a Project ↗</a>
-<a href="#services" class="btn btn-secondary">Explore Services</a>
-</div>
-</div>
-</div>
-</section>
+<div class="hero-buttons"><a href="#contact" class="btn btn-primary">Start a Project ↗</a><a href="#services" class="btn btn-secondary">Explore Services</a></div>
+</div></div></section>
 
-<section class="section" id="about">
-<div class="container">
-<div class="section-heading">
-<span>Who We Are</span>
-<h2>More Than Just <span class="gradient-text">Ideas.</span></h2>
-<p>We believe every great digital experience begins with a great idea.</p>
-</div>
+<section class="section" id="about"><div class="container">
+<div class="section-heading"><span>Who We Are</span><h2>More Than Just <span class="gradient-text">Ideas.</span></h2><p>We believe every great digital experience begins with a great idea.</p></div>
 <div class="about-grid">
-<div class="about-card">
-<h3>Ideas Without Limits.</h3>
-<p>INFINITE IQ is a digital brand focused on creating modern websites and useful digital solutions.</p>
-<p>Our goal is to help individuals and businesses build a stronger online presence through creativity, technology and thoughtful design.</p>
-<div class="about-stat">
-<div class="stat"><strong>01</strong><small>Creative Thinking</small></div>
-<div class="stat"><strong>∞</strong><small>Possibilities</small></div>
-</div>
-</div>
-<div class="about-copy">
-<h3>Building the future, <span class="gradient-text">one idea at a time.</span></h3>
-<p>We combine design, functionality and innovation to create digital experiences that are clear, modern and useful.</p>
-<p>Whether you are starting a business, growing a brand or exploring a new idea, we're here to help you take the next step.</p>
-<a href="#contact" class="btn btn-primary">Work With Us ↗</a>
-</div>
-</div>
-</div>
-</section>
+<div class="about-card"><h3>Ideas Without Limits.</h3><p>INFINITE IQ is a digital brand focused on creating modern websites and useful digital solutions.</p><p>Our goal is to help individuals and businesses build a stronger online presence through creativity, technology and thoughtful design.</p><div class="about-stat"><div class="stat"><strong>01</strong><small>Creative Thinking</small></div><div class="stat"><strong>∞</strong><small>Possibilities</small></div></div></div>
+<div class="about-copy"><h3>Building the future, <span class="gradient-text">one idea at a time.</span></h3><p>We combine design, functionality and innovation to create digital experiences that are clear, modern and useful.</p><p>Whether you are starting a business, growing a brand or exploring a new idea, we're here to help you take the next step.</p><a href="#contact" class="btn btn-primary">Work With Us ↗</a></div>
+</div></div></section>
 
-<section class="section" id="services">
-<div class="container">
-<div class="section-heading">
-<span>What We Do</span>
-<h2>Our <span class="gradient-text">Services.</span></h2>
-<p>Digital solutions designed to help ideas move forward.</p>
-</div>
+<section class="section" id="services"><div class="container">
+<div class="section-heading"><span>What We Do</span><h2>Our <span class="gradient-text">Services.</span></h2><p>Digital solutions designed to help ideas move forward.</p></div>
 <div class="cards-grid">
 <article class="service-card"><div class="service-icon">🌐</div><h3>Website Development</h3><p>Modern, responsive websites designed to introduce your brand, showcase your work and connect with your audience.</p></article>
 <article class="service-card"><div class="service-icon">⚡</div><h3>Digital Tools</h3><p>Useful online tools and interactive experiences that help organise information and simplify everyday tasks.</p></article>
 <article class="service-card"><div class="service-icon">💡</div><h3>Digital Products</h3><p>Practical digital resources such as planners, templates and guides designed to support your ideas.</p></article>
-</div>
-</div>
-</section>
+</div></div></section>
 
-<section class="section" id="packages">
-<div class="container">
-<div class="section-heading">
-<span>Choose Your Direction</span>
-<h2>Website <span class="gradient-text">Packages.</span></h2>
-<p>Different starting points for different ambitions.</p>
-</div>
+<section class="section" id="packages"><div class="container">
+<div class="section-heading"><span>Choose Your Direction</span><h2>Website <span class="gradient-text">Packages.</span></h2><p>Different starting points for different ambitions.</p></div>
 <div class="packages-grid">
-<article class="package-card">
-<span class="package-label">Start Here</span><h3>Starter Website</h3>
-<p>For individuals and small businesses taking their first step online.</p>
-<ul><li>One-page website</li><li>Mobile-friendly design</li><li>About and Services sections</li><li>Contact information</li><li>Basic search-friendly structure</li></ul>
-<div class="package-price">Custom Quote</div>
-<a href="enquiry.html?package=starter" class="btn btn-secondary">Choose Starter</a>
-</article>
-<article class="package-card featured">
-<span class="package-label">For Growing Brands</span><h3>Professional Website</h3>
-<p>For businesses ready for a more complete online presence.</p>
-<ul><li>Multi-section website</li><li>Custom visual design</li><li>Mobile-friendly layout</li><li>Projects or product showcase</li><li>Contact and action sections</li></ul>
-<div class="package-price">Custom Quote</div>
-<a href="enquiry.html?package=professional" class="btn btn-primary">Choose Professional</a>
-</article>
-<article class="package-card">
-<span class="package-label">Advanced Experience</span><h3>Premium Website</h3>
-<p>For brands looking for a customised digital experience.</p>
-<ul><li>Custom multi-page experience</li><li>Advanced visual features</li><li>Custom interactive elements</li><li>Expanded brand presentation</li><li>Project-specific features</li></ul>
-<div class="package-price">Custom Quote</div>
-<a href="enquiry.html?package=premium" class="btn btn-secondary">Choose Premium</a>
-</article>
-</div>
-</div>
-</section>
+<article class="package-card"><span class="package-label">Start Here</span><h3>Starter Website</h3><p>For individuals and small businesses taking their first step online.</p><ul><li>One-page website</li><li>Mobile-friendly design</li><li>About and Services sections</li><li>Contact information</li><li>Basic search-friendly structure</li></ul><div class="package-price">Custom Quote</div><a href="enquiry.html?package=starter" class="btn btn-secondary">Choose Starter</a></article>
+<article class="package-card featured"><span class="package-label">For Growing Brands</span><h3>Professional Website</h3><p>For businesses ready for a more complete online presence.</p><ul><li>Multi-section website</li><li>Custom visual design</li><li>Mobile-friendly layout</li><li>Projects or product showcase</li><li>Contact and action sections</li></ul><div class="package-price">Custom Quote</div><a href="enquiry.html?package=professional" class="btn btn-primary">Choose Professional</a></article>
+<article class="package-card"><span class="package-label">Advanced Experience</span><h3>Premium Website</h3><p>For brands looking for a customised digital experience.</p><ul><li>Custom multi-page experience</li><li>Advanced visual features</li><li>Custom interactive elements</li><li>Expanded brand presentation</li><li>Project-specific features</li></ul><div class="package-price">Custom Quote</div><a href="enquiry.html?package=premium" class="btn btn-secondary">Choose Premium</a></article>
+</div></div></section>
 
-<section class="section" id="portfolio">
-<div class="container">
-<div class="section-heading">
-<span>Selected Work</span>
-<h2>Ideas Into <span class="gradient-text">Reality.</span></h2>
-<p>Explore websites designed and developed by INFINITE IQ.</p>
-</div>
+<section class="section" id="portfolio"><div class="container">
+<div class="section-heading"><span>Selected Work</span><h2>Ideas Into <span class="gradient-text">Reality.</span></h2><p>Explore websites designed and developed by INFINITE IQ.</p></div>
 <div class="cards-grid">
-<article class="project-card">
-<div class="project-visual">✂️</div>
-<div class="project-info">
-<h3>ELITE CUTS</h3>
-<p>A premium barbershop website featuring services, a gallery and an interactive appointment-request experience.</p>
-<a href="elite-cuts.html" target="_blank" rel="noopener">Explore ELITE CUTS ↗</a>
-<p class="project-notice">Portfolio demonstration — no real bookings.</p>
-</div>
-</article>
-<article class="project-card">
-<div class="project-visual">👟</div>
-<div class="project-info">
-<h3>NOVA STREET</h3>
-<p>A modern streetwear shopping experience with product collections, category filters and an interactive cart.</p>
-<a href="nova-street.html" target="_blank" rel="noopener">Explore NOVA STREET ↗</a>
-<p class="project-notice">Portfolio demonstration — no real payments.</p>
-</div>
-</article>
-<article class="project-card">
-<div class="project-visual">🚀</div>
-<div class="project-info">
-<h3>Your Next Big Idea</h3>
-<p>Have a business or digital idea? Let's turn it into a modern online experience.</p>
-<a href="enquiry.html">Start a Project ↗</a>
-</div>
-</article>
-</div>
-</div>
-</section>
+<article class="project-card"><div class="project-visual">✂️</div><div class="project-info"><h3>ELITE CUTS</h3><p>A premium barbershop website featuring services, a gallery and an interactive appointment-request experience.</p><a href="elite-cuts.html" target="_blank" rel="noopener">Explore ELITE CUTS ↗</a><p class="project-notice">Portfolio demonstration — no real bookings.</p></div></article>
+<article class="project-card"><div class="project-visual">👟</div><div class="project-info"><h3>NOVA STREET</h3><p>A modern streetwear shopping experience with product collections, category filters and an interactive cart.</p><a href="nova-street.html" target="_blank" rel="noopener">Explore NOVA STREET ↗</a><p class="project-notice">Portfolio demonstration — no real payments.</p></div></article>
+<article class="project-card"><div class="project-visual">🚀</div><div class="project-info"><h3>Your Next Big Idea</h3><p>Have a business or digital idea? Let's turn it into a modern online experience.</p><a href="enquiry.html">Start a Project ↗</a></div></article>
+</div></div></section>
 
-<section class="section" id="tools">
-<div class="container">
-<div class="section-heading">
-<span>INFINITE IQ WORKSPACE</span>
-<h2>Tools to turn ideas into <span class="gradient-text">action.</span></h2>
-<p>Use these free tools to plan a website, prepare a project brief, organise work and preview a client project space.</p>
+<section class="section" id="tools"><div class="container">
+<div class="section-heading"><span>INFINITE IQ WORKSPACE</span><h2>Tools to turn ideas into <span class="gradient-text">action.</span></h2><p>Use these free tools to plan a website, prepare a project brief, organise work and preview a client project space.</p></div>
+
+<!-- ACCOUNT SYSTEM -->
+<div class="auth-card" id="account">
+<h3>🔐 Your INFINITE IQ Account</h3>
+<p>Create an account or log in to save your plans, briefs, projects and tasks online.</p>
+<div id="authLoggedOut">
+<input id="authName" type="text" placeholder="Your name (for new accounts)">
+<input id="authEmail" type="email" placeholder="Email address" autocomplete="email">
+<input id="authPassword" type="password" placeholder="Password (at least 6 characters)" autocomplete="current-password">
+<div class="auth-actions">
+<button class="btn btn-primary" type="button" id="signUpBtn">Create Account</button>
+<button class="btn btn-secondary" type="button" id="signInBtn">Log In</button>
+</div>
+</div>
+<div id="authLoggedIn" hidden>
+<p id="authWelcome"></p>
+<div class="auth-actions"><button class="btn btn-secondary" type="button" id="signOutBtn">Log Out</button></div>
+</div>
+<div id="authMessage" class="status-message" hidden aria-live="polite"></div>
 </div>
 
 <div class="tools-grid">
@@ -368,12 +216,12 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 <article class="tool-card"><div class="tool-icon">📊</div><h3>Project Dashboard</h3><p>Create projects, track tasks, record budgets and monitor progress.</p><a href="#project-dashboard">Open Dashboard ↓</a></article>
 <article class="tool-card"><div class="tool-icon">🤝</div><h3>Client Portal</h3><p>Preview a client project space with project stages, tasks and updates.</p><a href="#client-portal">Open Client Portal ↓</a></article>
 </div>
+<p class="tools-note">Your personal plans, briefs, projects and tasks are stored in Supabase when you are signed in. The Client Portal below is still a sample view.</p>
 
-<p class="tools-note">The dashboard stores data in this browser. The Client Portal is a sample view, not a secure shared client account.</p>
-
+<!-- WEBSITE PLANNER -->
 <div class="tool-card" id="website-planner" style="margin-top:32px">
 <div class="tool-icon">🧭</div><h3>01 — Business Website Planner</h3>
-<p>Complete the form and generate a structured website plan.</p>
+<p>Complete the form and generate a structured website plan. Sign in to save it to your account.</p>
 <form id="websitePlannerForm">
 <div class="contact-grid">
 <div class="form-group"><label for="wpBusiness">Business / brand name</label><input id="wpBusiness" required placeholder="e.g. Nova Street"></div>
@@ -397,12 +245,14 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 <button class="btn btn-primary" type="submit">Generate My Website Plan</button>
 </form>
 <div id="wpOutput" hidden style="white-space:pre-wrap;background:var(--surface-light);padding:20px;border-radius:14px;margin-top:20px"></div>
+<div id="wpMessage" class="status-message" hidden></div>
 <button class="btn btn-secondary" id="wpCopy" type="button" hidden style="margin-top:12px">Copy Plan</button>
 </div>
 
+<!-- PROJECT BRIEF -->
 <div class="tool-card" id="brief-builder" style="margin-top:24px">
 <div class="tool-icon">📝</div><h3>02 — Project Brief Builder</h3>
-<p>Prepare a clear brief for a project discussion.</p>
+<p>Prepare a clear brief for a project discussion. Sign in to save it online.</p>
 <form id="briefForm">
 <div class="contact-grid">
 <div class="form-group"><label for="brTitle">Project name</label><input id="brTitle" required placeholder="Project name"></div>
@@ -419,15 +269,18 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 <button class="btn btn-primary" type="submit">Build My Project Brief</button>
 </form>
 <div id="briefOutput" hidden style="white-space:pre-wrap;background:var(--surface-light);padding:20px;border-radius:14px;margin-top:20px"></div>
+<div id="briefMessage" class="status-message" hidden></div>
 <button class="btn btn-secondary" id="briefCopy" type="button" hidden style="margin-top:12px">Copy Project Brief</button>
 </div>
 
+<!-- PROJECT DASHBOARD -->
 <div class="tool-card" id="project-dashboard" style="margin-top:24px">
 <div class="tool-icon">📊</div><h3>03 — Project Dashboard</h3>
-<p>Add and manage demo projects. Records are saved only in this browser.</p>
+<p>Your projects and tasks are stored in your Supabase account, not just this browser.</p>
+<div id="dashMessage" class="status-message" hidden></div>
 <div class="about-stat" style="margin:15px 0">
 <div class="stat"><strong id="dashProjectCount">0</strong><small>Projects</small></div>
-<div class="stat"><strong id="dashTaskCount">0</strong><small>Tasks completed</small></div>
+<div class="stat"><strong id="dashTaskCount">0/0</strong><small>Tasks completed</small></div>
 <div class="stat"><strong id="dashAgreed">KSh 0</strong><small>Agreed budgets</small></div>
 <div class="stat"><strong id="dashPaid">KSh 0</strong><small>Recorded payments</small></div>
 </div>
@@ -462,12 +315,13 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 <button class="btn btn-secondary" type="submit">Add Task</button>
 </form>
 <div id="taskList" style="margin-top:16px"></div>
-<p class="tools-note">This is a personal browser-based demo, not a secure multi-user business database. Clearing browser data may remove saved records.</p>
+<p class="tools-note">Your dashboard is private to your signed-in account under the database security rules. Export a backup periodically.</p>
 </div>
 
+<!-- CLIENT PORTAL SAMPLE -->
 <div class="tool-card" id="client-portal" style="margin-top:24px">
 <div class="tool-icon">🤝</div><h3>04 — Client Portal</h3>
-<p>Sample client view for a website project. Tick tasks to update the progress display. This is not a private login or live shared portal.</p>
+<p>Sample client view for a website project. Tick tasks to update the progress display. This is not yet a private login or live shared portal.</p>
 <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0">
 <div><span class="package-label">SAMPLE PROJECT</span><h3 style="margin:0">Business Website Design</h3><p style="margin:4px 0">Client: Demo Client · Status: In progress</p></div>
 <div style="text-align:right"><strong id="portalPercent" style="font-size:2rem;color:var(--cyan)">0%</strong><p>Project progress</p></div>
@@ -477,34 +331,24 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 <div id="portalTasks" style="display:grid;gap:12px"></div>
 <div style="margin-top:24px;padding:18px;background:var(--surface-light);border-radius:14px"><h4>Latest update</h4><p id="portalUpdate" style="margin-top:8px">The design direction has been prepared.</p></div>
 </div>
+</div></section>
 
-</div>
-</section>
-
-<section class="section" id="process">
-<div class="container">
+<section class="section" id="process"><div class="container">
 <div class="section-heading"><span>How We Work</span><h2>A Simple <span class="gradient-text">Process.</span></h2><p>From your first idea to a finished digital experience.</p></div>
 <div class="process-grid">
 <div class="process-step"><strong>01</strong><h3>Discover</h3><p>We learn about your idea, goals and requirements.</p></div>
 <div class="process-step"><strong>02</strong><h3>Plan</h3><p>We organise the pages, features and direction.</p></div>
 <div class="process-step"><strong>03</strong><h3>Create</h3><p>We develop the design and build the experience.</p></div>
 <div class="process-step"><strong>04</strong><h3>Launch</h3><p>We prepare the finished project for publishing.</p></div>
-</div>
-</div>
-</section>
+</div></div></section>
 
-<section class="section">
-<div class="container">
-<div class="promise-box">
+<section class="section"><div class="container"><div class="promise-box">
 <h2>Every Great Thing <span class="gradient-text">Begins Somewhere.</span></h2>
 <p>Your next idea doesn't need to be perfect before you start. Tell us what you're imagining, and let's explore what is possible.</p>
 <a href="enquiry.html" class="btn btn-primary">Tell Us Your Idea ↗</a>
-</div>
-</div>
-</section>
+</div></div></section>
 
-<section class="section" id="faq">
-<div class="container">
+<section class="section" id="faq"><div class="container">
 <div class="section-heading"><span>Questions & Answers</span><h2>Frequently Asked <span class="gradient-text">Questions.</span></h2><p>Some useful information before starting a project.</p></div>
 <div class="faq-list">
 <div class="faq-item"><button class="faq-question">What does INFINITE IQ do?<span>+</span></button><div class="faq-answer">INFINITE IQ focuses on website development, digital tools and digital products.</div></div>
@@ -512,476 +356,476 @@ footer{border-top:1px solid var(--border);padding:35px 0;color:var(--muted);text
 <div class="faq-item"><button class="faq-question">Will my website work on phones?<span>+</span></button><div class="faq-answer">Yes. Mobile-friendly layouts are part of the website packages, with designs planned for phones and larger screens.</div></div>
 <div class="faq-item"><button class="faq-question">Are hosting and domains included?<span>+</span></button><div class="faq-answer">Hosting and domain names are not automatically included. They may involve separate costs, which should be discussed before a project begins.</div></div>
 <div class="faq-item"><button class="faq-question">How do I start a project?<span>+</span></button><div class="faq-answer">Visit the enquiry page and tell us about your idea, goals and the features you have in mind.</div></div>
-</div>
-</div>
-</section>
+</div></div></section>
 
-<section class="section" id="contact">
-<div class="container">
+<section class="section" id="contact"><div class="container">
 <div class="section-heading"><span>Let's Connect</span><h2>Let's Build Something <span class="gradient-text">Great.</span></h2><p>Have an idea? Start by telling us a little about it.</p></div>
 <div class="contact-grid">
-<div class="contact-info">
-<h3>Let's talk about your next idea.</h3>
-<p>Whether you need a website, a digital tool or simply want to explore an idea, we'd love to hear what you're planning.</p>
-<p>✦ Ideas Without Limits.</p>
-<a href="enquiry.html" class="btn btn-primary">Open Enquiry Page ↗</a>
-</div>
+<div class="contact-info"><h3>Let's talk about your next idea.</h3><p>Whether you need a website, a digital tool or simply want to explore an idea, we'd love to hear what you're planning.</p><p>✦ Ideas Without Limits.</p><a href="enquiry.html" class="btn btn-primary">Open Enquiry Page ↗</a></div>
 <form class="contact-form" id="contactForm">
 <input type="text" id="contactName" placeholder="Your name" required>
 <input type="email" id="contactEmail" placeholder="Your email" required>
 <textarea id="contactMessage" placeholder="Tell us about your idea..." required></textarea>
 <button type="submit" class="btn btn-primary">Send Enquiry ↗</button>
+<p id="contactStatus" class="status-message" hidden></p>
 </form>
-</div>
-</div>
-</section>
-
+</div></div></section>
 </main>
 
-<footer>
-<div class="container">
-<a href="#home" class="logo">INFINITE<span>IQ.</span></a>
-<p>Ideas Without Limits.</p>
-<p>© <span id="year"></span> INFINITE IQ. All rights reserved.</p>
-</div>
-</footer>
+<footer><div class="container"><a href="#home" class="logo">INFINITE<span>IQ.</span></a><p>Ideas Without Limits.</p><p>© <span id="year"></span> INFINITE IQ. All rights reserved.</p></div></footer>
 
-<!-- FLOATING IQ ASSISTANT BUTTON -->
-<button class="iq-chat-launch" id="iqChatLaunch" type="button" aria-label="Open IQ Assistant" aria-expanded="false">
-<span class="iq-orb">✦</span>
-<span>IQ Assistant</span>
-</button>
-
-<!-- CHAT WINDOW: OPENS ABOVE THE BUTTON -->
+<button class="iq-chat-launch" id="iqChatLaunch" type="button" aria-label="Open IQ Assistant" aria-expanded="false"><span class="iq-orb">✦</span><span>IQ Assistant</span></button>
 <section class="iq-chat-panel" id="iqChatPanel" role="dialog" aria-label="IQ Assistant chat" aria-modal="false">
-<div class="iq-chat-header">
-<div><h3>INFINITE IQ Assistant</h3><p>Your digital guide · Ask us anything</p></div>
-<button class="iq-chat-close" id="iqChatClose" type="button" aria-label="Close assistant">×</button>
-</div>
-<div class="iq-chat-messages" id="iqChatMessages" aria-live="polite">
-<div class="iq-message bot">Hello! Welcome to INFINITE IQ. ✦
+<div class="iq-chat-header"><div><h3>INFINITE IQ Assistant</h3><p>Your digital guide · Ask us anything</p></div><button class="iq-chat-close" id="iqChatClose" type="button" aria-label="Close assistant">×</button></div>
+<div class="iq-chat-messages" id="iqChatMessages" aria-live="polite"><div class="iq-message bot">Hello! Welcome to INFINITE IQ. ✦
 
 I'm here to help you explore our services, packages, portfolio and digital tools.
 
-What would you like to know?</div>
-</div>
+What would you like to know?</div></div>
 <div class="iq-chat-quick" id="iqChatQuick">
 <button type="button" data-question="What services do you offer?">Our services</button>
 <button type="button" data-question="What are your packages?">Packages</button>
 <button type="button" data-question="How much does a website cost?">Pricing</button>
 <button type="button" data-question="How can I start a project?">Start a project</button>
 </div>
-<form class="iq-chat-form" id="iqChatForm">
-<input type="text" id="iqChatInput" placeholder="Ask INFINITE IQ..." autocomplete="off" maxlength="4000" required>
-<button type="submit" aria-label="Send message">➤</button>
-</form>
+<form class="iq-chat-form" id="iqChatForm"><input type="text" id="iqChatInput" placeholder="Ask INFINITE IQ..." autocomplete="off" maxlength="4000" required><button type="submit" aria-label="Send message">➤</button></form>
 <div class="iq-chat-disclaimer">INFINITE IQ knowledge assistant · Free service</div>
 </section>
 
 <script>
-/* NAVIGATION */
-const menuToggle=document.getElementById("menuToggle");
-const navLinks=document.getElementById("navLinks");
+/* SUPABASE CONNECTION */
+const SUPABASE_URL="https://qlfuiexufwwgryfpgemt.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_763gC-SRdxaYo3-0UysmnQ_8NXO8DM2";
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+let currentUser=null;
 
+/* HELPERS */
+const $=id=>document.getElementById(id);
+const money=n=>"KSh "+Number(n||0).toLocaleString("en-KE");
+const showMessage=(id,message,type="")=>{
+  const el=$(id);el.textContent=message;el.hidden=false;
+  el.className="status-message"+(type?" "+type:"");
+};
+const hideMessage=id=>{$(id).hidden=true;};
+const escapeHTML=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const copyText=async text=>{
+  try{await navigator.clipboard.writeText(text);alert("Copied successfully.");}
+  catch{alert("Copy is unavailable here. Select the generated text and copy it manually.");}
+};
+const requireLogin=()=>{
+  if(currentUser)return true;
+  showMessage("authMessage","Please create an account or log in first.","error");
+  $("account").scrollIntoView({behavior:"smooth"});
+  return false;
+};
+
+/* NAVIGATION */
+const menuToggle=$("menuToggle"),navLinks=$("navLinks");
 menuToggle.addEventListener("click",()=>{
   const open=navLinks.classList.toggle("show");
   menuToggle.setAttribute("aria-expanded",String(open));
   menuToggle.textContent=open?"✕":"☰";
 });
-
-document.querySelectorAll(".nav-links a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    navLinks.classList.remove("show");
-    menuToggle.setAttribute("aria-expanded","false");
-    menuToggle.textContent="☰";
-  });
-});
+document.querySelectorAll(".nav-links a").forEach(link=>link.addEventListener("click",()=>{
+  navLinks.classList.remove("show");
+  menuToggle.setAttribute("aria-expanded","false");
+  menuToggle.textContent="☰";
+}));
 
 /* FAQ */
-document.querySelectorAll(".faq-question").forEach(button=>{
-  button.addEventListener("click",()=>{
-    const item=button.closest(".faq-item");
-    item.classList.toggle("active");
-    button.querySelector("span").textContent=item.classList.contains("active")?"−":"+";
-  });
-});
+document.querySelectorAll(".faq-question").forEach(button=>button.addEventListener("click",()=>{
+  const item=button.closest(".faq-item");item.classList.toggle("active");
+  button.querySelector("span").textContent=item.classList.contains("active")?"−":"+";
+}));
+$("year").textContent=new Date().getFullYear();
 
-document.getElementById("year").textContent=new Date().getFullYear();
+/* ACCOUNT AUTHENTICATION */
+function renderAuth(){
+  $("authLoggedOut").hidden=!!currentUser;
+  $("authLoggedIn").hidden=!currentUser;
+  $("authWelcome").textContent=currentUser?"Signed in as "+currentUser.email:"";
+  if(currentUser){
+    showMessage("authMessage","You're signed in. Your workspace is ready.","success");
+    loadDashboard();
+  }else{
+    showMessage("authMessage","Sign in to access your saved workspace.");
+    projects=[];tasks=[];renderDash();
+  }
+}
+async function signUp(){
+  const name=$("authName").value.trim();
+  const email=$("authEmail").value.trim();
+  const password=$("authPassword").value;
+  if(!email||password.length<6){
+    showMessage("authMessage","Enter a valid email and a password with at least 6 characters.","error");return;
+  }
+  showMessage("authMessage","Creating your account...");
+  const {data,error}=await db.auth.signUp({
+    email,password,options:{data:{full_name:name}}
+  });
+  if(error){showMessage("authMessage",error.message,"error");return;}
+  if(data.session){
+    currentUser=data.user;renderAuth();
+    showMessage("authMessage","Account created successfully. You're signed in!","success");
+  }else{
+    showMessage("authMessage","Account created. Check your email for the confirmation link, then return here and log in.","success");
+  }
+}
+async function signIn(){
+  const email=$("authEmail").value.trim();
+  const password=$("authPassword").value;
+  if(!email||!password){showMessage("authMessage","Enter your email and password.","error");return;}
+  showMessage("authMessage","Logging in...");
+  const {data,error}=await db.auth.signInWithPassword({email,password});
+  if(error){showMessage("authMessage",error.message,"error");return;}
+  currentUser=data.user;renderAuth();
+  showMessage("authMessage","Welcome back. You're signed in!","success");
+}
+$("signUpBtn").addEventListener("click",signUp);
+$("signInBtn").addEventListener("click",signIn);
+$("signOutBtn").addEventListener("click",async()=>{
+  const {error}=await db.auth.signOut();
+  if(error){showMessage("authMessage",error.message,"error");return;}
+  currentUser=null;renderAuth();
+  showMessage("authMessage","You have logged out.","success");
+});
+db.auth.onAuthStateChange((_event,session)=>{
+  currentUser=session?.user||null;
+  renderAuth();
+});
+(async()=>{
+  const {data:{session}}=await db.auth.getSession();
+  currentUser=session?.user||null;renderAuth();
+})();
 
 /* CONTACT FORM */
-document.getElementById("contactForm").addEventListener("submit",event=>{
+$("contactForm").addEventListener("submit",event=>{
   event.preventDefault();
-  const name=document.getElementById("contactName").value.trim();
-  const email=document.getElementById("contactEmail").value.trim();
-  const message=document.getElementById("contactMessage").value.trim();
+  const name=$("contactName").value.trim();
+  const email=$("contactEmail").value.trim();
+  const message=$("contactMessage").value.trim();
   const subject=encodeURIComponent("INFINITE IQ Project Enquiry");
   const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nProject details:\n${message}`);
+  showMessage("contactStatus","Opening your email app to prepare the enquiry. It has not been sent until you send it from your email app.");
   window.location.href=`mailto:?subject=${subject}&body=${body}`;
 });
 
-/* FLOATING IQ ASSISTANT */
+/* IQ ASSISTANT */
 (()=>{
-  const launch=document.getElementById("iqChatLaunch");
-  const panel=document.getElementById("iqChatPanel");
-  const close=document.getElementById("iqChatClose");
-  const messages=document.getElementById("iqChatMessages");
-  const form=document.getElementById("iqChatForm");
-  const input=document.getElementById("iqChatInput");
-  const quick=document.getElementById("iqChatQuick");
-  if(!launch||!panel||!close||!messages||!form||!input||!quick)return;
-
+  const launch=$("iqChatLaunch"),panel=$("iqChatPanel"),close=$("iqChatClose");
+  const messages=$("iqChatMessages"),form=$("iqChatForm"),input=$("iqChatInput"),quick=$("iqChatQuick");
   const API_URL="https://infinite-iq-assistant.onrender.com/chat";
   let isSending=false;
-
   function setPanel(open){
-    panel.classList.toggle("open",open);
-    launch.setAttribute("aria-expanded",String(open));
-    launch.setAttribute("aria-label",open?"IQ Assistant is open":"Open IQ Assistant");
-    if(open)input.focus();
-    else launch.focus();
+    panel.classList.toggle("open",open);launch.setAttribute("aria-expanded",String(open));
+    if(open)input.focus();else launch.focus();
   }
-
-  launch.addEventListener("click",()=>{
-    setPanel(!panel.classList.contains("open"));
-  });
-
+  launch.addEventListener("click",()=>setPanel(!panel.classList.contains("open")));
   close.addEventListener("click",()=>setPanel(false));
-
-  document.addEventListener("keydown",event=>{
-    if(event.key==="Escape"&&panel.classList.contains("open"))setPanel(false);
-  });
-
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&panel.classList.contains("open"))setPanel(false);});
   function addMessage(text,sender){
-    const message=document.createElement("div");
-    message.className=`iq-message ${sender}`;
-    message.textContent=text;
-    messages.appendChild(message);
-    messages.scrollTop=messages.scrollHeight;
-    return message;
+    const message=document.createElement("div");message.className=`iq-message ${sender}`;
+    message.textContent=text;messages.appendChild(message);messages.scrollTop=messages.scrollHeight;return message;
   }
-
   async function sendMessage(text){
-    const cleanText=text.trim();
-    if(!cleanText||isSending)return;
-
-    addMessage(cleanText,"user");
-    input.value="";
-    isSending=true;
-
+    const clean=text.trim();if(!clean||isSending)return;
+    addMessage(clean,"user");input.value="";isSending=true;
     const typing=addMessage("IQ Assistant is thinking...","bot");
-
     try{
-      const response=await fetch(API_URL,{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({message:cleanText})
-      });
-
-      if(!response.ok)throw new Error(`Server responded with ${response.status}`);
-
-      const data=await response.json();
-      typing.remove();
-
-      addMessage(
-        typeof data.reply==="string"
-          ?data.reply
-          :"I couldn't understand the response. Please try again.",
-        "bot"
-      );
+      const response=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:clean})});
+      if(!response.ok)throw Error("Server responded with "+response.status);
+      const data=await response.json();typing.remove();
+      addMessage(typeof data.reply==="string"?data.reply:"I couldn't understand the response. Please try again.","bot");
     }catch(error){
-      typing.remove();
-      addMessage("I couldn't connect to IQ Assistant right now. The free service may be waking up. Please wait a moment and try again.","bot");
-      console.error("IQ Assistant connection error:",error);
-    }finally{
-      isSending=false;
-      if(panel.classList.contains("open"))input.focus();
-    }
+      typing.remove();addMessage("I couldn't connect to IQ Assistant right now. The free service may be waking up. Please wait a moment and try again.","bot");
+      console.error(error);
+    }finally{isSending=false;if(panel.classList.contains("open"))input.focus();}
   }
-
-  form.addEventListener("submit",event=>{
-    event.preventDefault();
-    sendMessage(input.value);
-  });
-
-  quick.querySelectorAll("button").forEach(button=>{
-    button.addEventListener("click",()=>{
-      sendMessage(button.dataset.question||button.textContent);
-    });
-  });
+  form.addEventListener("submit",e=>{e.preventDefault();sendMessage(input.value);});
+  quick.querySelectorAll("button").forEach(button=>button.addEventListener("click",()=>sendMessage(button.dataset.question||button.textContent)));
 })();
 
-/* FOUR INFINITE IQ TOOLS */
-(()=>{
-  const $=id=>document.getElementById(id);
-  const readStore=(key,fallback)=>{
-    try{return JSON.parse(localStorage.getItem(key))??fallback;}
-    catch{return fallback;}
+/* WEBSITE PLANNER — SAVE TO SUPABASE */
+let websitePlan="";
+$("websitePlannerForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  const pages=[...document.querySelectorAll('input[name="wpPages"]:checked')].map(x=>x.value);
+  const planData={
+    business:$("wpBusiness").value.trim(),type:$("wpType").value,goal:$("wpGoal").value,
+    audience:$("wpAudience").value.trim(),budget:$("wpBudget").value?Number($("wpBudget").value):null,
+    timeline:$("wpTimeline").value,pages,features:$("wpFeatures").value.trim()
   };
-  const writeStore=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
-  const money=n=>"KSh "+Number(n||0).toLocaleString("en-KE");
-
-  const copyText=async text=>{
-    try{
-      await navigator.clipboard.writeText(text);
-      alert("Copied successfully.");
-    }catch{
-      alert("Copy is unavailable here. Select the generated text and copy it manually.");
-    }
-  };
-
-  /* WEBSITE PLANNER */
-  let websitePlan="";
-  $("websitePlannerForm").addEventListener("submit",event=>{
-    event.preventDefault();
-    const pages=[...document.querySelectorAll('input[name="wpPages"]:checked')].map(x=>x.value);
-    websitePlan=`BUSINESS WEBSITE PLAN
-Business: ${$("wpBusiness").value}
-Type: ${$("wpType").value}
-Main goal: ${$("wpGoal").value}
-Target audience: ${$("wpAudience").value||"Not specified"}
+  websitePlan=`BUSINESS WEBSITE PLAN
+Business: ${planData.business}
+Type: ${planData.type}
+Main goal: ${planData.goal}
+Target audience: ${planData.audience||"Not specified"}
 Pages: ${pages.join(", ")||"To be discussed"}
-Budget: ${$("wpBudget").value?money($("wpBudget").value):"To be discussed"}
-Timeline: ${$("wpTimeline").value}
-Features / notes: ${$("wpFeatures").value||"None supplied"}
+Budget: ${planData.budget!==null?money(planData.budget):"To be discussed"}
+Timeline: ${planData.timeline}
+Features / notes: ${planData.features||"None supplied"}
 
 Prepared with INFINITE IQ Business Website Planner.`;
-    $("wpOutput").textContent=websitePlan;
-    $("wpOutput").hidden=false;
-    $("wpCopy").hidden=false;
+  $("wpOutput").textContent=websitePlan;$("wpOutput").hidden=false;$("wpCopy").hidden=false;
+  if(!requireLogin()){showMessage("wpMessage","Your plan is ready. Log in, then generate it again to save it online.");return;}
+  showMessage("wpMessage","Saving your website plan...");
+  const {error}=await db.from("website_plans").insert({
+    user_id:currentUser.id,title:planData.business,
+    plan_data:{...planData,generated_text:websitePlan}
   });
-  $("wpCopy").addEventListener("click",()=>copyText(websitePlan));
+  if(error)showMessage("wpMessage","Plan generated, but saving failed: "+error.message,"error");
+  else showMessage("wpMessage","Your website plan has been saved to your INFINITE IQ account.","success");
+});
+$("wpCopy").addEventListener("click",()=>copyText(websitePlan));
 
-  /* PROJECT BRIEF */
-  let briefText="";
-  $("briefForm").addEventListener("submit",event=>{
-    event.preventDefault();
-    briefText=`PROJECT BRIEF
-Project: ${$("brTitle").value}
-Client / business: ${$("brClient").value}
-Email: ${$("brEmail").value||"Not supplied"}
-Project type: ${$("brType").value}
-Audience: ${$("brAudience").value||"Not specified"}
-Deadline: ${$("brDeadline").value||"To be discussed"}
-Budget: ${$("brBudget").value?money($("brBudget").value):"To be discussed"}
+/* PROJECT BRIEF — SAVE TO SUPABASE */
+let briefText="";
+$("briefForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  const briefData={
+    client:$("brClient").value.trim(),email:$("brEmail").value.trim(),
+    type:$("brType").value,audience:$("brAudience").value.trim(),
+    deadline:$("brDeadline").value||null,budget:$("brBudget").value?Number($("brBudget").value):null,
+    goal:$("brGoal").value.trim(),scope:$("brScope").value.trim(),notes:$("brNotes").value.trim()
+  };
+  const title=$("brTitle").value.trim();
+  briefText=`PROJECT BRIEF
+Project: ${title}
+Client / business: ${briefData.client}
+Email: ${briefData.email||"Not supplied"}
+Project type: ${briefData.type}
+Audience: ${briefData.audience||"Not specified"}
+Deadline: ${briefData.deadline||"To be discussed"}
+Budget: ${briefData.budget!==null?money(briefData.budget):"To be discussed"}
 
 GOAL
-${$("brGoal").value}
+${briefData.goal}
 
 SCOPE & REQUIREMENTS
-${$("brScope").value||"To be discussed"}
+${briefData.scope||"To be discussed"}
 
 ADDITIONAL NOTES
-${$("brNotes").value||"None"}
+${briefData.notes||"None"}
 
 Prepared with INFINITE IQ Project Brief Builder.`;
-    $("briefOutput").textContent=briefText;
-    $("briefOutput").hidden=false;
-    $("briefCopy").hidden=false;
+  $("briefOutput").textContent=briefText;$("briefOutput").hidden=false;$("briefCopy").hidden=false;
+  if(!requireLogin()){showMessage("briefMessage","Your brief is ready. Log in, then generate it again to save it online.");return;}
+  showMessage("briefMessage","Saving your project brief...");
+  const {error}=await db.from("project_briefs").insert({
+    user_id:currentUser.id,title,brief_data:{...briefData,generated_text:briefText}
   });
-  $("briefCopy").addEventListener("click",()=>copyText(briefText));
+  if(error)showMessage("briefMessage","Brief generated, but saving failed: "+error.message,"error");
+  else showMessage("briefMessage","Your project brief has been saved to your INFINITE IQ account.","success");
+});
+$("briefCopy").addEventListener("click",()=>copyText(briefText));
 
-  /* PROJECT DASHBOARD */
-  let projects=readStore("iqDashboardProjects",[]);
-  let tasks=readStore("iqDashboardTasks",[]);
+/* PROJECT DASHBOARD — SUPABASE DATABASE */
+let projects=[],tasks=[];
+let dashboardBusy=false;
 
-  const saveDash=()=>{
-    writeStore("iqDashboardProjects",projects);
-    writeStore("iqDashboardTasks",tasks);
-    renderDash();
+function renderDash(){
+  $("dashProjectCount").textContent=projects.length;
+  $("dashTaskCount").textContent=`${tasks.filter(t=>t.status==="completed").length}/${tasks.length}`;
+  $("dashAgreed").textContent=money(projects.reduce((s,p)=>s+Number(p.budget||0),0));
+  $("dashPaid").textContent=money(projects.reduce((s,p)=>s+Number(p.paid||0),0));
+
+  const query=$("dashSearch").value.toLowerCase();
+  $("projectList").innerHTML=projects.filter(p=>
+    `${p.name} ${p.client_name||""} ${p.project_type||""} ${p.status||""}`.toLowerCase().includes(query)
+  ).map(p=>`
+    <article class="dashboard-item">
+      <strong>${escapeHTML(p.name)}</strong>
+      <p>${escapeHTML(p.client_name||"No client")} · ${escapeHTML(p.project_type||"Project")} · ${escapeHTML(p.status||"Planning")}</p>
+      <small>Deadline: ${escapeHTML(p.deadline||"Not set")} · Budget: ${money(p.budget)} · Paid: ${money(p.paid)}</small>
+      <p>${escapeHTML(p.notes||"")}</p>
+      <div class="dashboard-actions">
+        <button type="button" data-edit="${p.id}" class="btn btn-secondary">Edit</button>
+        <button type="button" data-delete="${p.id}" class="btn btn-secondary">Delete</button>
+      </div>
+    </article>
+  `).join("")||'<p class="tools-note">No projects yet. Add your first project above.</p>';
+
+  $("taskProject").innerHTML=projects.map(p=>`<option value="${p.id}">${escapeHTML(p.name)}</option>`).join("")||'<option value="">Add a project first</option>';
+
+  $("taskList").innerHTML=tasks.map(t=>{
+    const project=projects.find(p=>p.id===t.project_id);
+    const done=t.status==="completed";
+    return `<label style="display:flex;gap:10px;align-items:center;padding:10px;border-bottom:1px solid var(--border)">
+      <input type="checkbox" data-task="${t.id}" ${done?"checked":""}>
+      <span style="${done?"text-decoration:line-through;opacity:.6":""}">
+      ${escapeHTML(t.title)} — ${escapeHTML(project?.name||"Project")}
+      <small>(${escapeHTML(t.due_date||"No due date")})</small></span>
+      <button type="button" data-task-delete="${t.id}" style="margin-left:auto;background:transparent;border:0;color:var(--cyan)">Remove</button>
+    </label>`;
+  }).join("")||'<p class="tools-note">No tasks yet.</p>';
+}
+
+async function loadDashboard(){
+  if(!currentUser)return;
+  showMessage("dashMessage","Loading your projects...");
+  const [projectResult,taskResult]=await Promise.all([
+    db.from("projects").select("*").order("created_at",{ascending:false}),
+    db.from("tasks").select("*").order("created_at",{ascending:false})
+  ]);
+  if(projectResult.error||taskResult.error){
+    showMessage("dashMessage","Could not load dashboard: "+(projectResult.error?.message||taskResult.error?.message),"error");
+    return;
+  }
+  projects=projectResult.data||[];tasks=taskResult.data||[];
+  renderDash();showMessage("dashMessage","Your dashboard is up to date.","success");
+}
+
+$("projectForm").addEventListener("submit",async event=>{
+  event.preventDefault();if(!requireLogin())return;if(dashboardBusy)return;
+  dashboardBusy=true;showMessage("dashMessage","Adding your project...");
+  const project={
+    created_by:currentUser.id,name:$("prName").value.trim(),
+    client_name:$("prClient").value.trim(),project_type:$("prType").value,
+    status:$("prStatus").value,deadline:$("prDeadline").value||null,
+    budget:Number($("prBudget").value||0),paid:Number($("prPaid").value||0),
+    notes:$("prNotes").value.trim()
   };
+  const {error}=await db.from("projects").insert(project);
+  dashboardBusy=false;
+  if(error){showMessage("dashMessage","Could not add project: "+error.message,"error");return;}
+  event.target.reset();$("prBudget").value="0";$("prPaid").value="0";
+  await loadDashboard();showMessage("dashMessage","Project added successfully.","success");
+});
 
-  function esc(value){
-    return String(value??"").replace(/[&<>"']/g,char=>({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[char]));
+$("taskForm").addEventListener("submit",async event=>{
+  event.preventDefault();if(!requireLogin())return;
+  if(!projects.length)return showMessage("dashMessage","Add a project before creating a task.","error");
+  const projectId=$("taskProject").value;
+  if(!projectId)return;
+  showMessage("dashMessage","Adding your task...");
+  const {error}=await db.from("tasks").insert({
+    project_id:projectId,title:$("taskText").value.trim(),
+    due_date:$("taskDue").value||null,status:"pending"
+  });
+  if(error){showMessage("dashMessage","Could not add task: "+error.message,"error");return;}
+  $("taskText").value="";$("taskDue").value="";
+  await loadDashboard();showMessage("dashMessage","Task added successfully.","success");
+});
+
+$("dashSearch").addEventListener("input",renderDash);
+
+$("projectList").addEventListener("click",async event=>{
+  if(!requireLogin())return;
+  const del=event.target.dataset.delete,edit=event.target.dataset.edit;
+  if(del){
+    if(!confirm("Delete this project and its tasks?"))return;
+    showMessage("dashMessage","Deleting project...");
+    const {error}=await db.from("projects").delete().eq("id",del);
+    if(error){showMessage("dashMessage","Delete failed: "+error.message,"error");return;}
+    await loadDashboard();showMessage("dashMessage","Project deleted.","success");
   }
-
-  function renderDash(){
-    $("dashProjectCount").textContent=projects.length;
-    $("dashTaskCount").textContent=`${tasks.filter(task=>task.done).length}/${tasks.length}`;
-    $("dashAgreed").textContent=money(projects.reduce((sum,p)=>sum+Number(p.budget||0),0));
-    $("dashPaid").textContent=money(projects.reduce((sum,p)=>sum+Number(p.paid||0),0));
-
-    const query=$("dashSearch").value.toLowerCase();
-
-    $("projectList").innerHTML=projects
-      .filter(p=>`${p.name} ${p.client} ${p.type} ${p.status}`.toLowerCase().includes(query))
-      .map(p=>`
-        <article style="padding:16px;margin:12px 0;border:1px solid var(--border);border-radius:14px">
-          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-            <div>
-              <strong>${esc(p.name)}</strong>
-              <p>${esc(p.client||"No client")} · ${esc(p.type)} · ${esc(p.status)}</p>
-              <small>Deadline: ${esc(p.deadline||"Not set")} · Budget: ${money(p.budget)} · Paid: ${money(p.paid)}</small>
-              <p>${esc(p.notes||"")}</p>
-            </div>
-            <div>
-              <button type="button" data-edit="${p.id}" class="btn btn-secondary">Edit</button>
-              <button type="button" data-delete="${p.id}" class="btn btn-secondary">Delete</button>
-            </div>
-          </div>
-        </article>
-      `).join("")||'<p class="tools-note">No projects yet. Add your first project above.</p>';
-
-    $("taskProject").innerHTML=projects.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join("")||'<option value="">Add a project first</option>';
-
-    $("taskList").innerHTML=tasks.map(t=>`
-      <label style="display:flex;gap:10px;align-items:center;padding:10px;border-bottom:1px solid var(--border)">
-        <input type="checkbox" data-task="${t.id}" ${t.done?"checked":""}>
-        <span style="${t.done?"text-decoration:line-through;opacity:.6":""}">
-          ${esc(t.text)} — ${esc(projects.find(p=>p.id===t.project)?.name||"Unassigned")}
-          <small>(${esc(t.due||"No due date")})</small>
-        </span>
-        <button type="button" data-task-delete="${t.id}" style="margin-left:auto;background:transparent;border:0;color:var(--cyan)">Remove</button>
-      </label>
-    `).join("")||'<p class="tools-note">No tasks yet.</p>';
+  if(edit){
+    const p=projects.find(x=>x.id===edit);if(!p)return;
+    const name=prompt("Project name",p.name);if(name===null)return;
+    const client=prompt("Client / business",p.client_name||"");if(client===null)return;
+    const status=prompt("Status: Planning, In progress, On hold, Completed",p.status||"Planning");if(status===null)return;
+    const budget=prompt("Agreed budget (KSh)",p.budget||0);if(budget===null)return;
+    const paid=prompt("Amount paid (KSh)",p.paid||0);if(paid===null)return;
+    const notes=prompt("Project notes",p.notes||"");if(notes===null)return;
+    const {error}=await db.from("projects").update({
+      name:name.trim(),client_name:client.trim(),status:status.trim(),
+      budget:Number(budget)||0,paid:Number(paid)||0,notes:notes.trim()
+    }).eq("id",edit);
+    if(error){showMessage("dashMessage","Update failed: "+error.message,"error");return;}
+    await loadDashboard();showMessage("dashMessage","Project updated.","success");
   }
+});
 
-  $("projectForm").addEventListener("submit",event=>{
-    event.preventDefault();
-    projects.push({
-      id:Date.now().toString(),
-      name:$("prName").value.trim(),
-      client:$("prClient").value.trim(),
-      type:$("prType").value,
-      status:$("prStatus").value,
-      deadline:$("prDeadline").value,
-      budget:Number($("prBudget").value||0),
-      paid:Number($("prPaid").value||0),
-      notes:$("prNotes").value.trim()
-    });
-    event.target.reset();
-    saveDash();
-  });
+$("taskList").addEventListener("change",async event=>{
+  const id=event.target.dataset.task;if(!id||!requireLogin())return;
+  const status=event.target.checked?"completed":"pending";
+  const {error}=await db.from("tasks").update({status}).eq("id",id);
+  if(error){showMessage("dashMessage","Task update failed: "+error.message,"error");return;}
+  await loadDashboard();
+});
+$("taskList").addEventListener("click",async event=>{
+  const id=event.target.dataset.taskDelete;if(!id||!requireLogin())return;
+  if(!confirm("Remove this task?"))return;
+  const {error}=await db.from("tasks").delete().eq("id",id);
+  if(error){showMessage("dashMessage","Could not remove task: "+error.message,"error");return;}
+  await loadDashboard();
+});
 
-  $("taskForm").addEventListener("submit",event=>{
-    event.preventDefault();
-    if(!projects.length)return alert("Add a project first.");
-    tasks.push({
-      id:Date.now().toString(),
-      text:$("taskText").value.trim(),
-      project:$("taskProject").value,
-      due:$("taskDue").value,
-      done:false
-    });
-    $("taskText").value="";
-    $("taskDue").value="";
-    saveDash();
-  });
+/* EXPORT DASHBOARD BACKUP */
+$("dashExport").addEventListener("click",()=>{
+  if(!requireLogin())return;
+  const blob=new Blob([JSON.stringify({projects,tasks},null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob),link=document.createElement("a");
+  link.href=url;link.download="infinite-iq-dashboard-backup.json";
+  link.click();URL.revokeObjectURL(url);
+});
+$("dashImportBtn").addEventListener("click",()=>{
+  if(!requireLogin())return;$("dashImport").click();
+});
 
-  $("dashSearch").addEventListener("input",renderDash);
-
-  $("projectList").addEventListener("click",event=>{
-    const del=event.target.dataset.delete;
-    const edit=event.target.dataset.edit;
-
-    if(del){
-      projects=projects.filter(p=>p.id!==del);
-      tasks=tasks.filter(t=>t.project!==del);
-      saveDash();
+/* IMPORT OLD OR EXPORTED BACKUPS */
+$("dashImport").addEventListener("change",async event=>{
+  const file=event.target.files[0];if(!file)return;
+  if(!requireLogin()){event.target.value="";return;}
+  try{
+    const data=JSON.parse(await file.text());
+    if(!Array.isArray(data.projects)||!Array.isArray(data.tasks))throw Error("Invalid backup format.");
+    const idMap=new Map();
+    for(const old of data.projects){
+      const {data:created,error}=await db.from("projects").insert({
+        created_by:currentUser.id,name:String(old.name||"Imported project"),
+        client_name:String(old.client_name||old.client||""),
+        project_type:String(old.project_type||old.type||"Other"),
+        status:String(old.status||"Planning"),deadline:old.deadline||null,
+        budget:Number(old.budget)||0,paid:Number(old.paid)||0,notes:String(old.notes||"")
+      }).select("id").single();
+      if(error)throw error;
+      idMap.set(String(old.id),created.id);
     }
-
-    if(edit){
-      const project=projects.find(p=>p.id===edit);
-      if(!project)return;
-      const name=prompt("Project name",project.name);
-      if(name===null)return;
-      project.name=name;
-      const client=prompt("Client / business",project.client);
-      if(client!==null)project.client=client;
-      const status=prompt("Status: Planning, In progress, On hold, Completed",project.status);
-      if(status!==null)project.status=status;
-      saveDash();
+    for(const old of data.tasks){
+      const newProjectId=idMap.get(String(old.project_id||old.project));
+      if(!newProjectId)continue;
+      const {error}=await db.from("tasks").insert({
+        project_id:newProjectId,title:String(old.title||old.text||"Imported task"),
+        due_date:old.due_date||old.due||null,
+        status:(old.status==="completed"||old.done)?"completed":"pending"
+      });
+      if(error)throw error;
     }
-  });
+    await loadDashboard();showMessage("dashMessage","Backup imported successfully.","success");
+  }catch(error){
+    showMessage("dashMessage","Import could not be completed: "+(error.message||"Invalid backup"),"error");
+  }
+  event.target.value="";
+});
 
-  $("taskList").addEventListener("change",event=>{
-    const id=event.target.dataset.task;
-    if(id){
-      const task=tasks.find(t=>t.id===id);
-      if(task)task.done=event.target.checked;
-      saveDash();
-    }
-  });
-
-  $("taskList").addEventListener("click",event=>{
-    const id=event.target.dataset.taskDelete;
-    if(id){
-      tasks=tasks.filter(t=>t.id!==id);
-      saveDash();
-    }
-  });
-
-  $("dashExport").addEventListener("click",()=>{
-    const blob=new Blob([JSON.stringify({projects,tasks},null,2)],{type:"application/json"});
-    const url=URL.createObjectURL(blob);
-    const link=document.createElement("a");
-    link.href=url;
-    link.download="infinite-iq-dashboard-backup.json";
-    link.click();
-    URL.revokeObjectURL(url);
-  });
-
-  $("dashImportBtn").addEventListener("click",()=>$("dashImport").click());
-
-  $("dashImport").addEventListener("change",async event=>{
-    const file=event.target.files[0];
-    if(!file)return;
-    try{
-      const data=JSON.parse(await file.text());
-      if(!Array.isArray(data.projects)||!Array.isArray(data.tasks))throw Error();
-      projects=data.projects;
-      tasks=data.tasks;
-      saveDash();
-      alert("Dashboard data imported.");
-    }catch{
-      alert("That file is not a valid dashboard backup.");
-    }
-    event.target.value="";
-  });
-
-  renderDash();
-
-  /* CLIENT PORTAL DEMO */
+/* CLIENT PORTAL SAMPLE — LOCAL DEMO ONLY */
+(()=>{
   const portalItems=[
-    "Discovery and project requirements",
-    "Design direction approved",
-    "Homepage structure prepared",
-    "Website development",
-    "Final review and handover"
+    "Discovery and project requirements","Design direction approved",
+    "Homepage structure prepared","Website development","Final review and handover"
   ];
-
-  const portalState=readStore("iqPortalDemoTasks",[true,true,true,false,false]);
-
+  let portalState;
+  try{portalState=JSON.parse(localStorage.getItem("iqPortalDemoTasks"))||[true,true,true,false,false];}
+  catch{portalState=[true,true,true,false,false];}
   $("portalTasks").innerHTML=portalItems.map((task,index)=>`
     <label style="display:flex;gap:12px;align-items:center;padding:13px;border:1px solid var(--border);border-radius:12px">
-      <input type="checkbox" data-portal-task="${index}" ${portalState[index]?"checked":""}>
-      <span>${task}</span>
-    </label>
+    <input type="checkbox" data-portal-task="${index}" ${portalState[index]?"checked":""}><span>${task}</span></label>
   `).join("");
-
   function renderPortal(){
-    const done=portalState.filter(Boolean).length;
-    const percent=Math.round(done/portalItems.length*100);
-    $("portalPercent").textContent=percent+"%";
-    $("portalBar").style.width=percent+"%";
-    $("portalUpdate").textContent=done===5
-      ?"All sample project stages are marked complete."
-      :`${done} of ${portalItems.length} sample project stages are complete. The next step is ${portalItems[portalState.findIndex(value=>!value)]||"project handover"}.`;
+    const done=portalState.filter(Boolean).length,percent=Math.round(done/portalItems.length*100);
+    $("portalPercent").textContent=percent+"%";$("portalBar").style.width=percent+"%";
+    $("portalUpdate").textContent=done===5?"All sample project stages are marked complete.":`${done} of ${portalItems.length} sample project stages are complete. The next step is ${portalItems[portalState.findIndex(v=>!v)]||"project handover"}.`;
   }
-
   $("portalTasks").addEventListener("change",event=>{
     const index=Number(event.target.dataset.portalTask);
     if(Number.isInteger(index)){
       portalState[index]=event.target.checked;
-      writeStore("iqPortalDemoTasks",portalState);
-      renderPortal();
+      localStorage.setItem("iqPortalDemoTasks",JSON.stringify(portalState));renderPortal();
     }
   });
-
   renderPortal();
 })();
 </script>
-
 </body>
 </html>
